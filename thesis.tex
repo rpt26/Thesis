@@ -11,8 +11,12 @@
 % ******************************* PhD Thesis Template **************************
 % Please have a look at the README.md file for info on how to use the template
 
-\documentclass[a4paper,12pt,times,numbered,print,index]{PhDThesisPSnPDF}
+\documentclass[a4paper,12pt,numbered,print,index]{PhDThesisPSnPDF}
 \title{PhD Thesis}
+
+
+\renewcommand*\rmdefault{ppl}
+
 % ******************************************************************************
 % ******************************* Class Options ********************************
 % *********************** See README for more details **************************
@@ -167,10 +171,10 @@
 % Bibliography style previews: http://nodonn.tipido.net/bibstyle.php
 % Reference styles: http://sites.stat.psu.edu/~surajit/present/bib.htm
 
-\bibliographystyle{apalike}
+\bibliographystyle{unsrtnat}
 %\bibliographystyle{plainnat} % use this to have URLs listed in References
 \cleardoublepage
-\bibliography{References/references} % Path to your References.bib file
+\bibliography{Mendeley} % Path to your References.bib file
 
 
 % If you would like to use BibLaTeX for your references, pass `custombib' as

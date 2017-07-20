@@ -2,68 +2,124 @@
 %*********************************** First Chapter *****************************
 %*******************************************************************************
 
-\chapter{Plastic Deformation by dislocation motion}  %Title of the First Chapter
+\chapter{Plastic deformation by dislocation motion}  %Title of the First Chapter
 
-\ifpdf
-    \graphicspath{{Chapter1/Figs/Raster/}{Chapter1/Figs/PDF/}{Chapter1/Figs/}}
-\else
-    \graphicspath{{Chapter1/Figs/Vector/}{Chapter1/Figs/}}
-\fi
+
+\graphicspath{{Chapter1/Figs/Vector/}{Chapter1/Figs/Raster/}{Chapter1/Figs/PDF/}{Chapter1/Figs/}}
+
+
+Dislocation motion is important in crystalline materials. In many metals, particularly those with an face-centred cubic structure such as copper or aluminium, dislocations must be hindered to achieve useful strength as an engineering material. Much of physical metallurgy is the study of the microstructural features that affect dislocation motion and their genesis in materials processing or alloys composition.
+
+In other materials the crystal structure itself provides such a large barrier to motion that almost no plastic deformation is possible and these materials usually fail by brittle fracture. This is true of many non-metallic materials widely used as protective coatings or as functional materials in devices. Fracture is often the life limiting factor for these materials such that if their toughness was increased by making plastic flow were easier their lifetime would be extended. 
+
+Even in some metallic materials with comparatively simple crystal structures plastic flow is limited not by microstructural features but by the inherent resistance of the crystal structure to the motion of dislocations. The ductile to brittle transition in many metals is due to the lattice resistance, notably iron in its body-centred crystal structure becomes brittle at low temperatures resulting in the infamous failure of the liberty ships during the second world war in the cold waters of the north Atlantic; originally thought to be due to high stresses caused by the (then novel) welding technique used to join the steel, it was Dr Constance Tipper who showed that it was the lack of plastic flow around the crack tip that allowed for the catastrophic fracture of entire ships \cite{Cottrell1997}. 
+
+Thus there is a great motivation to understanding the inherent resistance to dislocation flow in a crystal structure, or \emph{lattice resistance}, and to being able to alter that lattice resistance and thereby introduce toughness to otherwise brittle phases.
 
 
 %********************************** %First Section  **************************************
-\section{What is loren ipsum? Title with math \texorpdfstring{$\sigma$}{[sigma]}} %Section - 1.1 
+\section{Dislocations} %Section - 1.1 
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry (see 
-Section~\ref{section1.3}). Lorem Ipsum~\citep{Aup91} has been the industry's 
-standard dummy text ever since the 1500s, when an unknown printer took a galley 
-of type and scrambled it to make a type specimen book. It has survived not only 
-five centuries, but also the leap into electronic typesetting, remaining 
-essentially unchanged. It was popularised in the 1960s with the release of 
-Letraset sheets containing Lorem Ipsum passages, and more recently with desktop 
-publishing software like Aldus PageMaker including versions of Lorem 
-Ipsum~\citep{AAB95,Con90,LM65}.
+Dislocations are line defects in crystals that are important for many reasons but in the context of the current work principally because they mediate plastic deformation. In the early twentieth century there were many observations of real world materials strengths that could not be reconciled with the theoretical shearing strength of a perfect plane of atoms. Indeed for a long time this was neglected because, as \citet{gordon1991} puts it:
+\begin{quote}
+``Until about 1934 the Establishment explanation of these phenomena was remarkably unconvincing and seems to have reflected mainly a desire not to be asked embarrassing questions.''
+\end{quote}
 
-The most famous equation in the world: $E^2 = (m_0c^2)^2 + (pc)^2$, which is 
-known as the \textbf{energy-mass-momentum} relation as an in-line equation.
+In 1934 the edge dislocation was proposed by \citet{orowan1934i,orowan1934ii,orowan1934iii}, \citet{Taylor1934}, and \citet{polanyi1934} to explain the discrepancy between the ideal strength of crystal and the observed strengths of real materials. It was around this time that work undertaken by \citet{Volterra1907} and others %% Cite some here
+on elastic behaviour of homogeneous isotropic continua was related to plastic flow of crystalline materials and indeed idealised dislocations in elastic continua are termed Volterra dislocations. By the end of the decade \citet{burgers1939} had described screw dislocations.
 
-A {\em \LaTeX{} class file}\index{\LaTeX{} class file@LaTeX class file} is a file, which holds style information for a particular \LaTeX{}.
+It was not until the 1950s that experimental evidence for the existence of dislocations was produced ; the principle evidence at that time being growth surfaces of single crystals, preferential etching of a crystalline material at dislocations and x-ray studies of arrays of dislocations in the bulk \cite{Forty1954}. 
 
+Growth surfaces provide evidence for dislocations because, as \citet{Frank1949} predicted in 1949, a step could terminate by the intersection of a dislocation with a free surface, or conversely a dislocation intersecting with a free surface would necessarily create a step. The observation of such steps was very soon after Frank's prediction in 1950 by \citet{Griffin1950}.
 
-\begin{align}
-CIF: \hspace*{5mm}F_0^j(a) = \frac{1}{2\pi \iota} \oint_{\gamma} \frac{F_0^j(z)}{z - a} dz
-\end{align}
+Etch pits were shown to form at the intersections between dislocations and free surfaces by \citet{Horn1952} who observed that the configuration of etch pits matched the pre-existing surface growth features that arise from screw dislocations.
 
-\nomenclature[z-cif]{$CIF$}{Cauchy's Integral Formula}                                % first letter Z is for Acronyms 
-\nomenclature[a-F]{$F$}{complex function}                                                   % first letter A is for Roman symbols
-\nomenclature[g-p]{$\pi$}{ $\simeq 3.14\ldots$}                                             % first letter G is for Greek Symbols
-\nomenclature[g-i]{$\iota$}{unit imaginary number $\sqrt{-1}$}                      % first letter G is for Greek Symbols
-\nomenclature[g-g]{$\gamma$}{a simply closed curve on a complex plane}  % first letter G is for Greek Symbols
-\nomenclature[x-i]{$\oint_\gamma$}{integration around a curve $\gamma$} % first letter X is for Other Symbols
-\nomenclature[r-j]{$j$}{superscript index}                                                       % first letter R is for superscripts
-\nomenclature[s-0]{$0$}{subscript index}                                                        % first letter S is for subscripts
+Arrays of dislocations can be detected by x-ray methods. The observation of Laue spots of an single crystal through the processes of plastic deformation and what we now call recovery provided indirect evidence for the existence of dislocation arrays. The process, described by \citet{Cottrell1949}, is as follows: Initially sharp Laue spots exist for a relatively perfect single crystal. These spots are then smeared during the process of plastic deformation which creates large numbers of dislocations throughout the crystal. The spots then split into distinct sharp spots during the process of recovery by which annealing allows dislocations to align into arrays and thereby minimise the elastic strain energy. These arrays form sub-grains, regions of perfect (or at least relatively perfect) crystal separated by low angle boundaries formed by arrays of dislocations.
 
 
-%********************************** %Second Section  *************************************
-\section{Why do we use loren ipsum?} %Section - 1.2
+\subsection{The stress required to move a dislocation}
+
+Though mathematical descriptions of dislocations in isotropic elastic continua date back to 1907 \cite{Volterra1907} the energies and forces around dislocations in crystalline lattices was not considered until much later. In 1940 \citet{Dehlinger1940} and \citet{Peierls1940}. The former presented the application of the Frenkel-Kontorova model, a one dimenensional array of balls connected by springs on a periodic potential/substrate, to approximate a dislocation.
+
+The latter, Rudolph Peierls, was one of the physicists working during the great advent of quantum mechanics and most of his work was in that field, he was lectured by Planck, he worked with Pauli, Landau and others and
+notably developed the idea of zones in the physics of phonons before Léon Brillouin and the statistical mechanics of alloys which formed the basis of mean-field theories for structural phase changes.
+However during his education he received a grounding in classical physics at Arnold Sommerfeld's lectures in Munich and so it was that he was suitably equipped when presented with the problem of dislocation motion by Egon Orowan; as Peierls remarked he knew nothing about dislocation but he did know classical elasticity \cite{Edwards1996}.
 
 
-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using `Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for `lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+Peierls presented the first formal solution for the dislocation displacement potential in a rather short note \cite{Peierls1940} and the idea was extended by \citet{Nabarro1947}. The model is remarkably simple; consider two semi-infinite perfect crystals with their lattice aligned but some initial misalignment between them as shown in \autoref{fig:semi_infinite_crystals}. We can join them along what will become the slip plane. An edge dislocation is formed where the energy of the system is lowered by displacing atoms from their initial positions to localise the misalignments around the dislocation core, usually taken to be the origin. I.e. when the energy of a planar defect is higher than that of the linear defect and dislocation will form.
 
-%********************************** % Third Section  *************************************
-\section{Where does it come from?}  %Section - 1.3 
-\label{section1.3}
 
-Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+\begin{figure}
+\centering
 
-The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from ``de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham
+    \begin{subfigure}{0.4\textwidth}
+        \includegraphics[width=\textwidth]{Half_crystals}
+        \caption{Two semi-infinite crystals \label{fig:semi_infinite_crystals}}
+    \end{subfigure}
 
-``Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    \begin{subfigure}{0.4\textwidth}
+        \includegraphics[width=\textwidth]{Edge_Dislocation}
+        \caption{A schematic edge dislocation\label{fig:joined_half_crystals}}
+    \end{subfigure}
 
-Section 1.10.32 of ``de Finibus Bonorum et Malorum", written by Cicero in 45 BC: ``Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+    \caption{Schematics showing the creation of an edge dislocation in a simple square lattice by the joining of two misaligned half crystals. \label{fig:edge_disloc}}
+\end{figure}
 
-1914 translation by H. Rackham: ``But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"
 
-Section 1.10.33 of ``de Finibus Bonorum et Malorum", written by Cicero in 45 BC: ``At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
 
-1914 translation by H. Rackham: ``On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."
+The Peierls model then estimates the energy of the configuration by considering two restoring forces generated by the atomic arrangement. These are shown in \autoref{fig:detail_of_peierls}. 
+
+There are two forces that arise; firstly the bonds parallel the slip plane will be either extended or contracted, for example the bond between atom $A$ and $B$ has been contracted by the amount $\delta$, this will tend to oppose the concentration of misalignments to the core and  is zero in the case of no displacements from the initial positions; secondly the misalignment of bonds across the slip plane, the bond between atom $B$ and $C$ is misaligned by a lateral distance of $\phi$. This misalignment energy will tend to favour the concentration of the misalignments to the core and is a maximum in the case of no displacement from the initial position.
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{peierls_model_detail}
+
+\caption{Detail of the local displacements around the dislocation core. $\delta$ is the extension of the bond paralell to the slip plane while $\phi$ is the misalignment of the bond across the slip plane.\label{fig:detail_of_peierls}}
+\end{figure}
+
+
+The energy of the dislocation is the sum of all these contributions. This gives rise to a size, or width, of a dislocation. The width of the dislocation is defined as the distance from the core at which the misalignment across the slip plane is half its maximum, which occurs at the core. Peierls calculated this for an isotropic elastic solid and accounting for only the atomic planes immediately adjacent to the slip plane and found it to be 
+
+\begin{equation}
+w = \frac{d}{1-\nu}
+\end{equation}
+where $d$ is the plane spacing across teh slip plane and $\nu$ is the Poisson ratio.
+
+
+Peierls gave the critical stress in terms of the ideal shear strength as calculated by Frenkel %Frenkel reference
+as 
+
+
+\begin{equation}
+\frac{\tau_c}{\tau_{ideal}} = \frac{4 \pi}{1 - \nu} (5.8 - \log|1-\nu|) \exp\left(-\frac{4\pi}{1 - \nu}\right)
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
