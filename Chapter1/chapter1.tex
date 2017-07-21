@@ -39,7 +39,7 @@ Arrays of dislocations can be detected by x-ray methods. The observation of Laue
 
 \subsection{The stress required to move a dislocation}
 
-Though mathematical descriptions of dislocations in isotropic elastic continua date back to 1907 \cite{Volterra1907} the energies and forces around dislocations in crystalline lattices was not considered until much later. In 1940 \citet{Dehlinger1940} and \citet{Peierls1940}. The former presented the application of the Frenkel-Kontorova model, a one dimenensional array of balls connected by springs on a periodic potential/substrate, to approximate a dislocation.
+Though mathematical descriptions of dislocations in isotropic elastic continua date back to 1907 \cite{Volterra1907} the energies and forces around dislocations in crystalline lattices was not considered until much later. In 1940 \citet{Dehlinger1940} and \citet{Peierls1940}. The former presented the application of the Frenkel-Kontorova model, a one dimensional array of balls connected by springs on a periodic potential/substrate, to approximate a dislocation.
 
 The latter, Rudolph Peierls, was one of the physicists working during the great advent of quantum mechanics and most of his work was in that field, he was lectured by Planck, he worked with Pauli, Landau and others and
 notably developed the idea of zones in the physics of phonons before Léon Brillouin and the statistical mechanics of alloys which formed the basis of mean-field theories for structural phase changes.
@@ -84,35 +84,51 @@ The energy of the dislocation is the sum of all these contributions. This gives 
 
 \begin{equation}
 w = \frac{d}{1-\nu}
+\label{eqn:width_isotropic}
 \end{equation}
-where $d$ is the plane spacing across teh slip plane and $\nu$ is the Poisson ratio.
+where $d$ is the plane spacing across the slip plane and $\nu$ is the Poisson ratio.
 
 
-Peierls gave the critical stress in terms of the ideal shear strength as calculated by Frenkel %Frenkel reference
-as 
+Peierls gave the critical stress, now usually termed the Peierls Stress, for an isotropic elastic material, in terms of the ideal shear strength as calculated for uniform slip, as
 
 
 \begin{equation}
-\frac{\tau_c}{\tau_{ideal}} = \frac{4 \pi}{1 - \nu} (5.8 - \log|1-\nu|) \exp\left(-\frac{4\pi}{1 - \nu}\right)
+\frac{\tau_p}{\tau_{ideal}} = \frac{4 \pi}{1 - \nu} (5.8 - \log|1-\nu|) \exp\left(-\frac{4\pi}{1 - \nu}\right).
 \end{equation}
 
+This was refined by \citet{Nabarro1947} and the direct summation of the discrete contributions was developed by Cottrell and Nabarro \cite{cottrell1953dislocations}. The result of that summation is
 
 
 
+\begin{equation}
+\tau_p = \frac{2\mu}{1-\nu} \exp\left( - \frac{4\pi w}{b} \right)
+\end{equation}
+where $\mu$ is the shear modulus and $b$ is the burgers vector.
+
+For an isotropic material the width can be substituted from \autoref{eqn:width_isotropic}:
+
+\begin{equation}
+\tau_p = \frac{2\mu}{1-\nu} \exp\left( - \frac{2\pi d}{(1-\nu)b} \right).
+\end{equation}
+
+Although a simple model based on fairly large assumptions the method moved dislocation theory on in two ways: firstly continuum elasticity could not account for energy changes as the dislocation moves, this is the small difference between the continuous integral and discrete sum that depends on the core position, and secondly this approach removes the singularity at the core predicted by continuum elasticity for Volterra dislocations.
+
+
+An important point to note here is the sensitivity of the Peierls stress to the size of the dislocation, $w$, or in the case of isotropic materials to the lattice geometry defined by $d/b$.
+
+
+There have been many criticisms of and modifications to the Peierls model in the years since but these have largely focused on adjusting the assumptions of the original method.
+In 1951 \citet{Foreman1951} introduced phenomenological potentials to describe the energy of the misaligned interactions across the slip plane, they discovered that the width of the dislocation was predicted to be larger than that of the original treatment and was coupled with a decrease in the Peierls stress. .
+In 1955 \citet{Huntington1955a} modified the model to double the periodicity and so account for crystals in which a displacement of half a burgers vector is not symmetrical with no displacement, or in other words broke the mirror symmetry of the slip plane. 
+\citet{Maradudin1959} considered a completely atomistic three dimensional model of a screw dislocation but did not consider radial displacements. That work only evaluated the energies of the symmetric and anti-symmetric configurations and so only estimated the energy change, not the maximum stress.
 
 
 
+In 1994 a fully discrete model was developed by \citet{Ohsawa1994}. This model made similar assumption to the original Peierls model in that the only energy changes were in the sheared misaligned bonds across the slip plane but instead of solving for an analytical solution Ohsawa et al directly summed the energy of an atomic configuration that included 84 atoms, or 21 atomic spacing either side of the dislocation core. The model made no assumptions about the displacement field and instead iteratively improved all the atomic positions to find the equilibrium configuration. This was done for increasing applied external stresses until there was no stable configuration, i.e. slip would occur.
 
 
 
-
-
-
-
-
-
-
-
+\citet{Bulatov1997} incorporated the concept of generalised stacking fault (GSF) energies into the Peierls model. This addresses a fault in the original Peierls formulation that the sinusoidal potential used to calculate the misalignment energy is too high and steep. \citet{Ohsawa1994} had already attempted to address this by using alternative potentials, but they were essentially arbitrary functions that fitted the shear modulus at small strains Instead Bulatov et al retained the variational approach but used density functional theory (DFT) calculations to generate a misalignment potential. They extended this to provide a three dimensional potential to allow both lateral and vertical displacements of the atoms in the slip plane. This is important around the core where large strains mean that the energy contributions are very inaccurate, and so by using the DFT to calculate a misalignment potential the Peierls model can bridge the length scales between the large scale stress and strain fields around the dislocation and the large local displacements at the core. This is no longer analytically solvable but is not difficult to solve numerically, the only limit being computational time.
 
 
 
