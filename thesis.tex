@@ -11,11 +11,8 @@
 % ******************************* PhD Thesis Template **************************
 % Please have a look at the README.md file for info on how to use the template
 
-\documentclass[a4paper,12pt,numbered,print,index]{PhDThesisPSnPDF}
+\documentclass[a4paper,12pt,customfont,numbered,print,index]{PhDThesisPSnPDF}
 \title{PhD Thesis}
-
-
-%\renewcommand*\rmdefault{ppl}
 
 % ******************************************************************************
 % ******************************* Class Options ********************************
@@ -98,25 +95,6 @@
 % Thesis title and author information, refernce file for biblatex
 \input{thesis-info}
 
-% ***************************** Abstract Separate ******************************
-% To printout only the titlepage and the abstract with the PhD title and the
-% author name for submission to the Student Registry, use the `abstract' option in
-% the document class.
-
-\ifdefineAbstract
- \pagestyle{empty}
- \includeonly{Declaration/declaration, Abstract/abstract}
-\fi
-
-% ***************************** Chapter Mode ***********************************
-% The chapter mode allows user to only print particular chapters with references
-% Title, Contents, Frontmatter are disabled by default
-% Useful option to review a particular chapter or to send it to supervisior.
-% To use choose `chapter' option in the document class
-
-\ifdefineChapter
- \includeonly{Chapter3/chapter3}
-\fi
 
 % ******************************** Front Matter ********************************
 \begin{document}
@@ -149,8 +127,8 @@
 % ******************************** Main Matter *********************************
 \mainmatter
 
-\include{Chapter1/chapter1}
-%\include{Chapter2/chapter2}
+%\include{Chapter1/chapter1}
+\include{Chapter2/chapter2}
 %\include{Chapter3/chapter3}
 %\include{Chapter4/chapter4}
 %\include{Chapter5/chapter5}
@@ -171,10 +149,10 @@
 % Bibliography style previews: http://nodonn.tipido.net/bibstyle.php
 % Reference styles: http://sites.stat.psu.edu/~surajit/present/bib.htm
 
-\bibliographystyle{unsrtnat}
+\bibliographystyle{my_bib_style}
 %\bibliographystyle{plainnat} % use this to have URLs listed in References
 \cleardoublepage
-\bibliography{Mendeley} % Path to your References.bib file
+\bibliography{Thesis} % Path to your References.bib file
 
 
 % If you would like to use BibLaTeX for your references, pass `custombib' as
@@ -189,7 +167,7 @@
 
 % ********************************** Appendices ********************************
 
-\begin{appendices} % Using appendices environment for more functunality
+\begin{appendices} % Using appendices environment for more functionality
 
 %\include{Appendix1/appendix1}
 %\include{Appendix2/appendix2}

@@ -17,7 +17,6 @@
 \ifsetCustomFont
   % Set your custom font here and use `customfont' in options. Leave empty to
   % load computer modern font (default LaTeX font).
-  \RequirePackage{helvet}
 \fi
 
 % *****************************************************************************
@@ -37,6 +36,9 @@
 \renewcommand{\figurename}{Fig.} %to support older versions of captions.sty
 \usepackage{hyperref}
 
+
+
+
 % *************************** Graphics and figures *****************************
 
 %\usepackage{rotating}
@@ -53,10 +55,20 @@
 %\usepackage{sty/caption/subcaption}
 \usepackage{subcaption}
 \usepackage{graphicx}
+\usepackage{placeins}
+\usepackage[version=4]{mhchem}
+
+
+
+
+
+
+
+
+
 % ********************************** Tables ************************************
 \usepackage{booktabs} % For professional looking tables
 \usepackage{multirow}
-
 %\usepackage{multicol}
 %\usepackage{longtable}
 %\usepackage{tabularx}
@@ -194,3 +206,5 @@
 %\fi
 
 % Example todo: \mynote{Hey! I have a note}
+\usepackage{epigraph}
+\renewcommand{\ref}{\autoref}
