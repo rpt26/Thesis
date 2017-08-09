@@ -1118,6 +1118,7 @@ wish to left align your text}
 \ifPHD@abstract
 % Separate abstract as per Student Registry guidelines
 	\thispagestyle{empty}
+    \small
 	\setsinglecolumn
 	\begin{center}
 		{ \Large {\bfseries {\@title}} \par}
@@ -1128,8 +1129,16 @@ wish to left align your text}
 % Normal abstract in the thesis
 	\cleardoublepage
 	\setsinglecolumn
-	\chapter*{\centering \Large Abstract}
-	\thispagestyle{empty}
+    \small
+    %\addtolength{\voffset}{-25pt}
+    %\addtolength{\topmargin}{-15pt}
+    %\addtolength{\headsep}{-15pt}
+    
+	\begin{center}
+		{ \Large {\bfseries {Abstract} \par}}
+	\end{center}
+	
+    \thispagestyle{empty}
 \fi
 }
 

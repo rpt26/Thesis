@@ -4,32 +4,32 @@
 
 \chapter{Plastic deformation}  %Title of the First Chapter
 
-\epigraphwidth=0.6\textwidth
-\epigraph{Dislocation theory is ... after all, mainly of interest to dislocation experts.}{J.E. Gordon}
+
+\epigraph{I have ventured to call them dislocations}{A.E.H. Love}
 
 
 
 
 \graphicspath{{Chapter1/Figs/Vector/}{Chapter1/Figs/Raster/}{Chapter1/Figs/PDF/}{Chapter1/Figs/}}
 
-Plastic deformation or plasticity is the process of permanently altering the shape of a solid body under the influence of an applied external force. Indeed under the application of a large enough force and if cracking can be suppressed, for example by a lack of initiation sites or by confining pressure, most materials will plastically deform. Though a range of mechanisms for plastic deformation exist in crystals by far the most widespread is glide. Though glide was first observed in 1867 \cite{Reusch1867} and was studied formally as early as 1899 \cite{Ewing1899,Ewing1900} it was not known or even proposed that dislocations, linear defects in a crystal structure, mediate plastic flow by gliding along rational crystallographic planes \cite{Kelly2012ch7}.
+Plastic deformation or plasticity is the process of permanently altering the shape of a solid body under the influence of an applied external force. Indeed under the application of a large enough force and if cracking can be suppressed, for example by a lack of initiation sites or by confining pressure, most materials will plastically deform. Though a range of mechanisms for plastic deformation exist in crystals by far the most widespread is dislocation glide. Though glide was first observed in 1867 \cite{Reusch1867} and was studied formally as early as 1899 \cite{Ewing1899,Ewing1900} it was not known or even proposed that dislocations, linear defects in a crystal structure, mediate plastic flow by moving in rational crystallographic planes \cite{Kelly2012ch7}.
 
 If the process of dislocation glide cannot occur then a material is usually {brittle} and will fail by fracture or cracking, while if dislocation glide can occur it is {ductile} and will fail by yielding during in which plastic deformation will occur. Brittleness vs ductility of a material is not a fixed property but will depend on the stress state and the temperature. If sufficiently high hydrostatic pressure is applied then even materials like sapphire will undergo plastic flow \cite{Bridgman1947}. At high temperatures then thermal activation can allow glide to occur in materials that are brittle at lower temperatures, with many materials known to exhibit ductile to brittle transition temperatures   \cite{Kelly2012ch7}.
 
-Dislocation motion is of much practical importance in crystalline materials. In many metals, particularly those with an face-centred cubic structure such as copper or aluminium, dislocations must be hindered to achieve useful strength as an engineering material. Much of physical metallurgy is the study of the microstructural features that affect dislocation motion and their genesis in materials processing or alloys composition.
+Dislocation motion is of much practical importance in crystalline materials. In many metals, particularly those with an face-centred cubic structure such as copper or aluminium, dislocation motion must be hindered to achieve useful strength as an engineering material. Much of physical metallurgy is the study of the microstructural features that affect dislocation motion and their genesis in materials processing or alloys composition.
 
 In other materials the crystal structure itself provides such a large barrier to motion that almost no plastic deformation is possible and these materials usually fail by brittle fracture. This is true of many non-metallic materials widely used as protective coatings or as functional materials in devices. Fracture is often the life limiting factor for these materials such that if their toughness was increased by making plastic flow were easier their lifetime would be extended. 
 
-Even in some metallic materials with comparatively simple crystal structures plastic flow is limited not by microstructural features but by the inherent resistance of the crystal structure to the motion of dislocations. The ductile to brittle transition in many metals is due to the lattice resistance, notably iron in its body-centred crystal structure becomes brittle at low temperatures resulting in the infamous failure of the liberty ships during the second world war in the cold waters of the north Atlantic; originally thought to be due to high stresses caused by the (then novel as opposed to rivets) welding technique, used to join the steel, it was Dr Constance Tipper who showed that it was the lack of plastic flow around the crack tip that allowed for the catastrophic fracture of entire ships \cite{Cottrell1997}. 
+Even in some metallic materials with comparatively simple crystal structures plastic flow is limited not by microstructural features but by the inherent resistance of the crystal structure to the motion of dislocations, this is common in body-centred cubic metals, tanatalum and niobium at room temperature and iron at lower temperatures \cite{Christian1983,Weinberger2013}, but also in the face-centred cubic metal iridium; the low mobility of dislocations in iridium is at least partly responsible for its tendency to fail by cleavage \cite{Panfilov2001}. The ductile to brittle transition in many metals is due to the lattice resistance, notably iron in its body-centred form becomes brittle at low temperatures resulting in the infamous failure of the liberty ships during the second world war in the cold waters of the North Atlantic; originally thought to be due to high stresses caused by the (then novel as opposed to rivets) welding technique, used to join the steel, it was Dr Constance Tipper who showed that it was the lack of plastic flow around the crack tip that allowed for the catastrophic fracture of entire ships \cite{Cottrell1997}. 
 
-Thus there is a great motivation to understanding the inherent resistance to dislocation flow in a crystal structure, or \emph{lattice resistance}, and to being able to alter that lattice resistance and thereby introduce toughness to otherwise brittle phases.
+Thus there is a great motivation to understanding the inherent resistance to dislocation flow in a crystal structure, or \emph{lattice resistance}, and to being able to alter that lattice resistance and thereby introduce a degree of toughness to otherwise brittle phases.
 
 
 %********************************** %First Section  **************************************
 \section{Dislocations} %Section - 1.1 
 \FloatBarrier
 
-Dislocations are line defects in crystals that are important, amongst other reasons, because they mediate plastic deformation. Though the character of dislocations can vary in a continuous fashion there are two limiting cases: Edge dislocations can be introduced to a perfect crystal by the introduction of an extra half plane of atoms, the termination of this half plane is the dislocation, see \autoref{fig:Edge_disloc_loop}; screw dislocations are formed by shearing a region of crystal such that the lattice planes form a helix, the centre of the helix is then the dislocation, this is shown in \autoref{fig:screw_disloc}. Mixed dislocations have some of the character of both these end members.
+Dislocations are line defects in crystals that are important, amongst other reasons, because they are responsible for plastic deformation. Though the character of dislocations can vary in a continuous fashion there are two limiting cases: Edge dislocations can be introduced to a perfect crystal by the introduction of an extra half plane of atoms, the termination of this half plane is the dislocation, see \autoref{fig:Edge_disloc_loop}; screw dislocations are formed by shearing a region of crystal such that the lattice planes form a helix, the centre of the helix is then the dislocation, this is shown in \autoref{fig:screw_disloc}. Mixed dislocations have some of the character of both these end members.
 
 
 
@@ -54,7 +54,7 @@ Dislocations are line defects in crystals that are important, amongst other reas
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{screw_disloc_loop}
-\caption{Schematic of a screw dislocation with a Burgers loop formed in a similar way to \autoref{fig:burgers_loops}. The displacement is parallel to the dislocation line in contrast with edge dislocations. \label{fig:screw_disloc}}
+\caption{Schematic of a screw dislocation with a Burgers loop formed in a similar way to \autoref{fig:burgers_loops}. The displacement is parallel to the dislocation line in contrast with edge dislocations. The atomic positions are not relaxed, the displacements being concentrated unphysically into one half plane. \label{fig:screw_disloc}}
 \end{figure}
 
 
@@ -71,33 +71,34 @@ There are conventions about the sign of dislocations, taking line vectors into o
 \FloatBarrier
 
 \subsection{Historical overview}
+
+
 In the early twentieth century there were many observations of real world materials strengths that could not be reconciled with the theoretical shearing strength of a perfect plane of atoms. Indeed for a long time this was neglected because, as \citet{gordon1991} puts it:
 \begin{quote}
 ``Until about 1934 the Establishment explanation of these phenomena was remarkably unconvincing and seems to have reflected mainly a desire not to be asked embarrassing questions.''
 \end{quote}
 
-In 1934 the edge dislocation was proposed by \citet{orowan1934i,orowan1934ii,orowan1934iii}, \citet{Taylor1934}, and \citet{polanyi1934} to explain the discrepancy between the ideal strength of crystal and the observed strengths of real materials. It was around this time that work undertaken by \citet{Volterra1907} and others %% Cite some here
-on elastic behaviour of homogeneous isotropic continua was related to plastic flow of crystalline materials and indeed idealised dislocations in elastic continua are termed Volterra dislocations. By the end of the decade \citet{burgers1939} had described screw dislocations.
+In 1934 the edge dislocation was proposed by \cite{orowan1934i,Orowan1934ii,Orowan1934iii}, \citet{Taylor1934}, and \citet{polanyi1934} to explain the discrepancy between the ideal strength of crystal and the observed strengths of real materials. It was around this time that work undertaken by \citet{Volterra1907} and others, particularly \citet{love1920}
+on elastic behaviour of homogeneous isotropic continua was related to plastic flow of crystalline materials, idealised dislocations in elastic continua are termed Volterra dislocations. By the end of the decade \citet{burgers1939} had described screw dislocations. 
 
-It was not until the 1950s that experimental evidence for the existence of dislocations was produced ; the principle evidence at that time being growth surfaces of single crystals, preferential etching of a crystalline material at dislocations and x-ray studies of arrays of dislocations in the bulk \cite{Forty1954}. 
+It was not until the 1950s that experimental evidence for the existence of dislocations was produced; the initial evidence was growth surfaces of single crystals, preferential etching of a crystalline material at dislocations and x-ray studies of arrays of dislocations in the bulk \cite{Forty1954}. 
 
-Growth surfaces provide evidence for dislocations because, as \citet{Frank1949} predicted in 1949, a step could terminate by the intersection of a dislocation with a free surface, or conversely a dislocation intersecting with a free surface would necessarily create a step. The observation of such steps was very soon after Frank's prediction in 1950 by \citet{Griffin1950}.
+\citet{Frank1949} predicted, in 1949, that a step could terminate by the intersection of a dislocation with a free surface, or conversely a dislocation intersecting with a free surface would necessarily create a step; these weere observed soon after in 1950 by \citet{Griffin1950}. Preferenctial etching of dislocations was observed by \citet{horn1952holes} who matched the configuration of etch pits with the pre-existing surface growth features that arise from screw dislocations. The effect of plastic work and subsequent recovery on Laue spots (the xray beams diffracted by a single crystal) provide evidence of arrays of dislocations. The process is described by \citet{Cottrell1949}: Initially sharp Laue spots exist in a perfect crystal. Plastic work smears the spots by introducing a homogeneous distribution of dislocations and the spots then split into distinct sharp spots during recovery as dislocations align into arrays that form sub-grains with small misalignments across the new low angle grain boundaries.
 
-Etch pits were shown to form at the intersections between dislocations and free surfaces by \citet{Horn1952} who observed that the configuration of etch pits matched the pre-existing surface growth features that arise from screw dislocations.
 
-Arrays of dislocations can be detected by x-ray methods. The observation of Laue spots of an single crystal through the processes of plastic deformation and what we now call recovery provided indirect evidence for the existence of dislocation arrays. The process, described by \citet{Cottrell1949}, is as follows: Initially sharp Laue spots exist for a relatively perfect single crystal. These spots are then smeared during the process of plastic deformation which creates large numbers of dislocations throughout the crystal. The spots then split into distinct sharp spots during the process of recovery by which annealing allows dislocations to align into arrays and thereby minimise the elastic strain energy. These arrays form sub-grains, regions of perfect (or at least relatively perfect) crystal separated by low angle boundaries formed by arrays of dislocations.
+An edge dislocation was first imaged in 1956 by \citet{Menter1956} in platinum phthalocyanine. The large organic complex with a platinum atom at the centre produces widely spaced rows of platinum atoms suitable for imaging with transmission electron microscopy.
+
+
 
 
 \subsection{The stress required to move a dislocation}
 
 Though mathematical descriptions of dislocations in isotropic elastic continua date back to 1907 \cite{Volterra1907} the energies and forces around dislocations in crystalline lattices and the  was not considered until much later. In 1940 \citet{Dehlinger1940} and \citet{Peierls1940}. The former presented the application of the Frenkel-Kontorova model, a one dimensional array of balls connected by springs on a periodic potential/substrate, to approximate a dislocation.
 
-The latter, Rudolph Peierls, was one of the physicists working during the great advent of quantum mechanics and most of his work was in that field, he was lectured by Planck, he worked with Pauli, Landau and others and
-notably developed the idea of zones in the physics of phonons before Léon Brillouin and the statistical mechanics of alloys which formed the basis of mean-field theories for structural phase changes.
-However during his education he received a grounding in classical physics at Arnold Sommerfeld's lectures in Munich and so it was that he was suitably equipped when presented with the problem of dislocation motion by Egon Orowan; as Peierls remarked he knew nothing about dislocation but he did know classical elasticity \cite{Edwards1996}.
+The latter, Rudolph Peierls, was one of the physicists working during the advent of quantum mechanics and most of his work was in that field, however during his education he received a grounding in classical physics at Arnold Sommerfeld's lectures in Munich and so it was that he was suitably equipped when presented with the problem of dislocation motion by Egon Orowan; as Peierls remarked he knew nothing about dislocations but he did know classical elasticity \cite{Edwards1996}.
 
 
-Peierls presented the first formal solution for the dislocation displacement potential in a rather short note \cite{Peierls1940} and the idea was extended by \citet{Nabarro1947}. The model is remarkably simple; consider two semi-infinite perfect crystals with their lattice aligned but some initial misalignment between them as shown in \autoref{fig:semi_infinite_crystals}. We can join them along what will become the slip plane. An edge dislocation is formed where the energy of the system is lowered by displacing atoms from their initial positions to localise the misalignments around the dislocation core, usually taken to be the origin. I.e. when the energy of a planar defect is higher than that of the linear defect and dislocation will form.
+Peierls presented the first formal solution for the energy changes as a dislocation moves in a rather short note \cite{Peierls1940} and the idea was extended by \citet{Nabarro1947}. The model is remarkably simple; consider two semi-infinite perfect crystals with their lattice aligned but some initial misalignment between them as shown in \autoref{fig:semi_infinite_crystals}. We can join them along what will become the slip plane. An edge dislocation is formed where the energy of the system is lowered by displacing atoms from their initial positions to localise the misalignments around the dislocation core, usually taken to be the origin. I.e. when the energy of a planar defect is higher than that of the linear defect and dislocation will form.
 
 
 \begin{figure}
@@ -116,18 +117,24 @@ Peierls presented the first formal solution for the dislocation displacement pot
     \caption{Schematics showing the creation of an edge dislocation in a simple square lattice by the joining of two misaligned half crystals. \label{fig:edge_disloc}}
 \end{figure}
 
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{peierls_model_detail}
+
+\caption{Detail of the local displacements around the dislocation core. $\delta$ is the extension of the bond parallel to the slip plane between atoms A and B, while $\phi$ is the misalignment of the bond across the slip plane between B and C.\label{fig:detail_of_peierls}}
+\end{figure}
+
+Atomic configurations that form a dislocation are generated by by applying a displacement field to the atoms immediately above and below the slip plane, $u(x)$ and $u'(x)$ respectively. The Peierls model then estimates the energy of the configuration by considering two restoring forces generated by the atomic arrangement. The detail is show in \autoref{fig:detail_of_peierls}. Firstly the bonds parallel the slip plane will be either extended or contracted, for example the bond between atom $A$ and $B$ has been contracted by the amount $\delta$, this will tend to oppose the concentration of misalignments to the core and is zero in the case of no displacements from the initial positions. Secondly the misalignment of bonds across the slip plane, the bond between atom $B$ and $C$ is misaligned by a lateral distance of $\phi$. This misalignment energy will tend to favour the concentration of the misalignments to the core and is a maximum in the case of no displacement from the initial position.
+
+Peierls made the assumption that the displacements vary slowly with position, i.e. that the dislocation is very wide. This means that the strain in the slip plane (i.e bonds like $\overrightarrow{AB}$ in \autoref{fig:detail_of_peierls}) experience only small strains. The energy associated with these \emph{in-plane} strains are then described  by the application of the displacement field to the surface of two semi infinite elastic continua. 
+The \emph{misalignment} energy of bonds across the slip plane (bonds like $\overrightarrow{BC}$ in \autoref{fig:detail_of_peierls}) is assumed to be a periodic function, specifically a simple sinusoidal variation is taken to be the form of the misalignment potential:
+
+\begin{equation}
+U_{mis} = C \sin \left(\frac{2\pi [u(x) - u'(x)]}{d} \right)
+\end{equation}
 
 
-The Peierls model then estimates the energy of the configuration by considering two restoring forces generated by the atomic arrangement. Firstly the bonds parallel the slip plane will be either extended or contracted, for example the bond between atom $A$ and $B$ has been contracted by the amount $\delta$, this will tend to oppose the concentration of misalignments to the core and  is zero in the case of no displacements from the initial positions, Peierls assumed this to be a constant energy found from the linear elastic stress field of a Volterra dislocation. Secondly the misalignment of bonds across the slip plane, the bond between atom $B$ and $C$ is misaligned by a lateral distance of $\phi$. This misalignment energy will tend to favour the concentration of the misalignments to the core and is a maximum in the case of no displacement from the initial position.
-
-The energy change is then calculated for different displacements from the symmetry position shown in \autoref{fig:edge_disloc}. This displacement is usually parametrised by the term $\alpha$ which is taken to be zero at the initial symmetrical position and increase to one after a displacement of $b$ to the next symmetrical position. 
-
-
-
-
-
-
-The energy of the dislocation is the sum of all these contributions. This gives rise to a size, or width, of a dislocation. The width of the dislocation is defined as the distance from the core at which the misalignment across the slip plane is half its maximum. Peierls calculated this for an isotropic elastic solid and accounting for only the atomic planes immediately adjacent to the slip plane and found it to be 
+The energy of the dislocation is the sum of all these contributions. There will be a configuration that is a minimum in the total energy where the in-plane forces widening the dislocation balance the misalignment forces that drive it to be narrower. This gives rise to a size, or width, of a dislocation. The width of the dislocation is defined as the distance from the core at which the misalignment across the slip plane is half its maximum. Peierls calculated this for an isotropic elastic solid and accounting for only the atomic planes immediately adjacent to the slip plane and found it to be 
 
 \begin{equation}
 w = \frac{d}{1-\nu}
@@ -135,15 +142,16 @@ w = \frac{d}{1-\nu}
 \end{equation}
 where $d$ is the plane spacing across the slip plane and $\nu$ is the Poisson ratio.
 
+The stress required to move a dislocation can be calculated from the maximum energy \emph{gradient} as the dislocation is displaced. Since the in-plane strains have a continuous definition in this model the displacement of the dislocation has no effect and the in-plane strain energy does not change. The energy changes therefore depend only on the misalignment energy of bonds across the slip plane and the energy of all the atoms away from the slip plane re neglected.
 
-Peierls gave the critical stress, now usually termed the Peierls Stress, for an isotropic elastic material, in terms of the ideal shear strength as calculated for uniform slip, as
+Peierls gave the critical stress, the \emph{Peierls Stress}, for an isotropic elastic material in terms of the ideal shear strength as calculated for uniform slip and accounting for only the interactions between the first plane either side of the slip plane, as
 
 
 \begin{equation}
 \frac{\tau_p}{\tau_{ideal}} = \frac{4 \pi}{1 - \nu} (5.8 - \log|1-\nu|) \exp\left(-\frac{4\pi}{1 - \nu}\right).
 \end{equation}
 
-This was refined by \citet{Nabarro1947} and the direct summation of the discrete contributions was developed by Cottrell and Nabarro \cite{cottrell1953dislocations}. The result of that summation is
+This was refined by \citet{Nabarro1947} and the direct summation of the discrete contributions was developed by Cottrell and Nabarro \cite{cottrell1953}. The result of that summation is
 
 
 
@@ -158,30 +166,31 @@ For an isotropic material the width can be substituted from \autoref{eqn:width_i
 \tau_p = \frac{2\mu}{1-\nu} \exp\left( - \frac{2\pi d}{(1-\nu)b} \right).
 \end{equation}
 
-Although a simple model based on fairly large assumptions the method moved dislocation theory on in two ways: firstly continuum elasticity could not account for energy changes as the dislocation moves, this is the small difference between the continuous integral and discrete sum that depends on the core position, and secondly this approach removes the singularity at the core predicted by continuum elasticity for Volterra dislocations.
+Although this simple model includes some large assumptions the method moved dislocation theory on in two ways: firstly continuum elasticity could not account for energy changes as the dislocation moves since in an isotropic homogeneous continuum one dislocation position is identical to all others and there will be no energy changes as the dislocation move, and secondly this approach removes the singularity at the core predicted by continuum elasticity for Volterra dislocations.
 
 
-An important point to note here is that the Peierls stress is extremely sensitive to the size of the dislocation, $w$, and therefore to the factors that control the width; in the case of isotropic materials the model is explicitly sensitive to the lattice geometry defined by $d/b$ and the Poisson ratio, $\nu$.
+An important point to note is that the Peierls stress is extremely sensitive to the size of the dislocation, $w$, and therefore to the factors that control the width; which in turn is defined by the lattice geometry, $d/b$, and the elastic properties.
 
 
 
-Peierls found the perhaps surprising result that the energy changes have a periodicity of $b/2$ rather than $b$, this has been ascribed to the summation procedure of the energy of the misaligned bonds across the slip plane, of which there has been much discussion \cite{Hirth_Lothe1982lattice_periodicity,Lu2000peierls}, Peierls summed over the atoms above the slip plane and below the slip plane independently, the ``double-counting'' scheme, later models used a ``single-counting' scheme in which the assumption of small displacements is dropped and the misalignment of an atom above the slip plane is dependent on the final position of the atoms below the slip plane. This is given as the reason the Peierls barrier had a wavelength of $b/2$ rather than $b$ \cite{Hirth_Lothe1982lattice_periodicity,Lu2000peierls} though it has been suggested that the problem is an artefact that arises from an assumption of small displacements and that using the final rather than initial positions of the atomic rows resolves the difficulties \cite{Huntington1955}. As will be discussed below there is another possible explanation for the change in period that depends on the exact formulation of the energy calculations and whether the $\alpha=1/2$ position is symmetrically equivalent to the $\alpha = 0, 1$ positions. The periodicity of $b/2$ is easily explained on this basis because Peierls assumed that both the elastic energy and the dislocation geometry remained constant and the only changes in the energy were therefore based on misaligned bonds across the slip plane. These assumptions produce an atomic configuration at $\alpha=1/2$ that is the mirror through the slip plane of the $\alpha=0$ configuration, which must give the same energy since the misalignment potential used by Peierls is symmetrical.
+Peierls found the perhaps surprising result that the energy changes have a periodicity of $b/2$ rather than $b$, this has been ascribed to the summation procedure of the energy of the misaligned bonds across the slip plane, of which there has been much discussion \cite{Hirth_Lothe1982lattice_periodicity,Lu2000peierls}. Peierls summed over the atoms above the slip plane and below the slip plane independently, the ``double-counting'' scheme, later models used a ``single-counting' scheme in which the assumption of small displacements is dropped and the misalignment of an atom above the slip plane is dependent on the final position of the atoms below the slip plane. This is given as the reason the Peierls barrier had a wavelength of $b/2$ rather than $b$ \cite{Hirth_Lothe1982lattice_periodicity,Lu2000peierls} though it has been suggested that the problem is an artefact that arises from an assumption of small displacements and that using the final rather than initial positions of the atomic rows resolves the difficulties \cite{Huntington1955}. As will be discussed below there is another possible explanation for the change in period that depends on the exact formulation of the energy calculations and whether the $\alpha=1/2$ position is symmetrically equivalent to the $\alpha = 0, 1$ positions. The periodicity of $b/2$ is easily explained on this basis because Peierls assumed that both the elastic energy and the dislocation geometry remained constant and the only changes in the energy were therefore based on misaligned bonds across the slip plane. These assumptions produce an atomic configuration at $\alpha=1/2$ that is the mirror through the slip plane of the $\alpha=0$ configuration, which must give the same energy since the misalignment potential used by Peierls is symmetrical.
 
 
 
 
 There have been many criticisms of and modifications to the Peierls model in the years since but these have largely focused on adjusting the assumptions of the original method.
-In 1951 \citet{Foreman1951} introduced phenomenological potentials to describe the energy of the misaligned interactions across the slip plane, they discovered that the width of the dislocation was predicted to be larger than that of the original treatment and was coupled with a decrease in the Peierls stress. .
+In 1951 \citet{Foreman1951} introduced phenomenological potentials to describe the energy of the misaligned interactions across the slip plane, they discovered that the width of the dislocation was predicted to be larger than that of the original treatment and was coupled with a decrease in the Peierls stress.
+
 In 1955 \citet{Huntington1955} modified the model to double the periodicity and so account for crystals in which a displacement of half a burgers vector is not symmetrical with no displacement, or in other words broke the mirror symmetry of the slip plane. 
 \citet{Maradudin1959} considered a completely atomistic three dimensional model of a screw dislocation but did not consider radial displacements. That work only evaluated the energies of the symmetric and anti-symmetric configurations and so only estimated the energy change, not the maximum stress.
 
 
 
-In 1994 a fully discrete model was developed by \citet{Ohsawa1994}. This model made similar assumption to the original Peierls model in that the only energy changes were in the sheared misaligned bonds across the slip plane but instead of solving for an analytical solution Ohsawa et al directly summed the energy of an atomic configuration that included 84 atoms, or 21 atomic spacing either side of the dislocation core. The model made no assumptions about the displacement field and instead iteratively improved all the atomic positions to find the equilibrium configuration. This was done for increasing applied external stresses until there was no stable configuration, i.e. slip would occur.
+In 1994 a fully discrete model was developed by \citet{Ohsawa1994}. This model made similar assumption to the original Peierls model in that the only energy changes were in the sheared misaligned bonds across the slip plane but instead of solving for an analytical solution Ohsawa et al. used numerical methods to optimise the configuration of 84 atoms,  either side of the dislocation core. The model made no assumptions about the displacement field and instead iteratively improved all the atomic positions to find the equilibrium configuration. This was done for increasing applied external stresses until there was no stable configuration, at which point slip would occur.
 
 
 
-\citet{Bulatov1997} incorporated the concept of generalised stacking fault (GSF) energies into the Peierls model and successfully applied it to real systems \cite{Lu2000aluminium}. This addresses a fault in the original Peierls formulation that the sinusoidal potential used to calculate the misalignment energy is too high and steep. \citet{Ohsawa1994} had already attempted to address this by using alternative potentials, but they were essentially arbitrary functions that fitted the shear modulus at small strains Instead Bulatov et al retained the variational approach but used density functional theory (DFT) calculations to generate a misalignment potential. They extended this to provide a three dimensional potential to allow both lateral and vertical displacements of the atoms in the slip plane. This is important around the core where large strains mean that the energy contributions are very inaccurate, and so by using the DFT to calculate a misalignment potential the Peierls model can bridge the length scales between the large scale stress and strain fields around the dislocation and the large local displacements at the core. This is no longer analytically solvable but is not difficult to solve numerically, the only limit being computational time.
+\citet{Bulatov1997} incorporated the concept of generalised stacking fault (GSF) energies into the Peierls model and successfully applied it to real systems \cite{Lu2000aluminium}. This addresses a fault in the original Peierls formulation that the sinusoidal potential used to calculate the misalignment energy is too high and steep. \citet{Ohsawa1994} had already attempted to address this by using alternative potentials, but they were essentially arbitrary functions that fitted the shear modulus at small strains instead Bulatov et al retained the variational approach but used density functional theory (DFT) calculations to generate a misalignment potential. They extended this to provide a three dimensional potential to allow both lateral and vertical displacements of the atoms in the slip plane. This is important around the core where large strains mean that the energy contributions are very inaccurate, and so by using the DFT to calculate a misalignment potential the Peierls model can bridge the length scales between the large scale stress and strain fields around the dislocation and the large local displacements at the core. This is no longer analytically solvable but is not difficult to solve numerically, the only limit being computational time.
 
 Analytical approaches have continued, \citet{Joos1997} developed a closed form solution that was valid for narrow dislocations, where as the original model relied on the assumption of a wide dislocation for simplicity, and achieved a significantly better agreement with experiment than the original formulation. The model proposed by Joós and Duesbery required input parameters calculated by empirical or ab initio methods but used these as parameters of a closed form solution, in particular they required the maximum restoring stress for the glide plane, i.e. the maximum gradient of the GSF energy.
 
@@ -230,12 +239,7 @@ The width no longer has an analytical solution so must be found numerically. The
 
 It is interesting to note that this formulation restores the symmetry that is destroyed in the calculation of elastic energy by continuum elasticity in that the strains above and below the slip plane are symmetric. So despite allowing the strain energy to vary as the dislocation moves this model has the same period as the original Peierls model of $b/2$.
 
-\begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{peierls_model_detail}
 
-\caption{Detail of the local displacements around the dislocation core. $\delta$ is the extension of the bond paralell to the slip plane between atoms A and B, while $\phi$ is the misalignment of the bond across the slip plane between B and C.\label{fig:detail_of_peierls}}
-\end{figure}
 
 
 
@@ -267,7 +271,7 @@ One draw back of these more physically insightful approaches is that strictly th
 For example the phases titanium carbide, \ce{TiC}, and the ternary carbide \ce{Ti3SiC2}. The above models all correctly predict that \ce{TiC} is brittle, the value of $\gamma_s / \gamma_{us} = 1.76$ is too small with values in excess of 3 required for ductility \cite{Price1992,Yu2003} and the values of $Gb/\gamma_s = 20.48$ and $\gamma_{us} / Gb = 0.032$ being far to large to indicate ductile behaviour \cite{Yu2003,Medvedeva2011}. However these same criteria take similar values for \ce{Ti3SiC2} for which $\gamma_s / \gamma_{us} = 1.42$, $Gb/\gamma_s = 27.3$ and $\gamma_{us} / Gb = 0.0219$ \cite{Medvedeva2011,Farle2015}. The Pugh model and the two Rice models \cite{Pugh1954,rice1974,Rice1992} actually predict the MAX phase to be more brittle than stoichiometric titanium carbide. This is clearly is at odds with reality since titanium carbide has a yield stress of over \SI{2}{\giga\pascal} at temperatures below \SI{600}{\celsius} \cite{Miracle1983} while at room temperature the critical resolved shear strength of \ce{Ti3SiC2} is reported to be \SI{36}{\mega\pascal} \cite{Barsoum1999}, though reanalysis of the data has this somewhat higher at \SI{77}{\mega\pascal} \cite{Humphrey2012}.
 
 
-The inability to capture or predict the ductility or brittleness of materials limits the use of these ductility criteria, so that while they highlight some eprhaps noteworthy trends they could not have been used to predict the anomalous yielding in the MAX phases and other layered compounds that are now being commercialised to take advantage of the high temperature capability that arises from their chemistry, as a stoichiometric compound that can include \ce{Si} or \ce{Al} MAX phases are corrosion resistant and stable to high temperatures \cite{Radovic2013}, while exhibiting plastic flow easy enough to be damage tolerant enough to usefully extend the lifetime of a component.
+The inability to capture or predict the ductility or brittleness of materials limits the use of these ductility criteria, so that while they highlight some perhaps noteworthy trends they could not have been used to predict the anomalous yielding in the MAX phases and other layered compounds that are now being commercialised to take advantage of the high temperature capability that arises from their chemistry, as a stoichiometric compound that can include \ce{Si} or \ce{Al} MAX phases are corrosion resistant and stable to high temperatures \cite{Radovic2013}, while exhibiting plastic flow easy enough to be damage tolerant enough to usefully extend the lifetime of a component.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -276,6 +280,35 @@ The inability to capture or predict the ductility or brittleness of materials li
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\FloatBarrier
+\subsection{Tailoring the Peierls stress}
+\label{subsec:tailor_peierls}
+\FloatBarrier
+
+
+Attempts to relate the electronic structure to plasticity have been made, but even recently such studies have tended to find structural, physical and elastic properties of ``complex'' materials and then infer the relative ductility on the basis of these properties, usually the ductility criteria discussed above. For example some ternary metal nitrides with chemistry obeying \ce{Ti_xM_{1-x}N} are of interest as wear resistant coatings and increased toughness is very desirable and studies have predicted that the use of \ce{Mo} or \ce{W} as alloying additions significantly improve the toughening, indeed the effect has been dubbed ``\emph{supertoughening}'' \cite{Sangiovanni2010,Sangiovanni2011}. The studies use \emph{ab initio} calculations to find the elastic response of the alloyed crystal to an applied strain. The study finds a number of interesting things including the development of a layered electronic structure and trends for elastic properties, particularly the Pugh ratio, $B/G$, with the valence electron concentration. The authors speculate about selective local responses to stress, though with no further exploration since the elastic constants were calculated from the energy changes under various applied \emph{uniform} shear strains.
+
+However the conclusions drawn from these elastic simulations about plasticity can be, at best, qualitative. In fact these studies employ on arguments of easily broken bonds since ``during dislocation motion bonds are broken and reformed and, obviously, dislocation glide will occur more easily in planes normal to those containing weaker bonds'' \cite{Sangiovanni2011} without further justification. Clearly this is not a mechanistic explanation for the effect of chemical bonding on plasticity relying as it does on dated and empirical ratios of elastic constants.
+
+
+Other studies recognise the limits of simple ductility criteria and use the concept of Peierls stress more directly \cite{Music2008,Emmerlich2009,Gouriet2015}, but use the established results for simple materials in which no accounting for local heterogeneities is made, distribution of strains is always uniform and often the materials are simply taken to be isotropic continua. The conclusions that can be drawn from applying a simple model to a complex structure are limited to those that could be drawn from the simple model: i.e. that if the elastic constants and stacking fault energies take suitable values then the dislocation will be wider or that the ratio of the slip plane spacing and the Burgers vector will allow easier slip. Given these are evident from most of the formulations for the Peierls stress it does not shed much light on the ideal material to use.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -316,7 +349,7 @@ The crystal structure can be usefully described as the stacking of layers parall
 
 The description of complex crystals is often elucidated by geometrically salient features, for example is quasicrystals and quasicrystal-approximants structures are often described in terms of clusters of atoms that appear to pack together and fill space; the clusters may or may not have physical significance, for example stable clusters of up to 55 atoms of \ce{Ni}-\ce{Al} are stable on surfaces and so is clearly stabilised and physcically significant, but geometric descriptions of clusters can be made of simple materials like fcc aluminium \cite{Steurer2006}. Care must be taken therefore not to ascribe undue significance to purely geometric features, but the description of the MAX crystal structure as layers is no simply elucidating but can be justified.
 
-The bonding in MAX phases has been shown, by density functional theory (DFT) calculations to be a combination of metallic, covalent and ionic bonding but with covalent bonding predominant in the MX layer and metallic bonding in MA layers but with large variations in structural and mechanical properties observed to depend on changes in the nature of this heterogeneous bonding character \cite{Radovic2013,Sun2011}. Notably the extreme (for MAX phases) properties of \ce{Ti2SC} are ascribed to the unusual strong bonding between \ce{Ti} and \ce{S} in addition to the strong bonding between \ce{Ti} and \ce{C} in contrast with most other MAX. This unusual bonding is taken to underlie the high elastic constants, $E =$~\SI{316}{\giga\pascal} the highest of any 211 MAX phase, and hardness of \SI{8}{\giga\pascal}, very nearly the highest of any bulk MAX phase \cite{Feng2010, Sun2011}.
+The bonding in MAX phases has been shown, by density functional theory (DFT) calculations to be a combination of metallic, covalent and ionic bonding but with covalent bonding predominant in the MX layer and metallic bonding in MA layers but with large variations in structural and mechanical properties observed to depend on changes in the nature of this heterogeneous bonding character \cite{Radovic2013,Sun2011}. Notably the extreme (for MAX phases) properties of \ce{Ti2SC} are ascribed to the unusual strong bonding between \ce{Ti} and \ce{S} in addition to the strong bonding between \ce{Ti} and \ce{C} in contrast with most other MAX. This unusual bonding is taken to underlie the high elastic constants, $E =$~\SI{316}{\giga\pascal} the highest of any 211 MAX phase, and hardness of \SI{8}{\giga\pascal}, very nearly the highest of any bulk MAX phase \cite{Feng2010,Sun2011}.
 
 \subsection{Deformation in MAX phases}
 
@@ -347,11 +380,31 @@ where $\tau_y$ is the shear yield stress on the slip plane in question, $\sigma_
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Attempts to relate the electronic structure to plasticity have been made, but even recently such studies have tended to find structural, physical and elastic properties of ``complex'' materials and then infer the relative ductility on the basis of these properties. For example some ternary metal nitrides with chemistry obeying \ce{Ti_xM_{1-x}N} are of interest as wear resistant coatings and increased toughness is very desirable and studies have predicted that the use of \ce{Mo} or \ce{W} as alloying additions significantly improve the toughening, indeed the effect has been dubbed ``\emph{supertoughening}'' \cite{Sangiovanni2010,Sangiovanni2011}. The studies uses \emph{ab initio} calculations to find the elastic response of the alloyed crystal to an applied strain. The study finds a number of interesting things including the development of a layered electronic structure and trends for elastic properties, particularly the Pugh ratio, $B/G$, with the valence electron concentration. The authors speculate about selective local responses to stress, though with little concrete basis for doing so since the elastic constants were calculated from the energy changes under various applied \emph{uniform} shear strains.
 
-However the conclusions drawn from these elastic simulations about plasticity can be, at best, qualitative. In fact these studies employ on arguments of easily broken bonds since ``during dislocation motion bonds are broken and reformed and, obviously, dislocation glide will occur more easily in planes normal to those containing weaker bonds'' \cite{Sangiovanni2011} without further justification. Clearly this is not a mechanistic explanation for the effect of chemical bonding on plasticity relying as it does on dated and empirical ratios of elastic constants.
+As discussed in \autoref{subsec:tailor_peierls}, attempts have been made in general to explain and hence control the lattice resistance of materials, and this has been done for the MAX phases too, one study on MAX phases \cite{Music2007ductility} with the chemistry \ce{M2AlC} (M = Ti, V, Cr) used the more recent ductility criteria, namely Zhou-Carlsson-Thomson \cite{Zhou1994} and Rice \cite{Rice1992} which are discussed in detail in \autoref{subsec:ductility_criteria}, here there is some recognition that the lattice resistance of a single dislocation, which is after all the limiting factor on ductility in most ceramics, is not simply dependent on bulk elastic constants and instead calculate ductility criteria based on stacking fault energies and surface energies, which necessitates choosing which plane to fault or cleave. In the MAX phases there are two natural choices for a 211 MAX phase, between the M atom and the A atom or between the M atom and the X atom. Once again however there is no mechanistic link between these properties and the proposed good ductility. 
 
-A study on MAX phases \cite{Music2007ductility} with the chemistry \ce{M2AlC} (M = Ti, V, Cr) used the more recent ductility criteria, namely Zhou-Carlsson-Thomson \cite{Zhou1994} and Rice \cite{Rice1992} which are discussed in detail in \autoref{subsec:ductility_criteria}, here there is some recognition that the lattice resistance of a single dislocation, which is after all the limiting factor on ductility in most ceramics, is not simply dependent on bulk elastic constants and instead calculate ductility criteria based on stacking fault energies and surface energies, which necessitates choosing which plane to fault or cleave. In the MAX phases there are two natural choices for a 211 MAX phase, between the M atom and the A atom or between the M atom and the X atom. Once again however there is no mechanistic link between these properties and the proposed good ductility. 
+Some studies have considered the Peierls stress in complex crystals with layered structures \cite{Music2008,Emmerlich2009,Gouriet2015} but usually these have simply applied the result for an isotropic elastic material:
+
+\begin{equation}
+\tau_p = \frac{2G}{1-\nu} \exp \left( - \frac{2 \pi d}{b(1-\nu)} \right)
+\end{equation}
+
+The result is therefore based on polycrystalline bulk elastic properties and the specifics of the MAX crystal structure are disregarded save the values of $d$ and $b$ chosen. These have tended to give high values of the Peierls stress, e.g. \SI{980}{\mega\pascal} for \ce{Ti2AlC} \cite{Music2008} which we can compare with \SI{660}{\mega\pascal} for \ce{TiC} \cite{Clegg2006} where clearly the flow stress in \ce{TiC} should be an upper bound on the flow stress in the MAX phase, which after all contains blocks of \ce{TiC} aligned with the known slip system of \ce{TiC} \cite{Hollox1966}. The GSF calculated by DFT has been used in at least one study \cite{Gouriet2015} but assumed that no change in confining elastic field occurred during dislocation motion and so cannot be treated with any confidence, that study also found Peierls stresses that are similar to \ce{TiC}, of between \SI{611}{\mega\pascal} and \SI{957}{\mega\pascal}.
+
+There is clearly a large effect of the crystal chemistry of the MAX phases upon the lattice resistance which has not been adequately explained. If the effect can be understood it may allow
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

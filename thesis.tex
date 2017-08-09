@@ -90,9 +90,9 @@
 % ********************************** Preamble **********************************
 % Preamble: Contains packages and user-defined commands and settings
 \input{Preamble/preamble}
-
+%\usepackage{showframe}
 % ************************ Thesis Information & Meta-data **********************
-% Thesis title and author information, refernce file for biblatex
+% Thesis title and author information, reference file for biblatex
 \input{thesis-info}
 
 
@@ -101,14 +101,15 @@
 
 \frontmatter
 
-\begin{titlepage}
-  \maketitle
-\end{titlepage}
+%\begin{titlepage}
+%  \maketitle
+%\end{titlepage}
 
 
-\include{Dedication/dedication}
-\include{Declaration/declaration}
-\include{Acknowledgement/acknowledgement}
+
+%\include{Dedication/dedication}
+%\include{Declaration/declaration}
+%\include{Acknowledgement/acknowledgement}
 \include{Abstract/abstract}
 
 % *********************** Adding TOC and List of Figures ***********************
@@ -117,16 +118,18 @@
 
 \listoffigures
 
-\listoftables
+%\listoftables
 
  %\printnomencl[space] space can be set as 2em between symbol and description
-\printnomencl[3em]
+%\printnomencl[3em]
 
-\printnomencl
+%\printnomencl
 
 % ******************************** Main Matter *********************************
 \mainmatter
 
+
+\doublespacing
 \include{Chapter1/chapter1}
 \include{Chapter2/chapter2}
 %\include{Chapter3/chapter3}
@@ -152,7 +155,7 @@
 \bibliographystyle{my_bib_style}
 %\bibliographystyle{plainnat} % use this to have URLs listed in References
 \cleardoublepage
-\bibliography{Thesis} % Path to your References.bib file
+\bibliography{references} % Path to your References.bib file
 
 
 % If you would like to use BibLaTeX for your references, pass `custombib' as
