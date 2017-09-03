@@ -2,11 +2,517 @@
 %****************************** Second Chapter *********************************
 %*******************************************************************************
 
-\chapter{Slip in layered crystals}
+\chapter{A new Peierls model}
 
 \graphicspath{{Chapter2/Figs/}}
 
 
-Most non-metallic compounds have high lattice resistance and the difficulty of dislocation glide means such materials are brittle until they reach high homologous temperatures \cite{Walker2010}. This brittleness is usually explained as a result of their complex crystal structures.
+Though there are a number \cite{Nabarro1947,Huntington1955, puls1976, Vitek1992,  Bulatov1997, Lubarda2007, Clegg2006,Gouriet2015} of Peierls models in the literature published over the decades since \citet{Peierls1940} first presented his short solution few have been adaptable to situations beyond the initially envisaged problem which is typically narrowly defined. In this chapter such a model is presented that allows, with a minimum of effort, the consideration of energies defined by linear elasticity, empirical potentials, generalised stacking fault energies and could feasibly be extended to a full quantum mechanical treatment with density functional theory.
+
+The python programming language was chosen for a number of reasons, firstly the python model is inherently modular, which provides a flexible structure, allowing parts of the model to be altered, extended or replaced quickly easily. Python is also widely used with a large body of documentation and a large support community. Finally python has a very large number of extending modules providing advanced capabilities, particularly projects like NumPy and SciPy. NumPy provides a powerful and efficient implementation of arrays providing a range of simple functions as well as more advanced linear algebra operations. SciPy is a project built on the basic data structure of the numpy array and provides advanced algorithms and convenience functions including differential equations, numerical solvers and optimisers, image processing and statistical functions.
+
+
+To calculate the Peierls stress we must find the energy of dislocation configurations as the dislocation is displaced from one equilibrium position to the next. The variable $\alpha$ is used to denote the fractional displacement of the dislocation. Since boundary conditions are insufficient to define the atomic configuration, for each value of $\alpha$ the atomic configuration of the dislocation that minimises the energy must be found. Once a sufficient samples of $\alpha$ have been made the Peierls stress can be calculated by 
+
+\begin{equation}
+\tau_p = \frac{1}{lb^2}   \left. \frac{\partial U}{\partial \alpha} \right|_{max} .
+\end{equation}
+
+Where $l$ is the length of dislocation line for which the energy, $U$, is calculated for and $b$ is the Burgers vector.
+
+So for a given value of alpha how can the ideal, that is lowest energy, configuration be found? This requires two steps, first the definition, creation and representation (as a data structure) of a configuration and second the evaluation of the energy thereof.
+Taken together these can be thought of as a simple function that takes the value of $alpha$ along with some input parameters as arguments and returns the energy:
+
+\begin{equation}
+U = f(\alpha, p_1, p_2,...,p_n )
+\label{eqn:energy_as_function}
+\end{equation}
+
+The input parameters, $p_i$, could be as general as the coordinates of every atom in the configuration or as specific as the single parameter defined by by Peierls in his original treatment, the width of the dislocation, the only difference is one of computational tractability. Algorithms exist for finding the minimum of functions of the form given in \autoref{eqn:energy_as_function} but they are much faster for functions with small numbers of parameters and some algorithms are not reliable for large numbers of parameters, hence decisions about how to define an atomic configuration will have consequences for the optimisation of that configuration.
+
+Since a less general case can usually be taken to be a specific case of a more general one it seems sensible to use the most general representation of a dislocation and then apply constraints to it rather than find the model limited by an assumption of specificity later. Hence individual atoms are represented in space by coordinates as an array of the form:
+
+$$ atoms = \begin{pmatrix}
+x_1 & y_1 & z_1  \\
+x_2 & y_2 & z_2  \\
+.   &.    &.     \\
+.   &.    &.     \\
+x_n & y_n & z_n  \\
+\end{pmatrix}
+$$
+
+Where $x$, $y$ and $z$ are coordinates in euclidean space in units of \r{A}ngstr\"{o}ms, i.e. \emph{not} relative to any crystallographic axes.
+
+This representation can be extended, for example in the case of ionic solids the charge on each ion would be a necessary parameter for any energy calculation, this would be represented thus:
+$$
+atoms = \begin{pmatrix}
+x_1 & y_1 & z_1 & q_1 \\
+x_2 & y_2 & z_2 & q_2 \\
+.   &.    &.    &.    \\
+.   &.    &.    &.    \\
+x_n & y_n & z_n & q_n \\
+\end{pmatrix}
+$$
+This could be extended to an arbitrary number of parameters such as parameters for empirical potentials, labels for symmetrical distinct ions of the same species etc.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\FloatBarrier
+\section{Building a dislocation}
+\FloatBarrier
+\label{sec:build}
+
+At the most general it might be expected to start in the same way as Peierls, by bringing together two half crystals as shown in \autoref{fig:semi_infinite_crystals} and simply allowing the structure to relax, leaving all the atomic positions as free variables. If the dislocation is indeed a stable defect then it will form and the energy found, however with no constraints applied at all the dislocation would always relax to its low energy equilibrium position, and even if it did not a global optimiser that allowed large enough deviations from the initial configuration might remove the dislocation entirely and form a small perfect crystal. Therefore even in a very general approach appropriate constraints must be employed. Additionally the tractability of optimising the positions of many thousands if not millions of atoms for every value of $\alpha$ mean that a less general approach might be necessary. 
+
+To incorporate constraints and parametrise the configuration the model could employ a displacement field. For a given value of $\alpha$ there will be some initial configuration of atoms defined by two half crystals brought together at a slip plane with some relative displacement between them defined by the Burgers vector. The core of the dislocation is taken to be the line at $x,y = 0$. The position of the core with respect to the lattice of the half crystals is defined by $\alpha$, usually with $\alpha=0$ defining the configuration in which the extra half-plane of atoms aligns with the dislocation core, as shown in \autoref{fig:joined_half_crystals}. 
+
+The final (in the sense of ready to be evaluated energetically rather than optimised) configuration is these initial positions plus an array of displacements defined by some displacement field, $\bm{\delta}(x_0, y_0, z_0)$, i.e.
+\begin{equation}
+\mathbf{r}_i = \mathbf{r}_i^0 + \bm{\delta}(\bm{r}_i^0)
+\end{equation}
+where $\mathbf{r}_i$ is the position vector defining the final position of the $i$th atom, $\mathbf{r}_i^0$ is the vector defining the initial position of the $i$th ion and $\bm{\delta}$ is a vector displacement field.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+%
+%                      Initial half crystals
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Defining the initial atomic positions}
+
+
+Firstly we must define the initial positions of the atoms in the half crystals. To create a crystal conveniently oriented with respect to the Cartesian reference axes and the crystal slip system unconventional unit cells were defined. Directions and planes defined relative to the unconventional or dislocation cell will be marked prime, e.g. $[100]'$. The Burgers vector $\mathbf{b}$ is taken to be the $[100]'$, the shortest slip plane normal that is a full lattice vector is taken to be $[010]'$ and the $[001]'$, parallel to the line vector $\mathbf{l}$, is the shortest lattice vector that is perpendicular to both the Burgers vector and the slip plane normal and its sign is such that the axes are right handed. Filling space by convolving a motif and a lattice defined according to these axes is convenient because most of the mathematical results of dislocation theory, stress and strains fields etc, are defined taking $x$, $y$ and $z$ parallel to $[100]'$, $[010]'$, $[001]'$ respectively.
+
+For example the \ce{NaCl} <1\={1}0>\{110\} slip system gives a new unit cell aligned with the slip system:
+
+\begin{equation*}
+\begin{aligned}[c]
+{[100]}' &=\, ^{1}\!/_{2} [110]   \\
+{[010]}' &=\, ^{1}\!/_{2} [1\overline{1}0]   \\
+{[001]}' &=\, [001]   
+\end{aligned}[c]
+\qquad
+\begin{aligned}[c]
+&\parallel \mathbf{b} \\
+&\parallel \mathbf{d} \\
+&\parallel \mathbf{l}
+\end{aligned}
+\end{equation*}
+
+
+
+This tetragonal unit cell contains 2 lattice points so the motif cannot be simply rotated from the conventional case, a new motif is
+$$
+motif = \begin{pmatrix}
+0 & 0 & 0 & +1 \\
+^{1}\!/_{2} & ^{1}\!/_{2} & ^{1}\!/_{2} & +1 \\
+0 & 0 & ^{1}\!/_{2} & -1 \\
+^{1}\!/_{2} & ^{1}\!/_{2} & 0 & -1 \\
+\end{pmatrix}
+$$
+where a $+1$ in the final column denotes a sodium ion and a $-1$ denotes a chloride ion.
+
+
+
+\begin{figure}
+\centering
+
+
+    \begin{subfigure}{0.55\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{NaCl}
+    \caption{The conventional unit cell of sodium chloride with the salient slip directions and plane normals highlighted. \label{fig:NaCl_conventional_cell_slip_system_marked}}
+    \end{subfigure}
+
+    \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[height=2.0in]{NaCl_110_110_w_axes}
+    \caption{The sodium chloride unit cell best aligned with the <110>\{1\={1}0\} slip system. \label{fig:NaCl_110_110_unit_cell}}
+    \end{subfigure}
+    ~
+    \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[height=2.5in]{NaCl_110_001_w_axes}
+    \caption{The sodium chloride unit cell best aligned with the <110>\{001\} slip system. \label{fig:NaCl_110_001_unit_cell}}
+    \end{subfigure}
+
+\caption{Possible unit cells for sodium chloride showing the conventional unit cell and two unconventional unit cells with the new crystallographic axes aligned to slip system, i.e. the Burgers vector and slip plane normal.\label{fig:unconventional_NaCl_unit_cells}}
+\end{figure}
+
+
+
+
+
+
+Similarly the \ce{NaCl} <1\={1}0>\{001\} slip system is defined by the unit cell:
+
+\begin{equation*}
+\begin{aligned}[c]
+ {[100]}' &=\, ^{1}\!/_{2} [110] \\
+ {[010]}' &=\,  [001] \\
+ {[001]}' &=\; ^{1}\!/_{2} [1\overline{1}0] \\
+\end{aligned}
+\qquad
+\begin{aligned}[c]
+&\parallel \mathbf{b} \\
+&\parallel \mathbf{d} \\
+&\parallel \mathbf{l}
+\end{aligned}
+\end{equation*}
+
+
+and a possible new motif is 
+$$
+motif = \begin{pmatrix}
+0 & 0 & 0 & +1 \\
+^{1}\!/_{2} & ^{1}\!/_{2} & ^{1}\!/_{2} & +1 \\
+^{1}\!/_{2} & 0 & ^{1}\!/_{2} & -1 \\
+0 & ^{1}\!/_{2} & 0 & -1
+\end{pmatrix}
+$$
+
+
+These unit cells are shown in relation to the conventional cell in \autoref{fig:unconventional_NaCl_unit_cells}. With these unit cells we can convolve the motif with a lattice to generate an initially perfect crystal defined with respect to Cartesian axes aligned with the slip system. Two offsets are then applied; firstly the half crystal below the slip plane, which is conveniently defined by $y < 0$, will be offset in the positive $x$ direction by $b/2$ and then the entire crystal is offset to put the dislocation core in the desired location. The latter will require an offset along the slip direction, $[001]'$ of $\alpha b$ and an additional offset in the $[010]'$. While the magnitude of this offset is not necessarily obvious in the case of \ce{NaCl} is fairly obviously that the core must be at a height of $d/4$ in order to be halfway between the two (020) layers.
+
+
+Clearly in some crystals there will be multiple potential planes at different ``heights'' in the slip plane normal direction that the dislocation may glide along; some planes may be discarded as obviously energetically unfavourable or as being symmetrically equivalent but if the position the dislocation core will take is not obvious then a trial must be made of the all the plausible positions. Hence in addition to sampling a range of positions in the $[100]'$ direction, as characterised by $\alpha$, samples may be necessary in the $[010]'$ direction, characterised by a height $h$.
+
+So the initial positions are related to those of an initially perfect crystal by
+\begin{equation}
+\bm{r_i^0} = \bm{r_i^{\text{perfect}}} +\begin{cases}
+[-\alpha{}b, h, 0] & \quad \text{if } y_i^{\text{perfect}} > 0\\
+[b(1/2 - \alpha{}), h, 0] & \quad \text{if } y_i^{\text{perfect}} < 0\\
+\end{cases} 
+\end{equation}
+
+The offset to the atomic coordinates in $-\alpha{}b$ such that as $\alpha$ increases the dislocation motion is in the positive $x$ direction.
+
+
+
+
+
+\FloatBarrier
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                          % Displacement fields
+
+\subsection{Displacement fields}
+
+The choice of displacement field is obviously important but there is an obvious first guess: A Volterra dislocation in a continuous isotropic elastic medium has a displacement field \cite{hirth_lothe1982volterra_displacements}:
+\begin{subequations}
+\begin{align}
+u^x &= \frac{b}{2\pi}\left[ \arctan\left(\frac{x}{y}\right) + \frac{xy}{2(1-\nu)(x^2 + y^2)} \right] \\[0.5ex]
+v^y &= -\frac{b}{2\pi} \left[ \frac{1-2\nu}{4(1-\nu)} \ln(x^2 + y^2) + \frac{x^2 + y^2}{4(1-\nu)(x^2 + y^2)} \right]
+\end{align}
+\end{subequations}
+Where $u^x$ and $v^y$ are the components of the displacement field parallel to $x$ and $y$ respectively, $x$ is the coordinate parallel to the Burgers vector and $y$ is the coordinate parallel to the slip plane normal, $b$ is the magnitude of the Burgers vector and $\nu$ is the Poisson ratio of the material. The terms all converge to fixed values at large $x$ or $y$ except the logarithmic dependence of $v^y$. This is physically reasonable and represents the bending of a single crystal that arises from the introduction of an extra half plane \cite{hirth_lothe1982volterra_displacements}.
+
+This formulation of the stress field and subsequent solution for an isotropic elastic continuum is discontinuous, diverging at $r=0$, where $r=\sqrt[]{x^2+y^2}$. To remove the discontinuity \citet{Eshelby1949} proposed considering a single dislocation to instead be composed of a continuous distribution of dislocations with infinitesimal Burgers vectors, the integral of which yields the Burgers vector of the full dislocation. If $\bm{b}'(x')\mathrm{d}x'$ is the Burgers vector of an infinitesimal dislocation between $x'$ and $x'+\mathrm{d} x'$, and displacements in $y$ are assumed to be small, this can be related to the displacement, $u^x$, since the local displacement will be given by $-2(\mathrm{d} u^x/\mathrm{d} x)\mathrm{d} x'$ \cite{hirth_lothe1982peierls_displacements} we can write
+
+
+\begin{equation}
+b = \int_{-\infty}^{\infty} b'(x') \dd x' = -2\int^{\infty}_{-\infty} \left( \! \frac{\dd u^x}{\dd x} \right)_{x=x'} \dd x' 
+\end{equation}
+
+Using the result for a single volterra dislocation \cite{hirth_lothe_1982_volterra_stress_field}:
+
+\begin{equation}
+\sigma^{\text{volterra}}_{xy} = \frac{\mu b}{2\pi (1-\nu)} \frac{x(x^2 - y^2)}{(x^2+y^2)^2}
+\end{equation}
+
+and setting $y=0$
+
+\begin{equation}
+\sigma^{\text{volterra}}_{xy}(x,0) = -\frac{\mu}{2\pi(1-\nu)} \int^{\infty}_{-\infty} \frac{b'}{x-x'} \!\dd x' =  \frac{\mu}{\pi(1-\nu)} \int^{\infty}_{-\infty} \frac{1}{x-x'} \left(\!\frac{\dd u^x}{\dd x}\right)_{x=x'} \!\dd x'
+\label{eqn:elastic_stress_at_slip_plane}
+\end{equation}
+
+At equilibrium the net stress at $(x,0)$ vanishes, so there must be a balancing stress arising from the misalignment of the material across the slip plane. By analogy with \citet{Frenkel1926}
+\begin{equation}
+\sigma_{xy}^{\text{misalignment}}(x,0) = C \sin \left( \frac{2\pi \phi^x}{b} \right)
+\end{equation}
+or in terms of the displacements either side of the slip plane:
+\begin{equation}
+\sigma_{xy}^{\text{misalignment}}(x,0) = -C \sin \left( \frac{4\pi u^x}{b} \right)
+\end{equation}
+By requiring Hooke's law to be satisfied at small strains we can write
+\begin{equation}
+\sigma_{xy}^{\text{misalignment}}(x,0) = 2 \mu \varepsilon_{xy} = \frac{\mu{}\phi^x}{d}
+\label{eqn:misalign_stress_at_slip_plane}
+\end{equation}
+We can combine \autoref{eqn:elastic_stress_at_slip_plane} and \autoref{eqn:misalign_stress_at_slip_plane} to give a integral equation thus:
+\begin{equation}
+\int^{\infty}_{-\infty} \frac{1}{x-x'} \left(\!\frac{\dd u^x}{\dd x}\right)_{x=x'} \dd x' = \frac{b(1-\nu)}{2d} \sin\left(\frac{4\pi{}u^x}{b}\right)
+\end{equation}
+The solution is \cite{hirth_lothe1982peierls_displacements,Eshelby1949}
+\begin{equation}
+u^x(x) = -\frac{b}{2\pi} \arctan \left( \frac{x}{w} \right)
+\label{eqn:one_dimensional_displacements}
+\end{equation}
+where $w$ is the half width of the dislocation and has the value
+\begin{equation}
+w = \frac{d}{2(1-\nu)}.\label{eqn:half_width}
+\end{equation}
+\autoref{eqn:one_dimensional_displacements} satisfies the boundary condition that $u^x(\infty) = - u^x(-\infty) = -b/4$. Also $x=w$ gives $u^x(w)=1/2\, u^x(\infty)$, i.e. in the region $-w < x < w$ the disregistry across the slip plane is greater than half the maximum that occurs at $x=0$.
+
+A more generalised two dimensional case following a similar logic gives a full displacement field \cite{Eshelby1949,Leibfried1949,nabarro1987theory}
+\begin{subequations}\label{eqn:displacements}
+\begin{align}
+u^x(x,y) &= \frac{b}{2\pi} \left( \arctan \left[ \frac{y +  w\frac{|y|}{y}}{x} \right] - \frac{\pi}{2} \frac{|y|}{y} \frac{|x|}{x} \right) + c_1 \frac{xy}{x^{2} + (y + w\frac{|y|}{y} )^2} \\
+v^y(x,y) &= c_2 \frac{y(y +  w \frac{|y|}{y})}{x^2 + (y +  w \frac{|y|}{y})^2} + c_3 \ln \left| \frac{x^2 + (y +  w \frac{|y|}{y})^2}{b^2} \right|
+\end{align}
+\end{subequations}
+So that the final atomic configuration is defined by 
+\begin{equation}
+\bm{r}_i = \bm{r}_i^0 + [u_i^x\,\bm{\mathrm{\hat{i}}},\; v_i^y\,\bm{\mathrm{\hat{j}}},\; 0\,\bm{\mathrm{\hat{k}}}]
+\end{equation}
+
+
+
+For an isotropic elastic medium the half-width, $w$, takes the same value as in \autoref{eqn:half_width} and the three other constants have defined values:
+\begin{subequations}\label{eqn:disloc_params}
+\begin{align}
+c_1 &= \frac{b}{4\pi{}(1-\nu)} \\
+c_2 &= \frac{b}{4\pi{}(1-\nu)} \\
+c_3 &= - \frac{b(1-2\nu)}{8\pi(1-\nu)}.
+\end{align}
+\end{subequations}
+The terms of the form $|x|/x$ and $|y|/y$ are simply to give all the terms the right sense in the right regions of space, i.e. above and below the slip plane in $y$ and either side of the dislocation in $x$. This reduces to the simpler solution in \autoref{eqn:one_dimensional_displacements} if only the atoms adjacent to the slip plane are considered. This form is useful because it is continuous and finite for all values of $x$ and $y$. 
+
+
+
+\begin{figure}
+\centering
+
+    \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[width=0.6\textwidth]{wide_NaCl}
+    \caption{A dislocation with a large width.}
+    \end{subfigure}
+    ~
+    \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[width=0.6\textwidth]{narrow_NaCl}
+    \caption{A dislocation with a small width.}
+    \end{subfigure}
+
+	\begin{subfigure}{0.4\textwidth}
+	\centering
+    \includegraphics[width=0.6\textwidth]{large_c1_NaCl}
+    \caption{Large values of $c_1$ and $c_2$.}
+	\end{subfigure}
+    ~
+	\begin{subfigure}{0.4\textwidth}
+	\centering
+    \includegraphics[width=0.6\textwidth]{large_c3_NaCl}
+    \caption{A large value of $c_3$.}
+	\end{subfigure}
+
+    \begin{subfigure}{0.8\textwidth}
+    \centering
+    \includegraphics[width=0.5\textwidth]{typical_NaCl}
+    \caption{A ``typical'' configuration.}
+    \end{subfigure}
+
+\caption{Various configurations of sodium chloride <110>\{001\} dislocations demonstrating the effects of the parameters of the displacement field defined in \autoref{eqn:displacements}, $w$, $c_1$, $c_2$ and $c_3$. Typical parameters are taken to be those predicted for an isotropic elastic material as given in  Equations~\ref{eqn:half_width} and \ref{eqn:disloc_params}. To illustrate $c_1$, $c_2$ and $c_3$ a ``typical'' value of $w=$~\SI{1.03}{\angstrom} was used, assuming $\nu =$~\num{0.207} \cite{Theocaris1994}.\label{fig:parameters_of_the_disloc_configuration}}
+\end{figure}
+
+
+This provides a parametrised displacement field for a general material in which the width, $w$, and the constants, $c_1$, $c_2$ and $c_3$ are allowed to vary. The width of the dislocation still defines the region with large disregistries (or equivalently small displacements), while $c_1$ and $c_2$ define the magnitude of displacements associated with shear strains around the dislocation core and $c_3$ defines the bending of a crystal that must arise from the introduction of an extra half plane.
+To illustrate the displacements produced by these different terms some exaggerated dislocation configurations are shown in \autoref{fig:parameters_of_the_disloc_configuration}.
+
+
+
+
+
+A final note on the parametrisation of the dislocation structure is that the values $c_1$, $c_2$ and $c_3$ are not constrained, while they have expected signs and magnitudes based on the purely isotropic elastic results described above there is no physical reason they cannot be negative however a negative value of the width reintroduces the discontinuity at which displacements would diverge (in fact it would introduce two, one in each half crystal) which cannot be the case. Hence the constraint that $w>0$ is applied, but $c_1$, $c_2$ and $c_3$ are allowed to vary freely.
+
+
+\section{Evaluating the dislocation energy}
+
+
+
+
+Since there are insufficient boundary conditions to completely define a dislocation configuration with even four parameters the energy of the dislocation is the only way to identify a``correct'' or true configuration. Hence we must characterise the energy of arbitrary configurations. One obvious method to calculate the energy is to try and replicate the model based on elastic energy in the two half crystals and misalignment energy across the slip plane, there is the opportunity to calculate the full strain tensor and along with single crystal elastic constants the effects of elastic anisotropy can be taken into account. Another would be to use empirical potentials similar to those used in molecular dynamics; this would allow the exploration of dislocation properties in materials that are not well modelled by elasticity, ionic solids or compound semiconductors are examples of materials where elasticity is probably less appropriate. Both of these approaches are explored.
+
+\subsection{Strain energy and misalignment energy}
+
+This is building on the original approach of \citet{Peierls1940} and then \citet{Nabarro1947} and explains how the dislocation is stable due to a balancing of two forces, there is a force that attempts to spread teh dislocation out into a planar defect, this arises due to the elastic stored energy in the bonds either side of the slip plane which would be zero in the case of a planar defect, which can be described by an infinitely wide dislocation. The other force tends to narrow the dislocation, this arises due to the misfit or misalignment across the slip plane. This would be a maximum for the planar defect where the entire slip plane is misaligned and would decrease monotonically as the width decreases.
+
+Using this approach to the energy has a number of advantages. A two dimensional model is sufficient since for a long dislocation the condition of plane strain can be applied. If elastic theory can be applied at the scale of the unit cell then displacements need only be considered between unit cells rather than within them, which simplifies the model considerably.
+
+\subsubsection{Strain energy}
+
+Firstly the elastic energy can be easily calculated for a small volume if the strain and the elastic tensor is known. A good discussion of tensors and elasticity is given by \citet{kelly_knowles2012chapter5_tensors,kelly_knowles2012chapter6_stress_strain} and a discussion of elasticity in the context of dislocation theory is given by \citet{hirth_lothe1982elasticity}. The salient results are drawn together here.
+
+Hookes law can be written as a tensor relationship using the einstein summation convention:
+\begin{equation}
+\sigma_{ij} = c_{ijkl} \epsilon_{kl}
+\end{equation}
+where $\sigma_{ij}$ is the stress tensor, $c_{ijkl}$ is the elastic tensor defining the properties of the material and $\epsilon_{kl}$ is the strain tensor. Strain is defined, for $i=j$, by
+\begin{equation}
+\epsilon_{ii} = \frac{\partial u_i}{\partial x_i}
+\end{equation}
+and for $i\neq j$ by
+\begin{equation}
+\epsilon_{ij} = \frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right)
+\end{equation}
+
+%In Voigt notation the equation can be written
+%\begin{equation}
+%\sigma_i = c_{ij} \epsilon_{j}
+%\end{equation}
+%where 
+%\begin{equation}
+%\sigma_i = \begin{bmatrix}
+%\sigma_{11} \\
+%\sigma_{22} \\
+%\sigma_{33} \\
+%\sigma_{23} \\
+%\sigma_{31} \\
+%\sigma_{12} 
+%\end{bmatrix}
+%\qquad\qquad
+%\epsilon_i = \begin{bmatrix}
+%\epsilon_{11} \\
+%\epsilon_{22} \\
+%\epsilon_{33} \\
+%\gamma_{23} \\
+%\gamma_{31} \\
+%\gamma_{12} 
+%\end{bmatrix}
+%\end{equation}
+%This allows the reduction of the $3\times3\times3\times3$ tensor $c_{ijkl}$ to a $6\times6$ matrix $c_{ij}$. Note that to preserve the symmetry across the leading diagonal in $c_{ij}$ the strain components for $i\neq j$ are defined by $\gamma_{ij} = 2 \epsilon_{ij}$.
+
+
+If Hooke's law holds then the stored elastic energy per unit volume is
+\begin{equation}
+u_{\text{elastic}} =\, ^{1}\!/_{2}\, \sigma_{ij} \epsilon_{ij} =\, ^{1}\!/_{2}\, c_{ijkl} \epsilon_{ij} \epsilon_{kl}.
+\end{equation}
+Hence to find the elastic energy we must evaluate \({\partial u_i}/{\partial x_j}\) for $i, j = 1, 2, 3$.
+Assuming that we consider displacements between unit cells, and not within them, and assuming an orthogonal lattice estimating the components of strain is not difficult. The  condition of plane strain constrains $\epsilon_{ij} = 0$ for $i\, \text{or}\, j=3$. In the $1$--$2$ (or $x$--$y$) plane the strains can be identified from the vectors between neighbouring unit cells. For simplicity a primitive lattice is assumed and these vectors can be conceived of as bonds.
+
+For this simple case for each atom two bonds are identified, one to the nearest neighbour in the $x$~direction and one to the nearest neighbour in the $y$~direction as shown in \autoref{fig:bonds}. The simplest estimate of the  stress components is
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{bonds}
+\caption{The bonds that are considered for the $i$th atom, one to the nearest neighbour in the positive $x$~direction, $\mathbf{p}_i$, and one to the nearest neighbour in the positive $y$~direction, $\mathbf{q}_i$.\label{fig:bonds} }
+\end{figure}
+
+
+
+
+\begin{alignat}{2}\label{eqn:estimate_strains}
+\left. \frac{\partial u_x}{\partial x}\right|_i &= \frac{\mathbf{p}_i \cdot \mathbf{\hat{i}}}{b} &\qquad\qquad
+\left. \frac{\partial u_x}{\partial y}\right|_i &= \frac{\mathbf{q}_i \cdot \mathbf{\hat{i}}}{d} \nonumber\\
+\left. \frac{\partial u_y}{\partial y}\right|_i &= \frac{\mathbf{q}_i \cdot \mathbf{\hat{j}}}{d} &
+\left. \frac{\partial u_y}{\partial x}\right|_i &= \frac{\mathbf{p}_i \cdot \mathbf{\hat{j}}}{b}
+\end{alignat}
+
+
+However there is a problem with this formulation. This assumes that every bond would, in equilibrium, be parallel to either the $x$ or the $y$ axis. This assumption is valid for the original Peierls model in which only displacements parallel to the $x$ direction were considered but the logarithmic term here represents a change in lattice orientation with position. A more nuanced approach requires some estimate of the local lattice orientation, if this is not done then the logarithmic term in \autoref{eqn:displacements} will mean that the strain in each bond will diverge, increasing with increasing distance from the dislocation core, whereas in reality the strains must be largest at the core.
+
+There are clearly many possible ways of estimating the local lattice resistance, one possible method is to take the ideal orientation of the bond parallel to the slip plane for a particular bond to be paralell to the bonds on either side, i.e. as shown in \autoref{fig:bonds} the ideal orientation of $\mathbf{p}_i$ would be  parallel to $(\mathbf{p}_h + \mathbf{p}_j)$. The ideal orientation for $\mathbf{q}_i$ can be taken to be at \SI{90}{\degree} to this. So $\mathbf{\hat{i}}$ and $\mathbf{\hat{j}}$ in \autoref{eqn:estimate_strains} can be replaced with 
+\begin{align}
+\mathbf{\hat{i}}' &= \frac{(\mathbf{p}_h + \mathbf{p}_j)}{|\mathbf{p}_h + \mathbf{p}_j|} \nonumber \\
+\mathbf{\hat{j}}' &= {\mathbf{\hat{i}}' \times \mathbf{\hat{k}}}
+\end{align}
+and the strain tensor can be calculated for each atom/unit cell, and hence the strain energy for each unit cell.
+
+
+
+\FloatBarrier
+\subsubsection{Misalignment energy}
+\FloatBarrier
+At the slip plane there is clearly going to be a break down of method highlighted above. For an atom immediately below the slip plane the identification of the nearest neighbour above the slip plane is perhaps not obvious. If the bond is taken to be simply  to the nearest atom above the slip plane ambiguities can arise 
+It is possible that there will be two atoms equally close above the slip plane and such a simple criterion can lead to some atoms being bonded more than once and some atoms not being bonded. 
+
+Instead a less arbitrary and more predictable method is to use the initial positions and assume that the $i$th atom can be bonded to two atoms in the layer above the slip plane. Since initially the horizontal spacing between atoms is $b$ for all atoms the two atoms must be within an interval $x_i^0 - b < x \leq x_i^0 + b$, as shown in \autoref{fig:slip_plane}. The energy for atom $i$ can be estimated from the average of the two bonds $\mathbf{q}_{i,\text{b}}$ and $\mathbf{q}_{i,\text{f}}$
+
+\begin{figure}
+\centering
+\begin{subfigure}{\textwidth}
+\centering
+\includegraphics[width=\textwidth]{initial_slip_plane_bonds}
+\caption{The initial positions of atoms either side of the slip plane.\label{fig:slip_plane_initial_positions}.}
+\end{subfigure}
+\par\medskip
+\begin{subfigure}{\textwidth}
+\includegraphics[width=\textwidth]{slip_plane_bonds}
+\caption{The final positions of the atoms either side of the slip plane.\label{fig:slip_plane_final_positions}}
+\end{subfigure}
+\caption{The slip plane before and after the application of the displacement field. The two atoms, $l$ and $m$, that can be considered bonded to the atom $i$ are shown along with the initial and final bonds, $\mathbf{q}_{i,\text{b}}$ and $\mathbf{q}_{i,\text{f}}$ which are backwards and forwards in the $x$ direction respectively. Also shown are the bonds $\mathbf{p}_h$ and $\mathbf{p}_j$ which are required to estimate the local orientation of the slip plane. \label{fig:slip_plane}}
+\end{figure}
+
+
+There are several methods to calculate the misaligned bonds. The simplest is to use the Frenkel approximation which, for an isotropic elastic material is 
+\begin{equation}
+U_i^\text{mis} = \frac{Gb^2}{4\pi^2} \left[\frac{d}{b}\right] \left[ 1 - \cos \left( \frac{2 \pi \phi}{d} \right) \right]
+\end{equation}
+
+which in terms of single crystal elastic constants takes $G=C_{66}$ (in Voigt notation see \cite{kelly_knowles2012chapter6_stress_strain}).
+
+A more complete method for the calculation of the energy is to use the generalised stacking fault energy.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

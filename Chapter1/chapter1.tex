@@ -101,6 +101,7 @@ The latter, Rudolph Peierls, was one of the physicists working during the advent
 Peierls presented the first formal solution for the energy changes as a dislocation moves in a rather short note \cite{Peierls1940} and the idea was extended by \citet{Nabarro1947}. The model is remarkably simple; consider two semi-infinite perfect crystals with their lattice aligned but some initial misalignment between them as shown in \autoref{fig:semi_infinite_crystals}. We can join them along what will become the slip plane. An edge dislocation is formed where the energy of the system is lowered by displacing atoms from their initial positions to localise the misalignments around the dislocation core, usually taken to be the origin. I.e. when the energy of a planar defect is higher than that of the linear defect and dislocation will form.
 
 
+
 \begin{figure}
 \centering
 
@@ -133,6 +134,11 @@ The \emph{misalignment} energy of bonds across the slip plane (bonds like $\over
 U_{mis} = C \sin \left(\frac{2\pi [u(x) - u'(x)]}{d} \right)
 \end{equation}
 
+The constant, $C$, has to be chosen appropriately but can be found by assuming linear elasticity holds at small strains. \citet{Frenkel1926} derived a similar sinusoidal function for the energy of a stacking fault:
+
+\begin{equation}
+U_{fault} = 
+\end{equation}
 
 The energy of the dislocation is the sum of all these contributions. There will be a configuration that is a minimum in the total energy where the in-plane forces widening the dislocation balance the misalignment forces that drive it to be narrower. This gives rise to a size, or width, of a dislocation. The width of the dislocation is defined as the distance from the core at which the misalignment across the slip plane is half its maximum. Peierls calculated this for an isotropic elastic solid and accounting for only the atomic planes immediately adjacent to the slip plane and found it to be 
 
@@ -173,7 +179,7 @@ An important point to note is that the Peierls stress is extremely sensitive to 
 
 
 
-Peierls found the perhaps surprising result that the energy changes have a periodicity of $b/2$ rather than $b$, this has been ascribed to the summation procedure of the energy of the misaligned bonds across the slip plane, of which there has been much discussion \cite{Hirth_Lothe1982lattice_periodicity,Lu2000peierls}. Peierls summed over the atoms above the slip plane and below the slip plane independently, the ``double-counting'' scheme, later models used a ``single-counting' scheme in which the assumption of small displacements is dropped and the misalignment of an atom above the slip plane is dependent on the final position of the atoms below the slip plane. This is given as the reason the Peierls barrier had a wavelength of $b/2$ rather than $b$ \cite{Hirth_Lothe1982lattice_periodicity,Lu2000peierls} though it has been suggested that the problem is an artefact that arises from an assumption of small displacements and that using the final rather than initial positions of the atomic rows resolves the difficulties \cite{Huntington1955}. As will be discussed below there is another possible explanation for the change in period that depends on the exact formulation of the energy calculations and whether the $\alpha=1/2$ position is symmetrically equivalent to the $\alpha = 0, 1$ positions. The periodicity of $b/2$ is easily explained on this basis because Peierls assumed that both the elastic energy and the dislocation geometry remained constant and the only changes in the energy were therefore based on misaligned bonds across the slip plane. These assumptions produce an atomic configuration at $\alpha=1/2$ that is the mirror through the slip plane of the $\alpha=0$ configuration, which must give the same energy since the misalignment potential used by Peierls is symmetrical.
+Peierls found the perhaps surprising result that the energy changes have a periodicity of $b/2$ rather than $b$, this has been ascribed to the summation procedure of the energy of the misaligned bonds across the slip plane, of which there has been much discussion \cite{Hirth_Lothe1982lattice_periodicity,Lu2000peierls}. Peierls summed over the atoms above the slip plane and below the slip plane independently, the ``double-counting'' scheme, later models used a ``single-counting' scheme in which the assumption of small displacements is dropped and the misalignment of an atom above the slip plane is dependent on the final position of the atoms below the slip plane. This is given as the reason the Peierls barrier had a wavelength of $b/2$ rather than $b$ \cite{Hirth_Lothe1982lattice_periodicity,Lu2000peierls} though it has been suggested that the problem is an artefact that arises from an assumption of small displacements and that using the final rather than initial positions of the atomic rows resolves the difficulties \cite{Huntington1955}. There is another explanation for the change in period that depends on the exact formulation of the energy calculations and whether the $\alpha=1/2$ position is symmetrically equivalent to the $\alpha = 0, 1$ positions. The periodicity of $b/2$ is easily explained on this basis because Peierls assumed that both the elastic energy and the dislocation geometry remained constant and the only changes in the energy were therefore based on misaligned bonds across the slip plane. These assumptions produce an atomic configuration at $\alpha=1/2$ that is the a reflection  of the $\alpha=0$ configuration across the slip plane, which must give the same energy since the misalignment potential used by Peierls is symmetrical.
 
 
 
@@ -190,7 +196,9 @@ In 1994 a fully discrete model was developed by \citet{Ohsawa1994}. This model m
 
 
 
-\citet{Bulatov1997} incorporated the concept of generalised stacking fault (GSF) energies into the Peierls model and successfully applied it to real systems \cite{Lu2000aluminium}. This addresses a fault in the original Peierls formulation that the sinusoidal potential used to calculate the misalignment energy is too high and steep. \citet{Ohsawa1994} had already attempted to address this by using alternative potentials, but they were essentially arbitrary functions that fitted the shear modulus at small strains instead Bulatov et al retained the variational approach but used density functional theory (DFT) calculations to generate a misalignment potential. They extended this to provide a three dimensional potential to allow both lateral and vertical displacements of the atoms in the slip plane. This is important around the core where large strains mean that the energy contributions are very inaccurate, and so by using the DFT to calculate a misalignment potential the Peierls model can bridge the length scales between the large scale stress and strain fields around the dislocation and the large local displacements at the core. This is no longer analytically solvable but is not difficult to solve numerically, the only limit being computational time.
+
+
+The generalised stacking fault (GSF) energy or $\gamma$-surface was incorporated into the Peierls model by \citet{Vitek1992} and this was extended by \citet{Bulatov1997}. This addresses a fault in the original Peierls formulation that the sinusoidal potential used to calculate the misalignment energy is too high and steep. \citet{Ohsawa1994} had already attempted to address this by using alternative potentials, but they were essentially arbitrary functions that fitted the shear modulus at small strains instead Bulatov et al. retained the variational approach but used density functional theory (DFT) calculations to generate a misalignment potential, extending the model to include a three dimensional potential to allow both lateral and vertical displacements of the atoms in the slip plane. This is important around the core where large strains mean that the energy contributions are very inaccurate. By using the DFT to calculate the misalignment potential the Peierls model can bridge the length scales between the large scale stress and strain fields around the dislocation and the large local displacements at the core. This is no longer analytically solvable but is not difficult to solve numerically, the only limit being computational time.
 
 Analytical approaches have continued, \citet{Joos1997} developed a closed form solution that was valid for narrow dislocations, where as the original model relied on the assumption of a wide dislocation for simplicity, and achieved a significantly better agreement with experiment than the original formulation. The model proposed by Joós and Duesbery required input parameters calculated by empirical or ab initio methods but used these as parameters of a closed form solution, in particular they required the maximum restoring stress for the glide plane, i.e. the maximum gradient of the GSF energy.
 
@@ -262,7 +270,7 @@ However this does not accurately capture reality. For example two face-centred c
 
 
 
-\citet{rice1974} suggested an alternative with rather more theoretical backing based on the energetics of sharp crack tips and whether blunting dislocations can be spontaneously emitted. The analysis used the Peierls approach to evaluate the energy of the dislocation close to free surfaces and found that the term $Gb/\gamma_s$, where $\gamma_s$ is the surface energy, $G$ is the shear modulus and $b$ is the Burgers vector, should be a dimensionless value that in some way reflects the propensity to fail by either ductile or brittle means and is justified along similar lines in that $Gb$ will scale with the energy of emitting a blunting dislocation, high values will oppose the formation of dislocations and blunting of cracks, thus favouring brittle failure; $\gamma_s$ represents the energy of the crack and high values will tend to favour reduction of the surface by blunting and favour ductile failure. The criterion was updated by \citet{Rice1992} to be the quotient $\gamma_{us}/ \gamma_s$ where $\gamma_{us}$ is the unstable stacking fault energy and $\gamma_s$ is still the surface energy but follows essentially the same reasoning but no longer makes the assumption that $\gamma_{us}$ scales linearly with $G$.
+\citet{rice1974} suggested an alternative approach based on the energetics of sharp crack tips and whether blunting dislocations can be spontaneously emitted. The analysis used the Peierls approach to evaluate the energy of the dislocation close to free surfaces and found that the term $Gb/\gamma_s$, where $\gamma_s$ is the surface energy, $G$ is the shear modulus and $b$ is the Burgers vector, should be a dimensionless value that in some way reflects the propensity to fail by either ductile or brittle means and is justified along similar lines in that $Gb$ will scale with the energy of emitting a blunting dislocation, high values will oppose the formation of dislocations and blunting of cracks, thus favouring brittle failure; $\gamma_s$ represents the energy of the crack and high values will tend to favour reduction of the surface by blunting and favour ductile failure. The criterion was updated by \citet{Rice1992} to be the quotient $\gamma_{us}/ \gamma_s$ where $\gamma_{us}$ is the unstable stacking fault energy and $\gamma_s$ is still the surface energy but follows essentially the same reasoning but no longer makes the assumption that $\gamma_{us}$ scales linearly with $G$.
 
 An alternative condition was put forward by \citet{Zhou1994} that does not include the surface energy. They propose the energy to blunt a crack by dislocation emission is dependent on $\gamma_s$ in the same way as the energy of growing the sharp crack since the formation of a dislocation creates ledges and alters the surface area. In this way the ratio of the energies is independent of the surface energy (though the absolute value of either energy is clearly dependent on $\gamma_s$) and so the crossover from brittle to ductile behaviour is also independent of the surface energy. They find instead that the appropriate quotient is $\gamma_{us} / Gb$ and set a critical value of 0.014. As the authors note this is an interesting result because the critical threshold is not the cross over in a competition between two processes, one of fracture and one of plasticity, but instead is equivalent to a critical value of the Peierls energy.
 
@@ -391,7 +399,7 @@ Some studies have considered the Peierls stress in complex crystals with layered
 
 The result is therefore based on polycrystalline bulk elastic properties and the specifics of the MAX crystal structure are disregarded save the values of $d$ and $b$ chosen. These have tended to give high values of the Peierls stress, e.g. \SI{980}{\mega\pascal} for \ce{Ti2AlC} \cite{Music2008} which we can compare with \SI{660}{\mega\pascal} for \ce{TiC} \cite{Clegg2006} where clearly the flow stress in \ce{TiC} should be an upper bound on the flow stress in the MAX phase, which after all contains blocks of \ce{TiC} aligned with the known slip system of \ce{TiC} \cite{Hollox1966}. The GSF calculated by DFT has been used in at least one study \cite{Gouriet2015} but assumed that no change in confining elastic field occurred during dislocation motion and so cannot be treated with any confidence, that study also found Peierls stresses that are similar to \ce{TiC}, of between \SI{611}{\mega\pascal} and \SI{957}{\mega\pascal}.
 
-There is clearly a large effect of the crystal chemistry of the MAX phases upon the lattice resistance which has not been adequately explained. If the effect can be understood it may allow
+There is clearly a large effect of the crystal chemistry of the MAX phases upon the lattice resistance which has not been adequately explained. If the effect can be understood it may allow a general route to tailoring the Peierls stress of a material and the introduction of a degree of ductility and toughness to otherwise brittle materials.
 
 
 
@@ -440,8 +448,24 @@ The Peierls model is based on the assumption that energy changes can be largely 
 
 Though the energy of ionic crystals is relatively easily calculated for a perfect crystal, via a Madelung or Ewald summation \cite{madelung1918,Ewald1921}, these rest on assumption of symmetry that are broken by the introduction of a defect.
 
-The rocksalt structure is particularly common in ionic solids and phases of this structure have been widely studied in terms of their plasticity. The slip direction is usually <110> and the active slip planes are \{001\} and \{1\={1}0\}, and sometimes \{1\={1}1\}. For edge dislocations the last would expose charged surfaces of atoms at free surfaces so despite being the closest packed plane it is not commonly seen \cite{Haasen1985}.
+The rocksalt structure is particularly common in ionic solids and phases of this structure have been widely studied in terms of their plasticity. The slip direction is usually <110> and the active slip planes are \{001\} and \{1\={1}0\}, and sometimes \{1\={1}1\}. For edge dislocations the last would expose charged surfaces of atoms at free surfaces so despite being the closest packed plane it is not commonly seen \cite{Haasen1985}. Schematic illustrations of edge dislocations are shown in \autoref{fig:Schematic_NaCl_dislocs}.
 
+\begin{figure}
+\centering
+\begin{subfigure}{0.6\textwidth}
+\centering
+\includegraphics[width=\textwidth]{NaCl_001_1-10}
+\caption{The \{001\}<1\={1}0> slip system.}
+\end{subfigure}
+\par\bigskip
+\begin{subfigure}{0.6\textwidth}
+\centering
+\includegraphics[width=\textwidth]{NaCl_110_1-10}
+\caption{The \{110\}<1\={1}0> slip system.}
+\end{subfigure}
+
+\caption{Schematic edge dislocations in the rocksalt structure reproduced from \cite{Haasen1985}. \label{fig:Schematic_NaCl_dislocs}}
+\end{figure}
 
 
 
