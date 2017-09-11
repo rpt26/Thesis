@@ -1,0 +1,102 @@
+
+
+
+The Peierls model is based on the assumption that energy changes can be largely approximated on elastic energy changes as a dislocation moves through a crystal lattice, but many materials do not fit this assumption well. While a full quantum-mechanical treatment of electronic structure by density functional theory calculations gives very accurate results for a very wide range of atoms and conditions the computational difficulty of describing all the valence electrons limits this to systems with hundreds or maybe a few thousands of atoms. Empirical potentials have been developed for a wide range of materials and conditions for the field of molecular dynamics and are more tractable computationally while hopefully retaining enough fidelity to elucidate the problem at hand \cite{martinez2013}.
+
+Various potentials exist for different types of materials, usually according to the bonding present, for example the embedded atom method applies well to metals \cite{Daw1984}, the Lennard-Jones  and Buckingham potentials describe dispersion interactions and the short range exchange interaction arising from Pauli exclusion \cite{Jones1924,Buckingham1938} and bond order potentials describe covalent bonding, e.g. the Tersoff potential \cite{Tersoff1988}. 
+
+
+Ionic solids are an obvious class of materials with which to demonstrate the application of alternative energy calculations by applying empirical potentials, although some modelling of dislocation motion by the conventional Peierls-Nabarro model, using the elastic properties and the generalised staking fault energy, have been undertaken for \ce{MgO} \cite{Miranda2005}, most ionic materials are not well represented by linear elasticity. 
+
+There are large numbers of ionic solids with the same simple crystals structures, e.g. rocksalt, caesium chloride \cite{Kelly2012app7} and the primary contribution to the energy of these materials is the electrostatic interaction which is very simple:
+\begin{equation}
+U^{\text{electro}}_{ij} = \frac{1}{4\pi\epsilon_0} \frac{q_i q_j}{r_{ij}}
+\end{equation}
+where $\epsilon_0$ is the permittivity of free space, $q_i$ is the charge on atom $i$ and $r_{ij}$ is the separation between atoms $i$ and $j$.
+
+
+The Lennard-Jones potential along with the electrostatic interaction is one of the simplest formulations to represent the interactions in ionic solids and has the form
+\begin{equation}
+\phi_{ij}(r_{ij}) = 4\epsilon_{ij} \left[ \left( \frac{\sigma_{ij}}{r_{ij}}\right)^{12}-     \left( \frac{\sigma_{ij}}{r_{ij}}\right)^6   \right]
+\end{equation}
+or in the ``A--B'' form
+\begin{equation}
+\phi_{ij}(r_{ij}) = \frac{A_{ij}}{r_{ij}^{12}} - \frac{B_{ij}}{r_{ij}^{6}}
+\end{equation}
+where $r_{ij}$ is the atomic separation, $\epsilon_{ij}$ is the depth of the energy minimum, $\sigma_{ij}$ is the (finite) atomic separation at which the energy is zero and $A_{ij}$ and $B_{ij}$ are simply parameters to be fitted and are related to $\epsilon_{ij}$ and $\sigma_{ij}$ by $A_{ij} = 4\epsilon_{ij}\sigma_{ij}^{12}$ and $B_{ij} = 4 \epsilon_{ij} \sigma_{ij}^{6}$. The total energy for a pair of atoms is then
+\begin{equation}
+U_{ij}(r_{ij}) = \frac{1}{4\pi\epsilon_0} \frac{q_i q_j}{r_{ij}} + \frac{A_{ij}}{r_{ij}^{12}} - \frac{B_{ij}}{r_{ij}^{6}}
+\end{equation}
+
+
+
+
+The energy of perfect ionic crystals is relatively easily calculated  via a Madelung or Ewald summation \cite{madelung1918,Ewald1921}, but usually these rely on an assumption of symmetry that is broken by the introduction of a defect. In the case of a dislocated crystal another approach is required. One option is a direct sum; the direct sum scales with the square of the number of atoms in the simulation, so if the distance from the dislocation line is considered the simulation time scales with the fourth power and can rapidly become intractable. However advances in computing power and efficient implementations of array operations in NumPy \cite{Numpy2011}, particularly an efficient implementation of the Einstein summation convention \cite{opt_einsum} may make this a workable solution.
+
+
+An alternative is to use an implementation of a long range electrostatics solver that allows for non periodicity in two dimensions. One such implementation is the multiscale summation method in LAMMPS \cite{Hardy2009,LAMMPS_web}, which divides the problem into a short range potential and a series of smoothly vanishing long range potentials over increasingly coarse meshes at larger interatomic distances. The use of LAMMPS allows the inclusion of other energy terms such as polarisability of ions and so on.
+
+
+\subsection{Dislocations in ionic crystals}
+The rocksalt structure is particularly common in ionic solids and phases of this structure have been widely studied in terms of their plasticity. The slip direction is usually <110> and the active slip planes are \{001\} and \{1\={1}0\}, and sometimes \{1\={1}1\}. For edge dislocations the last would expose charged surfaces of atoms at free surfaces so despite being the closest packed plane it is not commonly seen \cite{Haasen1985}. Schematic illustrations of edge dislocations are shown in \autoref{fig:Schematic_NaCl_dislocs}.
+
+\begin{figure}
+\centering
+    \begin{subfigure}{0.8\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{NaCl_001_1-10}
+    \caption{The \{001\}<1\={1}0> slip system.}
+    \end{subfigure}
+\par\bigskip
+    \begin{subfigure}{0.8\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{NaCl_110_1-10}
+    \caption{The \{110\}<1\={1}0> slip system.}
+    \end{subfigure}
+\caption{Schematic edge dislocations in the rocksalt structure reproduced from \cite{Haasen1985}. \label{fig:Schematic_NaCl_dislocs}}
+\end{figure}
+
+
+
+
+
+Experimental work has characterised flow stress of ionic solids with the rocksalt structure over a wide range of temperatures including very low temperatures using liquid helium (c.~\SI{4}{\kelvin}) \cite{Haasen1985} and they deviate strongly from the prediction of elastic Peierls models. This makes them useful as a model system \cite{wang1996}.
+
+Previous modelling of dislocations in ionic crystals has been undertaken, notably \citet{puls1976} who simulated edge \{001\}<1\={1}0> dislocations in \ce{MgO} and \citet{Woo1977} who modelled the same dislocation geometry in a range of ionic crystals with the rocksalt structure, among others \cite{Granzer1968,Woo1976,Hoagland1976,Brandt1987,Soullard1991,Foitzik1991}. These were limited by the computational resources available and used a variety of strategies to overcome these limits; one was to optimise only the equilibrium position and then assume linear trajectories for the atoms for intermediate states, as developed by \citet{Granzer1968}. This is similar to the assumption made by Peierls \cite{Peierls1940}, that the dislocation width does not vary between the equilibrium positions, which has been shown to have a very large effect on the results that are generated \cite{Clegg2006}.
+
+Another method to overcome computational limitations was to simulate only small regions atomistically, applying a variety of boundary conditions, usually derived from elasticity both linear and non-linear in nature, to constrain the atomistic region and modelling material outside this core region as elastic, such conditions were used in \cite{Woo1977}. The use of conditions like these prevents the separation of the different energetic components since there is always a large contribution from the elastic region as well as the electrostatics and short-range interactions. A fully atomistic simulation would hopefully elucidate the energy contributions and aid insight into the dominant factors in controlling dislocation motion.
+
+A fully atomistic model using suitable interatomic potentials will hopefully elucidate the factors that control dislocation motion in ionic solids.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

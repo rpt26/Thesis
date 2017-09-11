@@ -1,30 +1,12 @@
-% ******************************************************************************
-% ****************************** Custom Margin *********************************
-
-% Add `custommargin' in the document class options to use this section
-% Set {innerside margin / outerside margin / topmargin / bottom margin}  and
-% other page dimensions
-\ifsetCustomMargin
-  \RequirePackage[left=37mm,right=30mm,top=35mm,bottom=30mm]{geometry}
-  \setFancyHdr % To apply fancy header after geometry package is loaded
-\fi
 
 % *****************************************************************************
 % ******************* Fonts (like different typewriter fonts etc.)*************
+\usepackage[T1]{fontenc}
 
-% Add `customfont' in the document class option to use this section
+\usepackage{setspace}
 
-\ifsetCustomFont
-  % Set your custom font here and use `customfont' in options. Leave empty to
-  % load computer modern font (default LaTeX font).
-\fi
-
-% *****************************************************************************
-% **************************** Custom Packages ********************************
-\usepackage{bm}
-% ************************* Algorithms and Pseudocode **************************
-
-%\usepackage{algpseudocode}
+\usepackage{url}
+\usepackage[version=4]{mhchem}
 
 
 % ********************Captions and Hyperreferencing / URL **********************
@@ -35,8 +17,8 @@
 \RequirePackage[labelsep=space,tableposition=top]{caption}
 \renewcommand{\figurename}{Fig.} %to support older versions of captions.sty
 \usepackage{hyperref}
-
-
+\hypersetup{colorlinks=false}
+\hypersetup{final=true}
 
 
 % *************************** Graphics and figures *****************************
@@ -63,9 +45,6 @@
 
 
 
-
-
-
 % ********************************** Tables ************************************
 \usepackage{booktabs} % For professional looking tables
 \usepackage{multirow}
@@ -80,53 +59,25 @@
 \usepackage{mathtools}
 \usepackage{amssymb}
 \usepackage{siunitx} % use this package module for SI units
+\usepackage{bm}
+
+     
+\newcommand{\dd}{\mathop{}\,\mathrm{d}}
+\newcommand{\oldepsilon}{\epsilon}
+\renewcommand{\epsilon}{\varepsilon}
 
 
-% ******************************* Line Spacing *********************************
-
-% Choose linespacing as appropriate. Default is one-half line spacing as per the
-% University guidelines
-
-% \doublespacing
-% \onehalfspacing
-% \singlespacing
-
-
-% ************************ Formatting / Footnote *******************************
-
-% Don't break enumeration (etc.) across pages in an ugly manner (default 10000)
-%\clubpenalty=500
-%\widowpenalty=500
-
-%\usepackage[perpage]{footmisc} %Range of footnote options
-
-
-% *****************************************************************************
-% *************************** Bibliography  and References ********************
-
-%\usepackage{cleveref} %Referencing without need to explicitly state fig /table
-
-% Add `custombib' in the document class option to use this section
-\ifuseCustomBib
-   \RequirePackage[square, comma, sort&compress, numbers]{natbib} % CustomBib
-
-% If you would like to use biblatex for your reference management, as opposed to the default `natbibpackage` pass the option `custombib` in the document class. Comment out the previous line to make sure you don't load the natbib package. Uncomment the following lines and specify the location of references.bib file
-
-%\RequirePackage[backend=biber, style=numeric-comp, citestyle=numeric, sorting=nty, natbib=true]{biblatex}
-
-%\bibliography{Mendeley} %Location of references.bib only for biblatex
-
-\fi
-
-
-
-% changes the default name `Bibliography` -> `References'
-\renewcommand{\bibname}{References}
 
 
 % *****************************************************************************
 % *************** Changing the Visual Style of Chapter Headings ***************
 % This section on visual style is from https://github.com/cambridge/thesis
+
+
+\usepackage{epigraph}
+
+
+
 
 % Uncomment the section below. Requires titlesec package.
 
@@ -142,17 +93,7 @@
 %\newcommand{\PostContentTitleFormat}{\PreContentTitleFormat}
 %\PreContentTitleFormat
 
-
-% ******************************************************************************
-% ************************* User Defined Commands ******************************
-% ******************************************************************************
-
-% *********** To change the name of Table of Contents / LOF and LOT ************
-
-%\renewcommand{\contentsname}{My Table of Contents}
-%\renewcommand{\listfigurename}{My List of Figures}
-%\renewcommand{\listtablename}{My List of Tables}
-
+\usepackage{pdfpages}
 
 % ********************** TOC depth and numbering depth *************************
 
@@ -174,84 +115,109 @@
 %\renewcommand{\appendixtocname}{List of appendices}
 %\renewcommand{\appendixname}{Appndx}
 
-% ******************************** Draft Mode **********************************
 
-% Uncomment to disable figures in `draftmode'
-%\setkeys{Gin}{draft=true}  % set draft to false to enable figures in `draft'
+% *****************************************************************************
+% *************************** Bibliography  and References ********************
 
-% These options are active only during the draft mode
-% Default text is "Draft"
-%\SetDraftText{DRAFT}
+%\usepackage{cleveref} %Referencing without need to explicitly state fig /table
 
-% Default Watermark location is top. Location (top/bottom)
-%\SetDraftWMPosition{bottom}
+%\usepackage[numbers,sort&compress]{natbib}
 
-% Draft Version - default is v1.0
-%\SetDraftVersion{v1.1}
+\usepackage[backend=biber,date=year,eprint=false,natbib=true,giveninits=true,style=numeric-comp,sortcites=true,sorting=none,maxbibnames=6,minbibnames=6]{biblatex}
+\addbibresource{library.bib}
+\addbibresource{websites.bib}
 
-% Draft Text grayscale value (should be between 0-black and 1-white)
-% Default value is 0.75
-%\SetDraftGrayScale{0.8}
+\AtEveryBibitem{\ifentrytype{article}{\clearfield{issn}}{}}
+\AtEveryCitekey{\ifentrytype{article}{\clearfield{issn}}{}}
+\AtEveryBibitem{\ifentrytype{article}{\clearfield{url}}{}}
+\AtEveryCitekey{\ifentrytype{article}{\clearfield{url}}{}}
+\AtEveryBibitem{\ifentrytype{article}{\clearfield{month}}{}}
+\AtEveryBibitem{\ifentrytype{article}{\clearfield{day}}{}}
+% changes the default name `Bibliography` -> `References'
+\AtEveryBibitem{\ifentrytype{misc}{\clearfield{month}}{}}
+\renewcommand{\bibname}{References}
 
 
-%% Todo notes functionality
-%% Uncomment the following lines to have todonotes.
+\DefineBibliographyStrings{english}{%
+  bibliography = {References},
+}
 
-%\ifsetDraft
-%	\usepackage[colorinlistoftodos]{todonotes}
-%	\newcommand{\mynote}[1]{\todo[author=kks32,size=\small,inline,color=green!40]{#1}}
-%\else
-%	\newcommand{\mynote}[1]{}
-%	\newcommand{\listoftodos}{}
-%\fi
-
-% Example todo: \mynote{Hey! I have a note}
-\usepackage{epigraph}
-\renewcommand{\ref}{\autoref}
-
-\usepackage{algorithm}
-\usepackage{algpseudocode}
-
-\usepackage{color}
-\definecolor{deepblue}{rgb}{0,0,0.5}
-\definecolor{deepred}{rgb}{0.6,0,0}
-\definecolor{deepgreen}{rgb}{0,0.5,0}
-
-\usepackage[dvipsnames]{xcolor}
+\usepackage{filecontents}
 
 
 
-\usepackage{listings}
-\lstset{language=python,
-        basicstyle=\footnotesize\ttfamily,
-        commentstyle=\itshape\color{MidnightBlue},
-        mathescape=true}
-        
-        
-\usepackage{pythonhighlight}        
-\newcommand{\dd}{\mathop{}\,\mathrm{d}}
-\renewcommand{\epsilon}{\varepsilon}
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+\usepackage{fancyhdr}
+\renewcommand{\arraystretch}{1.2}
+
+\usepackage{dcolumn}
+\newcolumntype{d}[1]{D{.}{\cdot}{#1} }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
