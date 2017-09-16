@@ -1,5 +1,5 @@
 
-\documentclass[a4paper,12pt,draft,twoside]{report}
+\documentclass[a4paper,12pt,twoside]{report}
 %customfont,draftclassic,print,index
 \title{PhD Thesis}
 
@@ -8,8 +8,9 @@
 \input{Preamble/preamble}
 
 
+
 %\usepackage{showframe}
-\usepackage[inner=2.5cm,outer=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[inner=3.5cm,outer=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
 \renewcommand*\rmdefault{lrm}
 
 
@@ -49,17 +50,7 @@
 % ******************************** Main Matter *********************************
 
 
-\pagestyle{fancy}
-\fancyhf{} % clear all header fields
-%\fancyfoot{}
-\fancyhead[LE,RO]{\thepage}
-\fancyhead[LO]{\textsl{\rightmark}}
-\fancyhead[RE]{\textsl{\leftmark}}
 
-\fancypagestyle{plain}{%
-\fancyhf{}
-\fancyhead[C]{\thepage}
-}
 
 
 
@@ -72,13 +63,22 @@
 \pagenumbering{arabic}
 \doublespacing
 \setcounter{page}{1}
-\include{Chapter1/chapter1}
-\include{Chapter2/chapter2}
-\include{Chapter3/chapter3}
-%\include{Chapter4/chapter4}
-%\include{Chapter5/chapter5}
-%\include{Chapter6/chapter6}
-%\include{Chapter7/chapter7}
+
+% The background literature review on plastic deformation
+\include{plastic_deformation/plastic_deformation}
+\cleardoublepage
+% the methods and results for building a new Peierls model
+\include{peierls_model/peierls_model}
+\cleardoublepage
+% The case for elastic heterogeneity in layered crystals
+\include{hetero_max_phases/hetero_max_phases}
+\cleardoublepage
+% The dislocations in MAX phases
+\include{dislocations_in_max_phases/dislocations_in_max_phases}
+\cleardoublepage
+% The effect in Ti2Ni structured intermetallics
+\include{hardness_of_ti_2_ni/hardness_of_ti_2_ni}
+\cleardoublepage
 
 
 % ********************************** Bibliography ******************************

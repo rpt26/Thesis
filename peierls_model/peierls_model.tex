@@ -1,0 +1,91 @@
+%*******************************************************************************
+%****************************** Second Chapter *********************************
+%*******************************************************************************
+
+\chapter{A new Peierls model}
+\label{chap:peierls_model}
+\graphicspath{{peierls_model/Figs/}}
+
+
+Though there are a number \cite{Nabarro1947,Huntington1955, puls1976, Vitek1992,  Bulatov1997, Lubarda2007, Clegg2006,Gouriet2015} of Peierls models in the literature published over the decades since \citet{Peierls1940} first presented his short solution few have been adaptable to situations beyond the initially envisaged problem which is typically narrowly defined. In this chapter such a model is presented that allows, with a minimum of effort, the consideration of energies defined by linear elasticity, empirical potentials, generalised stacking fault energies and could feasibly be extended to a full quantum mechanical treatment with density functional theory.
+
+The python programming language was chosen for a number of reasons, firstly the python model is inherently modular, which provides a flexible structure, allowing parts of the model to be altered, extended or replaced quickly easily. Python is also widely used with a large body of documentation and a large support community. Finally python has a very large number of extending modules providing advanced capabilities, particularly projects like NumPy and SciPy. NumPy provides a powerful and efficient implementation of arrays providing a range of simple functions as well as more advanced linear algebra operations. SciPy is a project built on the basic data structure of the numpy array and provides advanced algorithms and convenience functions including differential equations, numerical solvers and optimisers, image processing and statistical functions.
+
+
+To calculate the Peierls stress we must find the energy of dislocation configurations as the dislocation is displaced from one equilibrium position to the next. The variable $\alpha$ is used to denote the fractional displacement of the dislocation. Since boundary conditions are insufficient to define the atomic configuration, for each value of $\alpha$ the atomic configuration of the dislocation that minimises the energy must be found. Once a sufficient samples of $\alpha$ have been made the Peierls stress can be calculated by 
+
+\begin{equation}
+\tau_p = \frac{1}{lb^2}   \left. \frac{\partial U}{\partial \alpha} \right|_{max} .
+\end{equation}
+
+Where $l$ is the length of dislocation line for which the energy, $U$, is calculated for and $b$ is the Burgers vector.
+
+So for a given value of alpha how can the ideal, that is lowest energy, configuration be found? This requires two steps, first the definition, creation and representation (as a data structure) of a configuration and second the evaluation of the energy thereof.
+Taken together these can be thought of as a simple function that takes the value of $alpha$ along with some input parameters as arguments and returns the energy:
+
+\begin{equation}
+U = f(\alpha, p_1, p_2,...,p_n )
+\label{eqn:energy_as_function}
+\end{equation}
+
+The input parameters, $p_i$, could be as general as the coordinates of every atom in the configuration or as specific as the single parameter defined by by Peierls in his original treatment, the width of the dislocation, the only difference is one of computational tractability. Algorithms exist for finding the minimum of functions of the form given in \autoref{eqn:energy_as_function} but they are much faster for functions with small numbers of parameters and some algorithms are not reliable for large numbers of parameters, hence decisions about how to define an atomic configuration will have consequences for the optimisation of that configuration.
+
+Since a less general case can usually be taken to be a specific case of a more general one it seems sensible to use the most general representation of a dislocation and then apply constraints to it rather than find the model limited by an assumption of specificity later. Hence individual atoms are represented in space by coordinates as an array of the form:
+
+$$ atoms = \begin{pmatrix}
+x_1 & y_1 & z_1  \\
+x_2 & y_2 & z_2  \\
+.   &.    &.     \\
+.   &.    &.     \\
+x_n & y_n & z_n  \\
+\end{pmatrix}
+$$
+
+Where $x$, $y$ and $z$ are coordinates in euclidean space in units of \r{A}ngstr\"{o}ms, i.e. \emph{not} relative to any crystallographic axes.
+
+This representation can be extended, for example in the case of ionic solids the charge on each ion would be a necessary parameter for any energy calculation, this would be represented thus:
+$$
+atoms = \begin{pmatrix}
+x_1 & y_1 & z_1 & q_1 \\
+x_2 & y_2 & z_2 & q_2 \\
+.   &.    &.    &.    \\
+.   &.    &.    &.    \\
+x_n & y_n & z_n & q_n \\
+\end{pmatrix}
+$$
+This could be extended to an arbitrary number of parameters such as parameters for empirical potentials, labels for symmetrical distinct ions of the same species etc.
+
+
+
+
+
+\section{Building a dislocation}
+\FloatBarrier
+\label{sec:build}
+
+\input{peierls_model/building_a_dislocation.tex}
+
+
+
+
+
+
+
+
+\section{Evaluating the dislocation energy}
+\label{sec:dislocation_energy}
+
+\input{peierls_model/dislocation_energy.tex}
+
+
+
+
+
+
+
+
+
+
+
+
+
