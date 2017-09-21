@@ -68,7 +68,7 @@ For this simple case for each atom two bonds are identified, one to the nearest 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{bonds}
-\caption{The bonds that are considered for the $i$th atom in a region of crystal away from the slip plane; there is one bond to the nearest neighbour in the positive $x$~direction, $\mathbf{p}_i$, and one to the nearest neighbour in the positive $y$~direction, $\mathbf{q}_i$, to avoid double counting.\label{fig:bonds} }
+\caption[Strained bonds in a dislocated crystal.]{The bonds that are considered for the $i$th atom in a region of crystal away from the slip plane; there is one bond to the nearest neighbour in the positive $x$~direction, $\mathbf{p}_i$, and one to the nearest neighbour in the positive $y$~direction, $\mathbf{q}_i$, to avoid double counting.\label{fig:bonds} }
 \end{figure}
 
 
@@ -106,7 +106,7 @@ Instead a less arbitrary and more predictable method is to use the initial posit
 \includegraphics[width=\textwidth]{slip_plane_bonds}
 \caption{The final positions of the atoms either side of the slip plane.\label{fig:slip_plane_final_positions}}
 \end{subfigure}
-\caption{The slip plane before and after the application of the displacement field. The two atoms, $l$ and $m$, that can be considered bonded to the atom $i$ are shown along with the initial and final bonds, $\mathbf{q}_{i,\text{b}}$ and $\mathbf{q}_{i,\text{f}}$ which are backwards and forwards in the $x$ direction respectively. Also shown are the bonds $\mathbf{p}_h$ and $\mathbf{p}_j$ which are required to estimate the local orientation of the slip plane. \label{fig:slip_plane}}
+\caption[Misaligned bonds cross the slip plane in a dislocated crystal.]{The slip plane before and after the application of the displacement field. The two atoms, $l$ and $m$, that can be considered bonded to the atom $i$ are shown along with the initial and final bonds, $\mathbf{q}_{i,\text{b}}$ and $\mathbf{q}_{i,\text{f}}$ which are backwards and forwards in the $x$ direction respectively. Also shown are the bonds $\mathbf{p}_h$ and $\mathbf{p}_j$ which are required to estimate the local orientation of the slip plane. \label{fig:slip_plane}}
 \end{figure}
 
 
@@ -129,8 +129,7 @@ where $\phi$ is the misalignment in the same units as the Burgers vector $b$, $m
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5555%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%% Better check I've referenced this correctly and that I understand it enough
-The density functional theory calculations were performed with the SIESTA package \cite{soler2002}, a pseudopotential based LCAO package using semicore pseudopotentials with partial core corrections in the Perdew-Burke-Ernzhof (PBE) formulation generated and tested by the ATOM implementation of the Troullier-Martins procedure \cite{Troullier1991,Troullier1991a}. A double-$\zeta$ polarised basis set including the semicore states was used, the cutoff radii of which were optimised with a variational simplex method.
+
 
 
 
@@ -179,7 +178,7 @@ The Lennard-Jones has been chosen as a simple example to demonstrate the applica
    \ce{I-} & 5.197  & 176.56 \\
   \hline
   \end{tabular}
-\caption{\rule[3ex]{0pt}{0pt} Parameters used for Lennard-Jones calculations from \cite{Mao2014}.\label{tab:LJ_params}}
+\caption[Lennard-Jones parameters.]{\rule[3ex]{0pt}{0pt} Parameters used for Lennard-Jones calculations from \cite{Mao2014}.\label{tab:LJ_params}}
 \end{table}
 
 

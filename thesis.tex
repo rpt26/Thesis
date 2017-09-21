@@ -24,22 +24,25 @@
 
 % ******************************** Front Matter ********************************
 \begin{document}
-% \pagenumbering{roman}
+\pagenumbering{roman}
 
-% \begin{titlepage}
-%   \maketitle
-% \end{titlepage}
+\begin{titlepage}
+  \maketitle
+\end{titlepage}
 
-% \include{Dedication/dedication}
-% \include{Declaration/declaration}
-% \include{Acknowledgement/acknowledgement}
-% \include{Abstract/abstract}
 
-% *********************** Adding TOC and List of Figures ***********************
+\include{Declaration/declaration}
+\include{Acknowledgement/acknowledgement}
+\include{Abstract/abstract}
 
-% \tableofcontents
+% % % % % % % % % % % % % %  Adding TOC and List of Figures % % % % % % % % % % % % % % %
+\addtocontents{toc}{~\hfill\textbf{Page}\par}
+\setcounter{tocdepth}{1}
+\tableofcontents
 
-% \listoffigures
+
+\renewcommand{\listfigurename}{Figures}
+\listoffigures
 
 
 % \printnomencl[space] space can be set as 2em between symbol and description
@@ -47,7 +50,7 @@
 % \printnomencl
 
 \clearpage
-% ******************************** Main Matter *********************************
+% % % % % % % % % % % % % % % % %  Main Matter  % % % % % % % % % % % % % % % %  % % % % % % 
 
 
 
