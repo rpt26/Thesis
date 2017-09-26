@@ -1,3 +1,8 @@
+\usepackage[inner=3.5cm,outer=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+
+
+
 
 % *****************************************************************************
 % ******************* Fonts (like different typewriter fonts etc.)*************
@@ -15,8 +20,7 @@
 %\RequirePackage[small,bf]{caption}
 
 
-\usepackage{hyperref}
-\hypersetup{colorlinks=true}
+\usepackage[hidelinks]{hyperref}
 \hypersetup{final=true}
 
 
@@ -140,36 +144,21 @@
 
 
 
-% \usepackage{fancyhdr}
-% \pagestyle{fancy}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
 % % \renewcommand{\headrulewidth}{0pt}
-% \fancyhf{}
-% \fancyhead[lo]{\slshape\nouppercase{\rightmark}}
-% \fancyhead[re]{\slshape\nouppercase{\leftmark}}
-% \fancyhead[ro,le]{\thepage}
+\fancyhf{}
+%\fancyhead[lo]{\nouppercase{\rightmark}}
+%\fancyhead[re]{\nouppercase{\leftmark}}
+%\fancyhead[ro,le]{\thepage}
 
-% \pagestyle{fancy}
-% \fancyhf{} % clear all header fields
-% \fancyfoot{}
-% \fancyhead[LE,RO]{\thepage}
-% \fancyhead[LO]{\textsl{\rightmark}}
-% \fancyhead[RE]{\textsl{\leftmark}}
-
-% \fancypagestyle{plain}{%
-% \fancyhf{}
-% \fancyhead[C]{\thepage}
-% }
-
-
-
-
+\fancyhead[lo]{\slshape\nouppercase{\rightmark}}
+\fancyhead[re]{\slshape\nouppercase{\leftmark}}
+\fancyhead[ro,le]{\thepage}
 
 
 \usepackage{rotating}
-
 \usepackage{pdflscape}
-
-
 
 
 \usepackage{dcolumn}
