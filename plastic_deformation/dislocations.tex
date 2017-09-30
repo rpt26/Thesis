@@ -242,19 +242,65 @@ In 2006 \citet{Clegg2006} used an atomistic approach to the strains outside of t
 u(x_0) = \pm \tan^{-1}\frac{x_0}{w}.
 \end{equation}
 
-where $x_0$ is the initial coordinate in the dimension parallel to the burgers vector and $w$ is the dislocation width, now a parameter to be optimised with no closed form solution. The misalignment energy was taken to be
-
+where $x_0$ is the initial coordinate in the dimension parallel to the burgers vector and $w$ is the dislocation width, now a parameter to be optimised with no closed form solution. The misalignment energy was taken to be sinusoidal by analogy with \citet{Frenkel1926}
 \begin{equation}
-U^{x} = \frac{Gb^3}{4\pi^2 d} \sum_n \left[ 1 - \cos \left(\frac{2\pi \phi_n}{d} \right)\right]
+U^{\text{x}} = \frac{Gb^3}{4\pi^2 d} \sum_n \left[ 1 - \cos \left(\frac{2\pi \phi_n}{b} \right)\right] \label{eqn:frenkel_approx}
 \end{equation}
- 
- and the in-plane strain energy was taken to be 
- 
- \begin{equation}
- U^i = \frac{E}{2(1-\nu^2)} (b\cdot d) \sum_n \epsilon_n^2
- \end{equation}
+where $G$ is the shear modulus, $b$ is the Burgers vector, $d$ is the slip plane spacing, and $\phi$ is the misalignment in units of distance, as shown in \autoref{fig:detail_of_peierls}.
 
-where $G$ is the shear modulus of the material, $E$ is the Young's modulus, $\nu$ is the Poisson ratio, $b$ is the Burgers vector, $d$ is the slip plane spacing, $\epsilon$ is the strain and is calculated by $\epsilon = \delta/b$, $\delta$ is the extension of an in plane bond and $\phi$ is the misalignment of the bond across the slip plane. $\phi$ and $\delta$ are shown in \autoref{fig:detail_of_peierls}. The energies are then summed over interaction between atomic rows extending 1000 atomic spacings either side of the dislocation core.
+
+
+This arises from the requirement that Hooke's law be obeyed at small displacements and that the energy be periodic over a distance $b$. A schematic of the displacement and dimensions is shown in \autoref{fig:schematic_misalignment}.
+The strain is approximately given by 
+\begin{equation}
+\gamma_{\text{xy}} = \frac{\phi}{d}
+\end{equation}
+and so the stored elastic energy is 
+\begin{align}
+U_{\text{elastic}} = \frac{1}{2} G \gamma_{\text{xy}}^2 V \nonumber\\
+U_{\text{elastic}} = \frac{G}{2} \frac{\phi^2}{d^2} b d l \label{eqn:strain_energy}
+\end{align}
+where $l$ is the length of the unit cell or element into the plane of the diagram in \autoref{fig:schematic_misalignment}
+
+For small values of $\phi$ we can use the Taylor expansion of the cosine,
+\begin{equation}
+\cos(x) = 1 - \frac{x^2}{2} + \frac{x^4}{24} - \dots
+\end{equation}
+and rewrite \autoref{eqn:frenkel_approx} for a single unit cell as
+\begin{equation}
+U^{\text{x}} = \frac{Gb^3}{4\pi^2 d} \frac{2 \pi^2 \phi^2}{b^2}
+\end{equation}
+which simplifies to 
+\begin{equation}
+U^{\text{x}} = \frac{G}{2} \frac{\phi^2}{d^2} b d
+\end{equation}
+which is a line energy in units of \si{\joule\per\meter} so as an absolute energy is
+\begin{equation}
+U^{\text{x}} = \frac{G}{2} \frac{\phi^2}{d^2} b d l
+\end{equation}
+which is the same as \autoref{eqn:strain_energy}.
+
+
+
+
+
+
+
+
+
+\begin{figure}
+\centering
+\includegraphics[]{Misalignment_of_an_element}
+\captionsetup{width=0.5\textwidth}
+\caption[Schematic of a misaligned unit cell]{Schematic of the misalignment of a unit cell as might be expected at the slip plane. The quantities $b$ and $d$ are the equilibrium lengths in the unstrained state, $\phi$ is the lateral displacement. \label{fig:schematic_misalignment}}
+\end{figure}
+
+The in-plane strain energy was taken to be 
+\begin{equation}
+U^{\text{i}} = \frac{E}{2(1-\nu^2)} (b\cdot d) \sum_n \epsilon_n^2
+\end{equation}
+
+where $E$ is the Young's modulus, $\nu$ is the Poisson ratio, $b$ is the Burgers vector, $d$ is the slip plane spacing, $\epsilon$ is the strain and is calculated by $\epsilon = \delta/b$, $\delta$ is the extension of an in plane bond, as shown in \autoref{fig:detail_of_peierls}. The energies are then summed over interaction between atomic rows extending 1000 atomic spacings either side of the dislocation core.
 
 The width no longer has an analytical solution so must be found numerically. The variation of the energy was shown to be smooth and have only one minimum because the misalignment energy is monotonically increasing with increasing width and the elastic in plane strain energy is monotonically decreasing.
 
