@@ -46,9 +46,9 @@ The density functional theory used the same initial set-up as discussed in \auto
 
 To displace the atoms SIESTA's Z-matrix was used \cite{SIESTA_manual}. This allows the coordinates of the atoms to be constrained separately in each direction; the displacement parallel to the slip direction, $a/3$<1\,1\,\={2}\,0> was imposed and the atomic positions were relaxed perpendicular to this displacement. This is important as unreasonably close atomic positions would occur without this relaxation. In analogy with the FCC metals it might be expected for there to be a stable stacking fault. The M--A layer can be seen as a single repeat of the HCP structure, with ABA stacking, which their stacking relative to the other M--A layer in the unit cell which is then stacked CBC, see \autoref{fig:MAX_unit_cells}. 
 
-In materials like aluminium dislocations are know to separate into partial dislocation pairs because the stacking fault energy is low enough that dissociating one full dislocation to two partials reduces the overall energy despite the introduction of a stacking fault \cite{kelly2012ch9}. Atoms are therefore displaced along two successive <2\,1\,1> type directions that sum to <1\,0\,1> overall. Even in the case of full dislocations this kind of displacement is likely in the core.
+In materials like aluminium dislocations are know to separate into partial dislocation pairs because the stacking fault energy is low enough that dissociating one full dislocation to two partials reduces the overall energy despite the introduction of a stacking fault \cite{kelly2012ch9}. Atoms are therefore displaced along two successive <2\,1\,1> type directions that sum to <1\,0\,1> overall. Even in the case of full dislocations in close-packed structures this kind of lateral displacement is likely in the core. 
 
-Therefore furthering the analogy with CCP and HCP metals a substantial lateral displacement of atoms is expected. The simplified Peierls model cannot account for this so it must be accounted for during the calculation of the $\gamma$-surface.
+Since the hexagonal structure of the MAX phases would have analogous stacking faults we can expect a metastable point in the middle of the $\gamma$-surface, corresponding to the stable stacking fault energy, with a substantial lateral displacement of atoms. The simplified Peierls model cannot account for this so it must be accounted for during the calculation of the $\gamma$-surface.
 
 Initially 40 positions were modelled at even intervals between one perfect position and the next displacing along the <1\,1\,\={2}\,0>. The energy changes, relative to the equilibrium position, were fitted to the function given in \autoref{eqn:gamma_surface} using the ``\texttt{scipy.curve\_fit}'' package provided by the SciPy project \cite{SciPy2001}.
 
@@ -63,29 +63,29 @@ The results of the DFT calculation of the $\gamma$-surfaces are presented in \au
 
 
 \begin{table}
-\footnotesize
+%\footnotesize
 \centering
-\begin{tabular}{|l|S|S|S|S|S|S|}
+\begin{tabular}{|l|c|c|c|c|c|c|}
 \hline
-   Phase\rule[3ex]{0pt}{0pt} &        \text{C1} &        \text{C2} &        \text{C3} &        \text{C4} &        \text{C5} &        \text{C6} \\
+   Phase\rule[3ex]{0pt}{0pt} &        C1 &        C2 &        C3 &        C4 &        C5 &        C6 \\
 \hline
-  \ce{Ti2AlC} \rule[3ex]{0pt}{0pt}   &  0.282992 &  0.156480 & -0.016174 &  0.001095 & -0.001666 &  0.002269 \\
-  \ce{Nb2AlC}                       &  0.448371 &  0.149654 & -0.032832 &  0.010283 &  0.001951 & -0.001647 \\
- \ce{Ti3SiC2}                       &  0.518409 &  0.165415 & -0.028071 &  0.007997 &  0.002995 & -0.002455 \\
-  \ce{Nb2GaC}                       &  0.308173 &  0.149612 & -0.029413 &  0.006746 &  0.002960 & -0.002059 \\
-  \ce{Nb2InC}                       &  0.224446 &  0.155834 & -0.023865 &  0.002967 &  0.002511 & -0.001017 \\
-   \ce{Nb2SC}                       &  0.556995 &  0.151700 &  0.012813 &  0.016965 &  0.002000 &  0.002431 \\
-  \ce{Nb2SnC}                       &  0.306205 &  0.112250 &  0.013072 &  0.003043 & -0.002861 & -0.000279 \\
-  \ce{Ti2GaC}                       &  0.203826 &  0.106754 & -0.015401 & -0.000080 &  0.001344 & -0.000344 \\
-  \ce{Ti2InC}                       &  0.212131 &  0.136290 & -0.019126 &  0.001000 &  0.001751 &  0.000058 \\
-   \ce{Ti2SC}                       &  0.480254 &  0.326211 & -0.041373 &  0.025800 &  0.001488 & -0.000562 \\
-  \ce{Ti2SnC}                       &  0.295972 &  0.124439 & -0.017660 &  0.002200 &  0.000554 & -0.000501 \\
-  \ce{Zr2InC}                       &  0.091959 &  0.095488 &  0.010618 &  0.002890 & -0.001593 & -0.000152 \\
-   \ce{Zr2SC}                       &  0.255379 &  0.312817 & -0.021624 &  0.016800 &  0.001213 &  0.000362 \\
-  \ce{Zr2SnC}                       &  0.257600 &  0.135233 & -0.019346 &  0.002700 &  0.002464 & -0.001410 \\
- \ce{Ti3AlC2}                       &  0.283378 &  0.137157 & -0.009093 &  0.002380 & -0.000999 & -0.000026 \\
- \ce{Nb4AlC3}                       &  0.439674 &  0.140072 & -0.031167 &  0.012671 &  0.000282 & -0.001988 \\
- \ce{Ti4SiC3} \rule[-1ex]{0pt}{0pt} &  0.503656 &  0.159172 & -0.026991 &  0.007960 &  0.002571 & -0.001520 \\
+  \ce{Ti2AlC} \rule[3ex]{0pt}{0pt}  &  0.282992 &  0.156480 & -0.016174             &  \hphantom{-}0.001095 & -0.001666             &  \hphantom{-}0.002269 \\
+  \ce{Nb2AlC}                       &  0.448371 &  0.149654 & -0.032832             &  \hphantom{-}0.010283 &  \hphantom{-}0.001951 & -0.001647 \\
+ \ce{Ti3SiC2}                       &  0.518409 &  0.165415 & -0.028071             &  \hphantom{-}0.007997 &  \hphantom{-}0.002995 & -0.002455 \\
+  \ce{Nb2GaC}                       &  0.308173 &  0.149612 & -0.029413             &  \hphantom{-}0.006746 &  \hphantom{-}0.002960 & -0.002059 \\
+  \ce{Nb2InC}                       &  0.224446 &  0.155834 & -0.023865             &  \hphantom{-}0.002967 &  \hphantom{-}0.002511 & -0.001017 \\
+   \ce{Nb2SC}                       &  0.556995 &  0.151700 &  \hphantom{-}0.012813 &  \hphantom{-}0.016965 &  \hphantom{-}0.002000 &  \hphantom{-}0.002431 \\
+  \ce{Nb2SnC}                       &  0.306205 &  0.112250 &  \hphantom{-}0.013072 &  \hphantom{-}0.003043 & -0.002861             & -0.000279 \\
+  \ce{Ti2GaC}                       &  0.203826 &  0.106754 & -0.015401             & -0.000080             &  \hphantom{-}0.001344 & -0.000344 \\
+  \ce{Ti2InC}                       &  0.212131 &  0.136290 & -0.019126             &  \hphantom{-}0.001000 &  \hphantom{-}0.001751 &  \hphantom{-}0.000058 \\
+   \ce{Ti2SC}                       &  0.480254 &  0.326211 & -0.041373             &  \hphantom{-}0.025800 &  \hphantom{-}0.001488 & -0.000562 \\
+  \ce{Ti2SnC}                       &  0.295972 &  0.124439 & -0.017660             &  \hphantom{-}0.002200 &  \hphantom{-}0.000554 & -0.000501 \\
+  \ce{Zr2InC}                       &  0.091959 &  0.095488 &  \hphantom{-}0.010618 &  \hphantom{-}0.002890 & -0.001593             & -0.000152 \\
+   \ce{Zr2SC}                       &  0.255379 &  0.312817 & -0.021624             &  \hphantom{-}0.016800 &  \hphantom{-}0.001213 &  \hphantom{-}0.000362 \\
+  \ce{Zr2SnC}                       &  0.257600 &  0.135233 & -0.019346             &  \hphantom{-}0.002700 &  \hphantom{-}0.002464 & -0.001410 \\
+ \ce{Ti3AlC2}                       &  0.283378 &  0.137157 & -0.009093             &  \hphantom{-}0.002380 & -0.000999             & -0.000026 \\
+ \ce{Nb4AlC3}                       &  0.439674 &  0.140072 & -0.031167             &  \hphantom{-}0.012671 &  \hphantom{-}0.000282 & -0.001988 \\
+ \ce{Ti4SiC3} \rule[-1ex]{0pt}{0pt} &  0.503656 &  0.159172 & -0.026991             &  \hphantom{-}0.007960 &  \hphantom{-}0.002571 & -0.001520 \\
 \hline
 \end{tabular}
 \captionsetup{width=1.2\textwidth}
@@ -96,7 +96,7 @@ The results of the DFT calculation of the $\gamma$-surfaces are presented in \au
 All the $\gamma$-surfaces showed a minimum at $\phi / b = 1/2$, the deepest minima were those in \ce{Ti2SC} and \ce{Zr2SC}. Interestingly the phase \ce{Nb2SC} does not show a similar pronounced local minimum. The MAX phases closest to showing no local minimum in the stacking fault energy at the anti-phase position is \ce{Nb2SnC} though even that phases has a small minimum. The existence of the minimum in all the phases shows the importance of the relaxation of the atomic positions perpendicular to the misalignment displacement.
 
 
-\begin{figure}
+\begin{figure}{!htb}
 \centering
 \begin{subfigure}{5cm}
 \centering
@@ -140,17 +140,11 @@ The qualitative nature of the stacking faults were investigated with the VESTA v
 
 
 
-The two slabs either side of the stacking fault showed clear lateral displacements. This is shown in \autoref{fig:lateral_motion_stacking_fault} as layers that start initially  offset by 1/3[\={1}\,1\,-2\,0] are aligned when the two slabs are displaced by $b/2$. The combination of the lateral motion with the displacement parallel to the slip direction, [1\,0\,-1\,0], means that the atoms follow a trajectory along the burgers vectors of two partials, 
+The two slabs either side of the stacking fault showed clear and substantial lateral displacements. This is shown in \autoref{fig:lateral_motion_stacking_fault} as layers that start initially offset by 1/3[\={1}\,1\,-2\,0] are aligned when the two slabs are displaced by $b/2$, i.e. half the repeat distance. This lateral motion and alteration of the stacking sequence represents the stable stacking fault as expected by analogy with hexagonal close-packed structures. The combination of the lateral motion with the displacement parallel to the slip direction, [1\,0\,-1\,0], means that the atoms follow a trajectory along the burgers vectors of two partials, 
  firstly [1\,\={1}\,0\,0], as shown in \autoref{fig:lateral_motion_stacking_fault}, then [1\,0\,\={1}\,0], or vice versa for the other side of the stacking fault. This is exactly as would be expected from the similarity of the M--A layer to the hexagonal close-packed crystal structure. 
 
 
-
-
-\FloatBarrier
 \subsection{Peierls stress}
-\FloatBarrier
-
-
 
 The Peierls stress are shown against the lattice geometry, as defined by $d/b$, in \autoref{fig:peierls_stress_vs_d_upon_b}. There is a huge range in the predicted Peierls stress, $\tau_p / G$ varies from \numrange{4.07d-3}{1.29d-5} for \ce{Ti2SC} and \ce{Zr2InC} respectively. In absolute terms this is a range of $\sim$\SIrange{1}{690}{\mega\pascal} for the same phases. All the calculated Peierls stresses are lower than would be expected from the lattice geometries, i.e. $d/b$, of the MAX phases.
 
@@ -218,7 +212,7 @@ The $\gamma$-surfaces were used, along with the elastic results presented in \au
 The structure of the dislocations was examined and it was found that the increasing electronegativity difference, which drives the variation in the $d/b$ ratio, the heterogeneity of the local elastic moduli and the nature of the $\gamma$-surfaces, is associated with the changes in the dislocation width. Increasing the local heterogeneity results in strengthening of the bonding in the electronegative M--X region and a weakening in the electropositive M--A region, which in turn raises the strain energy term driving wider dislocations and weakens the misalignment energy term driving narrower dislocations. This coupled effect stabilises wider dislocations which glide more easily.
 
 
-That the low flow stresses in the MAX phases can be explained by the local heterogeneity in the unit cell suggests that controlled chemical heterogeneity in crystal is a potential route to tailoring the Peierls stress and increasing the toughness of non-metallic materials.
+That the low flow stresses in the MAX phases can be explained by the local heterogeneity in the unit cell suggests that controlled chemical heterogeneity in crystal is a potential route to tailoring the Peierls stress. Since the toughness in many non-metallic materials is limited by the force required to move dislocations this is also a route to increasing the toughness of non-metallic materials.
 
 
 
