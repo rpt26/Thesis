@@ -198,7 +198,7 @@ The solution is \cite{hirth_lothe1982peierls_displacements,Eshelby1949}
 u^x(x) = -\frac{b}{2\pi} \arctan \left( \frac{x}{w} \right)
 \label{eqn:one_dimensional_displacements}
 \end{equation}
-where $w$ is the half width of the dislocation and has the value
+where $w$ is the half width of the dislocation and, for an isotropic elastic solid, has the value
 \begin{equation}
 w = \frac{d}{2(1-\nu)}.\label{eqn:half_width}
 \end{equation}
@@ -210,6 +210,7 @@ A more generalised two dimensional case following a similar logic gives a full d
 u^x(x,y) &= \frac{b}{2\pi} \left( \arctan \left[ \frac{y +  w\frac{|y|}{y}}{x} \right] - \frac{\pi}{2} \frac{|y|}{y} \frac{|x|}{x} \right) + c_1 \frac{xy}{x^{2} + (y + w\frac{|y|}{y} )^2} \\
 v^y(x,y) &= c_2 \frac{y(y +  w \frac{|y|}{y})}{x^2 + (y +  w \frac{|y|}{y})^2} + c_3 \ln \left| \frac{x^2 + (y +  w \frac{|y|}{y})^2}{b^2} \right|
 \end{align}
+\label{eqn:displacement_field}
 \end{subequations}
 So that the final atomic configuration is defined by 
 \begin{equation}
@@ -225,6 +226,7 @@ c_1 &= \frac{b}{4\pi{}(1-\nu)} \\
 c_2 &= \frac{b}{4\pi{}(1-\nu)} \\
 c_3 &= - \frac{b(1-2\nu)}{8\pi(1-\nu)}.
 \end{align}
+\label{eqn:expressions_for_the_ideal_disloca_parameters}
 \end{subequations}
 The terms of the form $|x|/x$ and $|y|/y$ are simply to give all the terms the right sense in the right regions of space, i.e. above and below the slip plane in $y$ and either side of the dislocation in $x$. This reduces to the simpler solution in \autoref{eqn:one_dimensional_displacements} if only the atoms adjacent to the slip plane are considered. This form is useful because it is continuous and finite for all values of $x$ and $y$. 
 

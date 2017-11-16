@@ -190,10 +190,15 @@ The parameters used for the Lennard-Jones potential are shown in \autoref{tab:LJ
 
 A na\"{\i}ve brute force implementation is given in Section~\ref{sec:ionic_energy_code} and an example input file is given for LAMMPS in Section~\ref{sec:lammps_input}. The LAMMPS pair style used was ``\texttt{lj/long/coul/long}'', the parameters for which are given in the example input file and is described in the LAMMPS documentation in \cite{LAMMPS_web}.
 
+\subsection{Optimisation of the dislocation structure}
+\label{sec:optimisers}
+Given one of the above cases, or a similar one, that provides energy as a function of a small number of parameters, an optimisation routine is required. The original version of this Peierls model included a simple binary search algorithm to find the width of the dislocation. However for a multi-parameter space this is not appropriate.
 
+Fortunately the open source project SciPy has a number of optimisers built in. The one chosen was the quasi-Newton method of Broyden, Fletcher, Goldfarb, and Shanno \citep{SciPy2001,nocedal2006}, or BFGS. This method uses the first derivative, methods such as this are known as hill-climbing optimisers, seeking a stationary point.
 
+While the derivative of the energy with respect to the parameters is not simple to find, the atomic positions are defined as smooth functions of the input parameters and the energy is (at least likely to be) a smooth function of the atomic positions. Hence the overall behaviour of the energy as a function of the input parameters should be well suited to a gradient based method. The SciPy implementation of the BFGS algorithm includes the ability to approximate the first derivative numerically.
 
-
+If it is found that the energy function is not well behaved SciPy also includes the Nelder-Mead simplex algorithm that does not make use of gradient information. This method calculates the objective function, here the energy, at $n+1$ points in parameter space where $n$ is the number of parameters. This defines a ``simplex'', i.e. a triangle in two dimensions, a tetrahedron in three and so on. A search direction is defined along the vector joining the worst of these $n+1$ points and the centroid of the rest, and a small number of point along this line are trialled. The worst point of the initial simplex is then replaced and the process repeated \citep{Nelder1965,Gao2012}.
 
 
 
