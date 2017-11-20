@@ -286,45 +286,19 @@ which fits the results well. This is seen in the current work because the displa
 
 
 
-The Peierls stress was calculated for a number of phases  and compared with experiment and previous models and are shown in \autoref{fig:tp_vs_d_b}. As can be seen the qualitative trends are preserved. However the values predicted systematically differ from experiment, at low values of $d/b$ the current model underestimates the Peierls stress and at high values of $d/b$ the model overestimates the Peierls stress.
+The Peierls stress was calculated for a number of phases  and compared with experiment and previous models and are shown in \autoref{fig:tp_vs_d_b}. As can be seen the qualitative trends are preserved, with the same trend in Peierls stress with lattice geometry observed. However the values predicted systematically differ from experiment, at low values of $d/b$ the current model underestimates the Peierls stress and at high values of $d/b$ the model overestimates the Peierls stress. This limits the use of the model as a quantitative predictive tool, but should allow qualitative comparisons to be undertaken.
 
-The effect of changes in the single crystal elastic tensor were assessed for the \ce{Fe3C} structure, cementite. Work by Miles Stopher and David Bombac on the effects of hydrogen embrittlement in steels have assessed the effects of hydrogen on the elastic tensor \cite{Stopher2017}. That work found that the elastic properties of cementite were altered significantly
-These results, for four compositions, are shown in \autoref{fig:tp_cementite}. There
+The effect of changes in the single crystal elastic tensor were assessed for the \ce{Fe3C} structure, cementite. Work by Miles Stopher and David Bombac on the effects of hydrogen embrittlement in steels have assessed the effects of hydrogen on the elastic tensor \cite{Stopher2017}. It is expected from experiment \cite{Stopher2017} that a softening of the cementite phase occurs, allowing dislocation mediated dissolution. The elastic tensors for the four compositions, \SI{0}{at\percent}, \SI{5}{at\percent}, \SI{7}{at\percent}, \SI{10}{at\percent} hydrogen, that were investigated are given in \autoref{sec:elastic_tensors}.
 
+
+
+The Peierls analysis results are shown in \autoref{fig:tp_cementite}. There is little to no change in the Peierls stress at hydrogen loadings of below \SI{7}{\percent}, is a clear and large drop in the Peierls stress for cementite between \SI{7}{\percent} and \SI{10}{\percent}. While, as seen earlier, the quantitative results of the model may not be directly comparable with experiment, the relative changes in behaviour are reliable. This is supportive of the idea that cementite is softened by the addition of hydrogen.
 \begin{figure}
-\captionsetup{}
+\captionsetup{width=0.6\textwidth}
 \centering
 \includegraphics[width=0.5\textwidth]{Peierls_Stress_Cementite}
 \caption{The effect of hydrogen loading on the predicted Peierls stress of cementite on the [100](010) slip system.\label{fig:tp_cementite}}
 \end{figure}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 \FloatBarrier
@@ -409,9 +383,19 @@ The variation of the dislocation width with $\alpha$ is shown in \autoref{fig:LA
 It therefore seems unlikely that simulation size or the termination of the dislocation at the free surface were major problems, instead some other factor is at fault. It is possible that core reconstruction occurs in NaCl such that the displacement field, \autoref{eqn:displacement_field}, is no longer appropriate. Other energetic considerations which have been neglected could be important, in particular the polarisability of atoms has not been modelled. There are net dipoles around the <110>\{1\={1}0\} dislocation in NaCl but not around <110>\{001\} dislocations, which could explain the discrepancy. Since the Peierls model only deals in relatively small changes of a large number small factors such as this can be important.
 
 
+\section{Conclusions}
 
+A parametrised form of the displacement field around an edge dislocation has been reached by adapting the solution for an isotropic elastic medium. This allows the construction of atomic configurations in three dimensions rather than one. This formulation also reduces the parameter space that must be searched for the optimal dislocation structure to a tractable size.
 
+A series of python modules have been written to allow the modelling of dislocations in a variety of materials using a variational approach to minimise the energy of the atomic configuration for every dislocation position. The Peierls stress is calculated from the maximum gradient of the dislocation energy. The modular nature allows functionality to be added or altered easily. 
 
+The first module builds the dislocation by constructing an array representation of atomic coordinates around the dislocation core via the adapted displacement field. This is deliberately left extensible to allow, for example, the addition of a screw dislocation or core reconstruction.
+
+Two further modules have been written to calculate the energy of a dislocation as represented by an array of atomic coordinates. One builds on the existing Peierls models that use linear elasticity for strain energies away from the slip plane and a misalignment potential for the slip plane, either approximated as a sinusoid that obeys Hooke's law at low strains, or fitted empirically to \emph{ab initio} calulations of the $\gamma$-surface. This module extends the Peierls analysis to use the full stiffness tensor rather than simple elastic constants. The other uses the electrostatic interaction and the Lennard-Jones potential to calculate the energy of a dislocation in an ionic solid.
+
+The elastic Peierls model is in agreement with the trends in material behaviour observed in experiment and predicted by previous models. However the effect of lattice geometry is not as strong in this model as in experiment, thus only qualitative conclusions can be drawn. The model does predict a softening of the cementite structure when hydrogen is added, as predicted by experiment.
+
+The ionic Peierls model successfully predicts the behaviour of the <110>\{001\} slip system in \ce{NaCl} as observed by experiment. The electrostatic and short-range repulsion energy components vary out of phase with each other, in a parallel to the strain energy and misalignment energy in traditional Peierls models. The behaviour of the <110>\{1\={1}0\} slip system is not successfully predicted. It was shown that this was not due to the size of the simulation or the termination of the dislocation line at a free surface by the use of LAMMPS as an energy calculator, allowing much larger simulations and the use of periodic boundary conditions. Other explanations are the lack of polarisability in the atom potentials used or the possibility of dislocation core reconstruction, which was not treated by the model.
 
 
 
