@@ -1,27 +1,35 @@
 % ************************** Thesis Abstract *****************************
 % Use `abstract' as an option in the document class to print only the titlepage and the abstract.
+\afterpage{%
+\newgeometry{top=0.5cm,left=2cm,bottom=1cm}
+% material for this page
 
 \begin{abstract}
 \singlespacing
-Many materials with complex crystal structures have attractive properties, including high specific strength, good creep resistance, inherent oxidation through high silicon or aluminium content. This makes them of interest for high temperature structural applications, except the use of many such phases is limited by low toughness. Even outside structural applications brittle failure is a primary cause of failure in coatings and device materials and therefore improved toughness is desirable. In complex crystals plasticity, and hence toughness, is limited by the energy changes that occur as linear defects, called dislocations, move. This is known as the lattice resistance.
-% * <burchell.laurie@gmail.com> 2017-11-20T17:11:48.428Z:
-%
-% ^.
+Many materials with complex crystal structures have attractive properties, including high specific strength, good creep resistance, oxidation resistance, often through high silicon or aluminium content. This makes them of interest for high temperature structural applications, but the use of many such phases is limited by low toughness. Even outside structural applications brittle failure is a primary cause of failure in coatings and device materials and therefore improved toughness is desirable. In complex crystals plasticity, and hence toughness, is limited by the energy increases that occur as linear defects, \emph{dislocations}, move. This is known as the \emph{lattice resistance}.
 
 
-By understanding the factors controlling the lattice resistance in complex crystal structures it can be hoped that a general method for tailoring the flow stress of a material might be found. Present ductile-brittle criteria are based on simple ratios of polycrystalline elastic constants and are clearly too limited to accurately capture flow behaviour. There are complex materials which exhibit low flow stresses, although on a limited number of slip systems: MAX phases, \ce{Mo2BC}, \ce{Nb2Co7} and \ce{Ta4C_{3-x}} are examples of this.
+
+By understanding the factors controlling the lattice resistance in complex crystal structures it is be hoped that a general method for tailoring the flow stress of a material might be found. Present ductile-brittle criteria are based on simple ratios of polycrystalline elastic constants and are  too limited to accurately capture flow behaviour. There are complex materials which, despite such criteria predicting brittle behaviour, exhibit low flow stresses, although on a limited number of slip systems: MAX phases, \ce{Mo2BC}, \ce{Nb2Co7} and \ce{Ta4C_{3-x}} are examples of this.
 
 
 Where plastic flow is limited by the lattice resistance we must consider the effect of crystal structure on dislocation motion more directly. Aspects which are lost by considering bulk polycrystalline properties are elastic heterogeneity, elastic anisotropy and contributions to the energy changes by other interactions, such as electrostatic interactions. In this work examples of each of these are presented and modelled using an adapted versions of the Peierls model.
 
-A Peierls model generalised to use the entire stiffness tensor  has been built to elucidate the effect of varying anisotropy on the flow stress of materials that would not be picked up by the use of polycrystalline elastic constants. Calculations show that hydrogen loading of cementite gives rise to a dramatically reduced reduced flow stress, consistent with experiments and associated with hydrogen embrittlement of steel.
+A Peierls model generalised to use the entire stiffness tensor  has been implemented in Python; this allows the investigation of the effect of varying anisotropy on the flow stress of materials that would not be picked up by the use of polycrystalline elastic constants. Calculations using the changing elastic tensor during hydrogen loading of cementite suggest that hydrogen loading causes a dramatic reduction in the flow flow stress, consistent with experiments and associated with hydrogen embrittlement of steel.
 
 
-Materials for which linear elasticity is not appropriate are explored with the example of ionic materials. This is done with a Peierls dislocation configuration and molecular statics energy calculation. The hard slip system in ionic materials is found to be well described with a simple Lennard-Jones potential but is not sufficient to explain the softer slip system.
+Materials for which empirical potentials are more elucidating than linear elasticity are explored with the example of ionic materials. This is done with a Peierls dislocation configuration and a molecular statics energy calculation. A simple model built electrostatic and Lennard-Jones interactions was used for the rocksalt structure, this model was found to describe the hard slip system well, but was insufficient to describe the softer slip system.
 
 
-Local heterogeneity in elastic properties is explored in the MAX phases where local variation in chemical environment, characterised by electronegativity, produces pronounced variation in the local stiffness within the unit cell. These local variations have been modelled with density functional theory and have been shown to be consistent with the macroscopic elastic properties while explaining the apparent scatter in the elastic properties. These non-uniform strains are shown to have a dramatic effect on the flow stress and seem to present a route to a general method for controlling flow stress.
+Local heterogeneity in elastic properties is explored in the MAX phases where local variation in chemical environment, characterised by electronegativity, produces pronounced variation in the local stiffness within the unit cell. These local variations have been modelled with density functional theory and have been shown to be consistent with the macroscopic elastic properties while also explaining the apparent scatter in the elastic properties.  These non-uniform strains are shown to have a dramatic effect on the flow stress of the MAX phases.
+
+The face-centred cubic \ce{Ti2Ni} structure has been used to experimentally demonstrate this effect of heterogeneity softening. The slip system was characterised by micropillar compression and found to be on the \{1\,1\,1\} planes and the slip direction was found to likely be the partial <2\,\={1}\,\={1}>. The hardness of a range of alloys with the \ce{Ti2Ni} structure was characterised by nanoindentation of the \{1\,1\,1\} faces of single crystals. The hardness was found to decrease as the chemical, and thus elastic, heterogeneity of the unit cell increased as expected. 
+
+This effect of heterogeneity softening presents a potential route to tailoring the flow stress of crystals.
 
 \end{abstract}
 
+\restoregeometry
+\clearpage
+}
 

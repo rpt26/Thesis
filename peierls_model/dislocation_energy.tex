@@ -1,18 +1,20 @@
 
 
-Since there are insufficient boundary conditions to completely define a dislocation configuration with even four parameters the energy of the dislocation is the only way to identify a``correct'' or true configuration. Hence we must characterise the energy of arbitrary configurations. One obvious method to calculate the energy is to try and replicate the model based on elastic energy in the two half crystals and misalignment energy across the slip plane, there is the opportunity to calculate the full strain tensor and along with single crystal elastic constants the effects of elastic anisotropy can be taken into account. Another would be to use empirical potentials similar to those used in molecular dynamics; this would allow the exploration of dislocation properties in materials that are not well modelled by elasticity, ionic solids or compound semiconductors are examples of materials where elasticity is probably less appropriate. Both of these approaches are explored.
+Since there are insufficient boundary conditions to completely define a dislocation's atomic configuration with even four parameters, the energy of the dislocation is the only way to identify a correct or true configuration. Hence we must characterise the energy of atomic configurations. One method to calculate the energy is to try and replicate the model based on elastic energy in the two half crystals and misalignment energy across the slip plane. There is also the opportunity to calculate the full strain tensor and along with single crystal elastic constants the effects of elastic anisotropy can be taken into account. 
 
-\subsection{Strain energy and misalignment energy}
+Another would be to use empirical potentials similar to those used in molecular dynamics; this would allow the exploration of dislocation properties in materials that are not well modelled by elasticity or where more can be learned by other methods. Ionic solids or compound semiconductors are examples of materials where more physical insight is possible with interatomic potentials that relate more closely to the nature of the crystal chemistry than elastic constants. 
 
-This approach builds on the original approach of \citet{Peierls1940} and then \citet{Nabarro1947} and explains how the dislocation is stable due to a balancing of two forces, there is a force that attempts to spread the dislocation out into a planar defect, this arises due to the elastic stored energy in the bonds either side of the slip plane which would be zero in the case of a planar defect, which can be described by an infinitely wide dislocation. The other force tends to narrow the dislocation, this arises due to the misfit or misalignment across the slip plane. This would be a maximum for the planar defect where the entire slip plane is misaligned and would decrease monotonically as the width decreases.
 
-Using this approach to the energy has a number of advantages. A two dimensional model is sufficient since for a long dislocation the condition of plane strain can be applied. If elastic theory can be applied at the scale of the unit cell then displacements need only be considered between unit cells rather than within them, which simplifies the model considerably.
+
+The first approach builds on the original approach of \citet{Peierls1940} and \citet{Nabarro1947} and explains how the dislocation is stable due to a balancing of two forces. There is a force that attempts to spread the dislocation out into a planar defect, this arises due to the elastic stored energy in the bonds either side of the slip plane which would be zero in the case of a planar defect, which can be described by an infinitely wide dislocation. The other force tends to decrease the dislocation width, this arises due to the misfit or misalignment across the slip plane. This would be a maximum for the planar defect where the entire slip plane is misaligned and would decrease monotonically as the width decreases.
+
+Using an elastic model to find the energy has a number of advantages. A two dimensional model is sufficient since for a long dislocation the condition of plane strain and hence symmetry along the dislocation line can be applied. If elastic theory can be applied at the scale of the unit cell then displacements need only be considered between unit cells rather than within them, which simplifies the model considerably.
 
 \subsection{Strain energy}
 
 Firstly the elastic energy can be easily calculated for a small volume if the strain and the elastic tensor is known. A good discussion of tensors and elasticity is given by \citet{kelly_knowles2012chapter5_tensors,kelly_knowles2012chapter6_stress_strain} and a discussion of elasticity in the context of dislocation theory is given by \citet{hirth_lothe1982elasticity}. The salient results are drawn together here.
 
-Hookes law can be written as a tensor relationship using the einstein summation convention:
+Hooke's Law can be written as a tensor relationship using the Einstein summation convention:
 \begin{equation}
 \sigma_{ij} = c_{ijkl} \epsilon_{kl}
 \end{equation}
@@ -54,7 +56,7 @@ If Hooke's law holds then the stored elastic energy per unit volume is
 u_{\text{elastic}} =\, ^{1}\!/_{2}\, \sigma_{ij} \epsilon_{ij} =\, ^{1}\!/_{2}\, c_{ijkl} \epsilon_{ij} \epsilon_{kl}.
 \end{equation}
 Hence to find the elastic energy we must evaluate \({\partial u_i}/{\partial x_j}\) for $i, j = 1, 2, 3$.
-Assuming that we consider displacements between unit cells, and not within them, and assuming an orthogonal lattice estimating the components of strain is not difficult. The  condition of plane strain constrains $\epsilon_{ij} = 0$ for $i\, \text{or}\, j=3$. In the $1$--$2$ (or $x$--$y$) plane the strains can be identified from the vectors between neighbouring unit cells. For simplicity a primitive lattice is assumed and these vectors can be conceived of as bonds.
+Assuming a primitive orthogonal lattice, estimating the components of strain is not difficult. The  condition of plane strain constrains $\epsilon_{ij} = 0$ for $i\, \text{or}\, j=3$. In the $1$--$2$ (or $x$--$y$) plane the strains can be identified from the vectors between neighbouring unit cells. For simplicity a primitive lattice is assumed and these vectors can be conceived of as bonds.
 
 For this simple case for each atom two bonds are identified, one to the nearest neighbour in the $x$~direction and one to the nearest neighbour in the $y$~direction as shown in \autoref{fig:bonds}. The simplest estimate of the stress components is
 \begin{alignat}{2}\label{eqn:estimate_strains}
@@ -75,9 +77,12 @@ For this simple case for each atom two bonds are identified, one to the nearest 
 
 
 
-However there is a problem with this formulation. This assumes that every bond would, in equilibrium, be parallel to either the $x$ or the $y$ axis. This assumption is valid for the original Peierls model in which only displacements parallel to the $x$ direction were considered but the logarithmic term here represents a change in lattice orientation with position. A more nuanced approach requires some estimate of the local lattice orientation, if this is not done then the logarithmic term in \autoref{eqn:displacements} will mean that the strain in each bond will diverge, increasing with increasing distance from the dislocation core, whereas in reality the strains must be largest at the core.
+However there is a problem with this formulation. This assumes that every bond would, in equilibrium, be parallel to either the $x$ or the $y$ axis. This assumption is valid for the original Peierls model in which only displacements parallel to the $x$ direction were considered but the logarithmic term here represents a change in lattice orientation with position. 
 
-There are clearly many possible ways of estimating the local lattice resistance, one possible method is to take the ideal orientation of the bond parallel to the slip plane for a particular bond to be paralell to the bonds on either side, i.e. as shown in \autoref{fig:bonds} the ideal orientation of $\mathbf{p}_i$ would be  parallel to $(\mathbf{p}_h + \mathbf{p}_j)$. The ideal orientation for $\mathbf{q}_i$ can be taken to be at \SI{90}{\degree} to this. So $\mathbf{\hat{i}}$ and $\mathbf{\hat{j}}$ in \autoref{eqn:estimate_strains} can be replaced with 
+Addressing this requires some estimate of the local lattice orientation. The logarithmic term in \autoref{eqn:displacements}, representing the bending of the lattice, means that far from the dislocation core the lattice can at a large angle to the slip direction at the core. If the same reference axes are used everywhere this results in an ever increasing strain, and therefore ever increasing strain energy away from the core. Using a local lattice orientation as the reference frame to calculate the strain means that strains will be largest near the core as expected.
+
+
+There are clearly many possible ways of estimating the local lattice orientation, one possible method is to take the ideal orientation of the bond parallel to the slip plane for a particular bond to be parallel to the bonds on either side, i.e. as shown in \autoref{fig:bonds} the ideal orientation of $\mathbf{p}_i$ would be  parallel to $(\mathbf{p}_h + \mathbf{p}_j)$. The ideal orientation for $\mathbf{q}_i$ can be taken to be at \SI{90}{\degree} to this. So $\mathbf{\hat{i}}$ and $\mathbf{\hat{j}}$ in \autoref{eqn:estimate_strains} can be replaced with 
 \begin{align}
 \mathbf{\hat{i}}' &= \frac{(\mathbf{p}_h + \mathbf{p}_j)}{|\mathbf{p}_h + \mathbf{p}_j|} \nonumber \\
 \mathbf{\hat{j}}' &= {\mathbf{\hat{i}}' \times \mathbf{\hat{k}}}
@@ -90,10 +95,9 @@ and the strain tensor can be calculated for each atom/unit cell, and hence the s
 \subsection{Misalignment energy}
 \FloatBarrier
 
-At the slip plane there is clearly going to be a break down of method highlighted above. For an atom immediately below the slip plane the identification of the nearest neighbour above the slip plane is perhaps not obvious. If the bond is taken to be simply  to the nearest atom above the slip plane ambiguities can arise 
-It is possible that there will be two atoms equally close above the slip plane and such a simple criterion can lead to some atoms being bonded more than once and some atoms not being bonded. 
+At the slip plane the method above will break down. For an atom immediately below the slip plane the identification of the nearest neighbour above the slip plane is ambiguous. If the bond is taken to be simply to the nearest atom, it is possible that there will be two atoms equally close above the slip plane and such a simple criterion can lead to some atoms being bonded twice and other atoms only bonded once or not at all, for example in \autoref{fig:slip_plane} the atom $m$ is closer to both atom $i$ and atom $j$ than their other neighbours, where as atom $n$ might be unbonded. There will also be discontinuities in the energy as the dislocation moves and the nearest neighbours change.
 
-Instead a less arbitrary and more predictable method is to use the initial positions and assume that the $i$th atom can be bonded to two atoms in the layer above the slip plane. Since initially the horizontal spacing between atoms is $b$ for all atoms the two atoms must be within an interval $x_i^0 - b < x \leq x_i^0 + b$, as shown in \autoref{fig:slip_plane}. The energy for atom $i$ can be estimated from the average of the two bonds $\mathbf{q}_{i,\text{b}}$ and $\mathbf{q}_{i,\text{f}}$
+A less arbitrary method is to use the initial positions and assume that the $i$th atom can be bonded to two atoms in the layer above the slip plane. Since initially the horizontal spacing between atoms is $b$ for all atoms the two atoms must be within an interval $x_i^0 - b < x \leq x_i^0 + b$, as shown in \autoref{fig:slip_plane}. The energy for atom $i$ can be estimated from the average energy of the two bonds $\mathbf{q}_{i,\text{b}}$ and $\mathbf{q}_{i,\text{f}}$
 
 \begin{figure}
 \centering
@@ -111,14 +115,13 @@ Instead a less arbitrary and more predictable method is to use the initial posit
 \end{figure}
 
 
-There are several methods to calculate the misaligned bonds. The simplest is to use the Frenkel approximation which, for an isotropic elastic material is 
+There are several methods to calculate the energy of the misaligned bonds. The simplest is to use the Frenkel approximation which, for an isotropic elastic material is 
 \begin{equation}
 U_i^\text{mis} = \frac{Gb^2}{4\pi^2} \left[\frac{d}{b}\right] \left[ 1 - \cos \left( \frac{2 \pi \phi}{d} \right) \right]
 \end{equation}
+which in terms of single crystal elastic constants takes $G=C_{66}$ (in Voigt notation see \cite{kelly_knowles2012chapter6_stress_strain}. The $66$ term is used if the elastic tensor is in the frame of reference of  the slip system, with the $1$ axis parallel to the slip direction, the $2$ axis parallel to the slip plane normal and the $3$ axis parallel to the line vector. $C_{66}$ is thus always the relevant stiffness constant regardless of the material symmetry.
 
-which in terms of single crystal elastic constants takes $G=C_{66}$ (in Voigt notation see \cite{kelly_knowles2012chapter6_stress_strain}).
-
-A more complete method for the calculation of the energy is to use the generalised stacking fault energy. Density functional theory can be used to calculate the energy of a stacking fault at an arbitrary misalignment. This is calculated by applying a displacement to two half crystals in a DFT simulation with periodic boundary conditions which introduces two opposing planar faults. The displacement is applied along the Burgers vector and the atoms are allowed to relax perpendicular to that displacement. Although the displacement field does not include any lateral (i.e. parallel to the lone vector) motion, allowing the DFT simulation of the stacking faults to relax laterally means that the energetic implications of lateral motion are included in the misalignment potential, although with an implicit assumption that the strains along the line vector do not extend beyond the slip plane. 
+A more complete method for the calculation of the energy is to use the generalised stacking fault energy. Density functional theory can be used to calculate the energy of a stacking fault at an arbitrary misalignment. This is calculated by applying a displacement to two half crystals in a DFT simulation with periodic boundary conditions which introduces two opposing planar faults. The displacement is applied along the Burgers vector and the atoms are allowed to relax perpendicular to that displacement. Although the displacement field does not include any lateral motion (i.e. parallel to the dislocation line), allowing the DFT simulation of the stacking faults to relax laterally means that the energetic implications of lateral motion are included in the misalignment potential, although with an implicit assumption that the strains along the line vector do not extend beyond the slip plane. 
 
 The energy changes with respect to a perfect crystal were considered and fitted with a simple empirical function:
 \begin{equation}
@@ -141,7 +144,9 @@ where $\phi$ is the misalignment in the same units as the Burgers vector $b$, $m
 
 \subsection{Empirical potentials}
 
-Some materials can be described in a more physically insightful way than linear elasticity; as described in \autoref{sec:empirical_potentials}, empirical potentials have been developed for the field of molecular dynamics to be computationally convenient while at the same time approximating reality to a sufficient degree to gain insight into a system \cite{martinez2013}. One way to incorporate such potentials into the Peierls model described here is to write a simple python implementation of the potentials using the SciPy and NumPy packages and associated tools \cite{Numpy2011,Ipython2007,Millman2007,SciPy2001}; another way is to use the Atomic Simulation Environment \cite{ASE2017} or the python interface to the LAMMPS software package \cite{Plimpton1995,LAMMPS_web}.
+Some materials can be described in a more physically insightful way than linear elasticity; as described in \autoref{sec:empirical_potentials}, empirical potentials have been developed for the field of molecular dynamics to be computationally convenient while at the same time approximating reality to a sufficient degree to gain insight into a system \cite{martinez2013}. Such potentials are usually fitted to measured properties such as lattice energies and elastic constants.
+
+One way to incorporate such potentials into the Peierls model described here is to write a simple Python implementation of the potentials using the SciPy and NumPy packages and associated tools \cite{Numpy2011,IPython2007,Millman2007,SciPy2001}; another way is to use the Atomic Simulation Environment \cite{ASE2017} or the Python interface to the LAMMPS software package \cite{Plimpton1995,LAMMPS_web}.
 
 
 
@@ -159,7 +164,7 @@ U_{ij}(r_{ij}) = \frac{1}{4\pi\epsilon_0} \frac{q_i q_j}{r_{ij}} + \frac{A_{ij}}
 \end{equation}
 where $\epsilon_0$ is the permittivity of free space.
 
-The Lennard-Jones has been chosen as a simple example to demonstrate the application of empirical potentials for which fitted parameters are readily available \cite{Mao2014} and applicable to a class of materials for which the dislocation properties are not well explained by linear elasticity, the alkali halides.
+The Lennard-Jones potential  has been chosen as a simple way to demonstrate the application of empirical potentials for which fitted parameters are readily available \cite{Mao2014} and applicable to a class of materials for which the dislocation properties are not well explained by linear elasticity, the alkali halides.
 
 
 
@@ -183,19 +188,21 @@ The Lennard-Jones has been chosen as a simple example to demonstrate the applica
 \end{table}
 
 
-The parameters used for the Lennard-Jones potential are shown in \autoref{tab:LJ_params}. They are calculated for each ion individually, to best reproduce lattice properties, and must be combined according to Lorentx-Berthelot rules:
+The parameters used for the Lennard-Jones potential are shown in \autoref{tab:LJ_params}. These were fitted to the lattice properties of the solid salts. They are calculated for each ion individually, to best reproduce lattice properties, and must be combined according to Lorentz-Berthelot rules:
 \begin{align}
 \epsilon_{ij} &= \sqrt[]{\epsilon_i \epsilon_j} \nonumber\\
 \sigma_{ij} &= \frac{\sigma_i + \sigma_j}{2}
 \end{align}
 
-A na\"{\i}ve brute force implementation is given in Section~\ref{sec:ionic_energy_code} and an example input file is given for LAMMPS in Section~\ref{sec:lammps_input}. The LAMMPS pair style used was ``\texttt{lj/long/coul/long}'', the parameters for which are given in the example input file and is described in the LAMMPS documentation in \cite{LAMMPS_web}.
+A simple implementation without modification for computational ease, such as cut off distances, is given in \cite{code} and an example input file is given for LAMMPS in section~\ref{sec:lammps_input}. LAMMPS  input files are described in the LAMMPS documentation \cite{LAMMPS_web}.
 
 \subsection{Optimisation of the dislocation structure}
 \label{sec:optimisers}
-Given one of the above cases, or a similar one, that provides energy as a function of a small number of parameters, an optimisation routine is required. The original version of this Peierls model included a simple binary search algorithm to find the width of the dislocation. However for a multi-parameter space this is not appropriate.
 
-Fortunately the open source project SciPy has a number of optimisers built in. The one chosen was the quasi-Newton method of Broyden, Fletcher, Goldfarb, and Shanno \citep{SciPy2001,nocedal2006}, or BFGS. This method uses the first derivative, methods such as this are known as hill-climbing optimisers, seeking a stationary point.
+
+Given one of the above cases, or a similar one, that provides energy as a function of a small number of parameters, an optimisation routine is required. The original version of this Peierls model \cite{Clegg2006} included a simple binary search to find the width of the dislocation. However for a multi-parameter space this is not applicable.
+
+Fortunately the open source project SciPy includes implementations of a number of optimisers. The one chosen here was the quasi-Newton method of Broyden, Fletcher, Goldfarb, and Shanno \citep{SciPy2001,nocedal2006}, or BFGS. This method uses the first derivative of the energy with respect to the different parameters, and is one of the class of algorithms known as hill-climbing optimisers, which seek a stationary point.
 
 While the derivative of the energy with respect to the parameters is not simple to find, the atomic positions are defined as smooth functions of the input parameters and the energy is (at least likely to be) a smooth function of the atomic positions. Hence the overall behaviour of the energy as a function of the input parameters should be well suited to a gradient based method. The SciPy implementation of the BFGS algorithm includes the ability to approximate the first derivative numerically.
 

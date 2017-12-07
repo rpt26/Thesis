@@ -1,4 +1,4 @@
-\usepackage[inner=3.5cm,outer=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[inner=3cm,outer=3cm,top=2.5cm,bottom=2.5cm]{geometry}
 
 \usepackage{booktabs}
 
@@ -12,7 +12,7 @@
 \usepackage{helvet}
 \usepackage{url}
 \usepackage[version=4]{mhchem}
-
+\usepackage{afterpage}
 
 % ********************Captions and Hyperreferencing / URL **********************
 
@@ -195,7 +195,7 @@
   keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
   keywordstyle=\color{blue},       % keyword style
   language=Octave,                 % the language of the code
-  morekeywords={dict,len, def, elif, from, import, as, try, except}, % if you want to add more keywords to the set
+  morekeywords={dict,len, def, elif, from, import, as, try, except, with}, % if you want to add more keywords to the set
   deletekeywords={system,grid, range},
   numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
   numbersep=5pt,                   % how far the line-numbers are from the code
@@ -210,7 +210,12 @@
 }
 
 
+\usepackage{datetime}
 
+\newdateformat{monthyeardate}{%
+  \monthname[\THEMONTH], \THEYEAR}
+
+\usepackage{flipbook}
 
 
 

@@ -2,7 +2,7 @@
 \documentclass[a4paper,12pt,twoside]{report}
 %customfont,draftclassic,print,index
 \title{PhD Thesis}
-
+\date{}
 % ********************************** Preamble **********************************
 % Preamble: Contains packages and user-defined commands and settings
 \input{Preamble/preamble}
@@ -11,7 +11,7 @@
 
 %\usepackage{showframe}
 
-\renewcommand*\rmdefault{lrm}
+\renewcommand*\rmdefault{lmr}
 
 
 
@@ -27,22 +27,62 @@
 \pagenumbering{roman}
 
 \begin{titlepage}
-  \maketitle
+\centering
+\includegraphics[width = 7cm]{Figs/University_Crest}
+
+\vspace{2cm}
+
+
+{\huge Plastic Deformation\\}
+\vspace{5mm}
+{\huge in Complex Crystal Structures}
+
+\vspace{2.5cm}
+
+{\LARGE Robert P. Thompson} \\
+\vspace{8mm}
+{\large Pembroke College \\
+University of Cambridge \\
+
+\vspace{2.5cm}
+
+This dissertation is submitted for the degree of Doctor of Philosophy \\
+\vspace{3mm}
+
+December 2017 \\}
+
 \end{titlepage}
 
 
 \include{Declaration/declaration}
-\include{Acknowledgement/acknowledgement}
+
 \include{Abstract/abstract}
 
+\include{Acknowledgement/acknowledgement}
 % % % % % % % % % % % % % %  Adding TOC and List of Figures % % % % % % % % % % % % % % %
 \addtocontents{toc}{~\hfill\textbf{Page}\par}
 \setcounter{tocdepth}{1}
+
+\afterpage{%
+%\newgeometry{top=0.5cm,left=2cm}
+
 \tableofcontents
+\restoregeometry
+\clearpage
+}
 
 
-\renewcommand{\listfigurename}{Figures}
+
+\afterpage{%
+%\newgeometry{top=0.5cm,left=2cm}
+\renewcommand{\listfigurename}{\vspace{-2.6cm}Figures}
+
 \listoffigures
+\restoregeometry
+\clearpage
+}
+
+
 
 
 % \printnomencl[space] space can be set as 2em between symbol and description
@@ -101,7 +141,7 @@
 % ********************************** Appendices ********************************
 \appendix
 \include{Appendix_1/appendix1}
-\include{Appendix2/appendix2}
+%\include{Appendix2/appendix2}
 
 
 
