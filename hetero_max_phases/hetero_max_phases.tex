@@ -4,12 +4,12 @@
 \graphicspath{{hetero_max_phases/Figs/}}
 
 
-As  discussed in \autoref{sec:ductility_criteria} the MAX phases are predicted to be brittle by a wide range of ductility criteria but they are in fact observed to be damage tolerant and to flow easily in the basal plane \cite{Barsoum1999}.
-Predictions of the Peierls stress made using the methods described in \autoref{sec:dislocations} have been made previously \cite{Music2007ductility,Gouriet2015}, however these have had limited success, producing over estimates, for example \citet{Gouriet2015} reported the Peierls stress to be at least \SI{611}{\mega\pascal} which is similar to  that estimated for titanium carbide and other very hard brittle materials in which slip is limited at room temperature by the Peierls mechanism \cite{Chang1966,Clegg2006,Kamimura2011,Yadav2014}. Given that flow stresses in the region of a few tens of \si{\mega\pascal} have been observed at room temperature \cite{Humphrey2012,Barsoum1999}, which is more comparable with FCC metals than FCC carbides, it is reasonable to expect the Peierls stress of MAX phases to be lower than that of TiC.
+As  discussed in \autoref{sec:ductility_criteria}, the MAX phases are predicted to be brittle by a wide range of ductility criteria but they are in fact observed to be damage tolerant and to flow easily in the basal plane \cite{Barsoum1999}.
+Predictions of the Peierls stress made using the methods described in \autoref{sec:dislocations} have been made previously \cite{Music2007ductility,Gouriet2015}. However these have had limited success, producing over-estimates, for example \citet{Gouriet2015} reported the Peierls stress to be at least \SI{611}{\mega\pascal} which is similar to  that estimated for titanium carbide and other very hard brittle materials in which slip is limited at room temperature by the Peierls mechanism \cite{Chang1966,Clegg2006,Kamimura2011,Yadav2014}. Given that flow stresses in the region of a few tens of \si{\mega\pascal} have been observed at room temperature \cite{Humphrey2012,Barsoum1999}, which is more comparable with FCC metals than FCC carbides, it is reasonable to expect the Peierls stress of MAX phases to be lower than that of TiC.
 
-The poor performance of Peierls models for MAX phases, and potentially for other complex phases, might be due to the treatment of the MAX phase unit cell as elastically homogeneous. This is surprising because many studies have discussed the heterogeneity of the bonding and electron structure, one recent review was written by \citet{Magnuson2017}, and discusses the complex and mixed nature of the bonding varying across the different atomic sites, more metallic in the MA layers, more covalent in the MX layers, and charge transfer contributing an ionic component to the bonding. 
+The poor performance of Peierls models for MAX phases, and potentially for other complex phases, might be due to the treatment of the MAX phase unit cell as elastically homogeneous. This is surprising because many studies have discussed the heterogeneity of the bonding and electron structure. One recent review was written by \citet{Magnuson2017}, and discusses the complex and mixed nature of the bonding varying across the different atomic sites: more metallic in the MA layers, more covalent in the MX layers, and charge transfer contributing an ionic component to the bonding. 
 
-The bonding is associated with many of properties of the MAX phases, for example high melting point, high specific stiffness, electrical and thermal conductivity, and a near zero Seebeck coefficient to name a few \cite{Yoo2000,Sun2011,Magnuson2017} but the clear and strong heterogeneity of the unit cell has largely been neglected when considering the mechanical properties of the MAX phases, the only consideration of the atomic environments  being the choice of plane at which the generalised stacking fault energy was calculated \cite{Music2007ductility}.
+The bonding is associated with many of the properties of the MAX phases, for example high melting point, high specific stiffness, electrical and thermal conductivity, and a near zero Seebeck coefficient to name a few \cite{Yoo2000,Sun2011,Magnuson2017}. However the clear and strong heterogeneity of the unit cell has largely been neglected when considering the mechanical properties of the MAX phases, the only consideration of the atomic environments  being the choice of plane at which the generalised stacking fault energy was calculated \cite{Music2007ductility}.
 
 
 \section{Chemical heterogeneity}
@@ -18,7 +18,7 @@ Measuring single crystal elastic constants for the MAX phases is extremely diffi
 
 
 
-If the MAX phases are elastically heterogeneous there is the question of what might be the expected properties and how these might vary within the MAX phase unit cell. A simple way of characterising the chemical heterogeneity is the electronegativity, $\chi$, of regions within the unit cell. For both the M--X and M--A regions, an average electronegativity is easily calculated as once sharing of atoms between the regions is accounted for there are equal numbers of M and A atoms in the M--A region and similarly equal numbers of M and X atoms in the M--X region. The difference in electronegativity between the two regions is therefore defined by
+If the MAX phases are elastically heterogeneous, there is the question of what might be the expected properties and how these might vary within the MAX phase unit cell. A simple way of characterising the chemical heterogeneity is the electronegativity, $\chi$, of regions within the unit cell. For both the M--X and M--A regions, an average electronegativity is easily calculated, as once sharing of atoms between the regions is accounted for, there are equal numbers of M and A atoms in the M--A region and similarly equal numbers of M and X atoms in the M--X region. The difference in electronegativity between the two regions is therefore defined by
 \begin{equation}
 \Delta \chi = \frac{\chi_{\text{X}} - \chi_{\text{A}}}{2}\label{eqn:MAX_electronegativity_diff}
 \end{equation}
@@ -34,41 +34,36 @@ Since the elements that take the X site, carbon and nitrogen, are generally more
 
 
 
-Measuring single crystal elastic constants for the MAX phases is extremely challenging due to the difficulty of growing single crystals and experimentally determining the stiffness of sub-unit cell regions of the crystal presents an even greater challenge. Instead density functional theory can be employed. DFT has been widely used to calculate single crystal elastic constants of a large variety of materials and is considered reliable and reproducible \cite{Lejaeghere2016}. 
+Measuring single crystal elastic constants for the MAX phases is challenging due to the difficulty of growing single crystals and experimentally determining the stiffness of sub-unit cell regions of the crystal presents an even greater challenge. Instead density functional theory (DFT) can be employed. DFT has been widely used to calculate single crystal elastic constants of a large variety of materials and is considered reliable and reproducible \cite{Lejaeghere2016}. 
 
 %%% Better check I've referenced this correctly and that I understand it enough
-The density functional theory calculations were performed with the SIESTA package \cite{soler2002}, a pseudopotential based LCAO package using semicore pseudopotentials with partial core corrections in the Perdew-Burke-Ernzhof (PBE) formulation generated and tested by the ATOM implementation \cite{soler2002} of the Troullier-Martins procedure \cite{Troullier1991,Troullier1991a} as described in the software documentation \cite{ATOM_manual}. A double-$\zeta$ polarised basis set including the semicore states was used, the cutoff radii of which were optimised with a variational simplex method.
+The density functional theory calculations were performed with the SIESTA package \cite{soler2002}, a pseudopotential-based LCAO package using semicore pseudopotentials with partial core corrections in the Perdew-Burke-Ernzhof (PBE) formulation generated and tested by the ATOM implementation \cite{soler2002} of the Troullier-Martins procedure \cite{Troullier1991,Troullier1991a} as described in the software documentation \cite{ATOM_manual}. A double-$\zeta$ polarised basis set including the semicore states was used, the cutoff radii of which were optimised with a variational simplex method.
 
-The starting point for the calculations presented here were a series of optimised unit cells for a range of MAX phases produced by a procedure developed by Philip Howie. A optimisation approach to generating suitable pseudopetentials was taken using ATOM \cite{ATOM_manual}; pseudopotentials with a range of cut off radii were tested against all-electron calculations of the atomic ground state and a number of excited states and the cut off radius is improved until the best (i.e. closest to all-electron) pseudopotential is identified. 
+The starting point for the calculations presented here were a series of optimised unit cells for a range of MAX phases produced by a procedure developed by Philip Howie. A optimisation approach to generating suitable pseudopotentials was taken using ATOM \cite{ATOM_manual}; pseudopotentials with a range of cut off radii were tested against all-electron calculations of the atomic ground state and a number of excited states and the cut off radius is improved until the best (i.e. closest to all-electron) pseudopotential is identified. 
 
-Firstly some simulation parameters have to be optimised, the k-grid size and the mesh cut off. Suitable values are chosen to provide sufficient accuracy and ensure the energy converges \cite{SIESTA_manual}.
+Initially some simulation parameters have to be optimised: the k-grid size and the mesh cut off. Suitable values are chosen to provide sufficient accuracy and ensure the energy converges \cite{SIESTA_manual}.
 
-Once pseudopotentials and the simulation parameters have been generated the lattice parameters are optimised. The literature values are used as the starting point but the calculated equilibrium lattice parameter is typically \SIrange{1}{2}{\percent} bigger that the experimental value when using the generalised gradient approximation \cite{Staroverov2004,Wu2006}. Initially the lattice parameter ratio, $c/a$, is kept fixed and the lattice parameter $a$ is varied to reduce the hydrostatic pressure to zero.
+Once pseudopotentials and the simulation parameters have been generated the lattice parameters are optimised. The literature values are used as the starting point but the calculated equilibrium lattice parameter is typically \SIrange{1}{2}{\percent} bigger that the experimental value when using the generalised gradient approximation \cite{Staroverov2004,Wu2006,Staroverov2008erratum}. Initially the lattice parameter ratio, $c/a$, is kept fixed and the lattice parameter $a$ is varied to reduce the hydrostatic pressure to zero.
 
-The basis set was optimised with this roughly equilibrated unit cell. Most of the variables are taken to be suggested values  from examples provided by the authors of SIESTA \cite{SIESTA_manual}. The problem is variational, i.e. a lower energy means a better basis set; so the basis set is optimised by the simplex optimisation method, also known as the Nelder-Mead method \citep{Nelder1965}.
-
-With an accurate basis set the lattice parameters are now optimised to find the true equilibrium point, relaxing both $a$ and $c$ to reduce the stresses to zero (or equivalently finding the minimum energy).
+The basis set was optimised with this roughly equilibrated unit cell. Most of the variables are taken to be suggested values  from examples provided by the authors of SIESTA \cite{SIESTA_manual}. The problem is variational (i.e. a lower energy means a better basis set) so the basis set is optimised by the simplex optimisation method, also known as the Nelder-Mead method \citep{Nelder1965}. With an accurate basis set the lattice parameters are now optimised to find the true equilibrium point, relaxing both $a$ and $c$ to reduce the stresses to zero (or equivalently finding the minimum energy). Many of the atomic positions are fixed by symmetry, but those parameters that are free to vary without breaking the structure's symmetry are relaxed. These are the heights in the $c$-axis of some of the atoms as shown in \autoref{fig:MAX_unit_cells}.
 
 
-Many of the atomic positions are fixed by symmetry, but those parameters that are free to vary without breaking the structure's symmetry are relaxed. These are the heights in the $c$-axis of some of the atoms as shown in \autoref{fig:MAX_unit_cells}.
-
-
-A comparison of the lattice parameters generated by DFT with Howie's method is shown in \autoref{fig:unit_cells_DFT_vs_literature} and the data are summarised in \autoref{tab:MAX_DFT_unit_cell_results}. The agreement is good as expected, particularly in the lattice geometry, $c/a$. The better agreement in $c/a$ than in the lattice parameters themselves is because the errors inm the lattice parameters are correlated, so that both $a$ and $c$ are in error (usually too large) by the same fraction. These equilibrated unit cells were used as the basis for further investigation of MAX phase behaviour.
+A comparison of the lattice parameters generated by DFT with Howie's method is shown in \autoref{fig:unit_cells_DFT_vs_literature} and the data are summarised in \autoref{tab:MAX_DFT_unit_cell_results}. The agreement is good as expected, particularly in the lattice geometry, $c/a$. The better agreement in $c/a$ than in the lattice parameters themselves is because the errors in the lattice parameters are correlated, in that both $a$ and $c$ are overestimated as expected with the PBE formulation \cite{Staroverov2004,Staroverov2008erratum}. These equilibrated unit cells were used as the basis for further investigation of MAX phase behaviour.
 
 \begin{figure}
-\begin{subfigure}{\textwidth}
+\begin{subfigure}{0.4\textwidth}
 
 \centering
-\captionsetup{width=10cm}
-\includegraphics[width=8cm]{a_calc_vs_a_lit}
+\captionsetup{width=\textwidth}
+\includegraphics[width=\textwidth]{a_calc_vs_a_lit}
 \caption[Calculated lattice parameters compared with literature values]{A comparison between the lattice parameter, $a$, calculated here with literature values.\label{fig:latt_params_DFT_vs_lit}}
 
 \end{subfigure}
-
-\begin{subfigure}{\textwidth}
+~
+\begin{subfigure}{0.4\textwidth}
 \centering
-\captionsetup{width=10cm}
-\includegraphics[width=8cm]{c-a_calc_vs_lit}
+\captionsetup{width=\textwidth}
+\includegraphics[width=\textwidth]{c-a_calc_vs_lit}
 \caption{A comparison between the calculated lattice parameter ratio, $c/a$, with literature values.\label{fig:c_a_ratio_DFT_vs_lit}}
 \end{subfigure}
 
@@ -118,9 +113,9 @@ u = \frac{1}{2} C_{ijkl} \epsilon_{ij} \epsilon_{kl}
 \end{equation}
 where $\sigma_{ij}$ is the stress tensor, $\epsilon_{ij}$ is the strain tensor, $u$ is the strain energy per unit volume and $C_{ijkl}$ is the stiffness tensor. This was applied by \citet{Aryal2014} to a very wide range of MAX phases. Care must be taken to reproduce the physically realistic situation where the stress is equal throughout the unit cell but the strain can vary, i.e. the strain must be applied macroscopically to whole the simulation cell but the atomic positions must then be allowed to relax into the lowest energy configuration.
 
-The latter equation was used to find the local stiffness within a region of the unit cell. The single crystal elastic constants must be dropped since a tensor formulation of heterogeneous elasticity is not the aim, instead local shear moduli are calculated. The unit cell is divided naturally into two distinct regions that are obvious from the geometry of the crystal structure, the local chemistry and nature of bonding, there is a more metallic layer, the M--A layer, and a more covalent layer, the M--X layer, see \autoref{fig:MAX_unit_cells}. The layer of M-atoms that are bonded to both A-atoms and X-atoms is the natural boundary.
+The latter equation was used to find the local stiffness within a region of the unit cell. The single crystal elastic constants must be dropped since a tensor formulation of heterogeneous elasticity is not the aim, instead local shear moduli are calculated. The unit cell is divided naturally into two distinct regions that are obvious from the geometry of the crystal structure, the local chemistry and nature of bonding: there is a more metallic layer, the M--A layer; and a more covalent layer, the M--X layer, see \autoref{fig:MAX_unit_cells}. The layer of M-atoms that are bonded to both A-atoms and X-atoms is the natural boundary.
 
-To localise the strain in, say, the M--A layer all the bonding, that is the relative atomic positions, in the M--X layer are held rigid and are displaced as a whole such that in each M--A layer the appropriate strain is applied. The relative positions of the atoms within the M--A layer are then allowed to relax to achieve the minimum energy. The equation that must then be fitted is
+To localise the strain in, say, the M--A layer, all the bonding, that is the relative atomic positions, in the M--X layer are held rigid and are displaced as a whole such that in each M--A layer the appropriate strain is applied. The relative positions of the atoms within the M--A layer are then allowed to relax to achieve the minimum energy. The equation that must then be fitted is
 \begin{equation}
 u = \frac{1}{2} G_{i} \gamma^2
 \end{equation}
@@ -140,7 +135,7 @@ where $\gamma$ is the applied strain and $G_i$ is the local shear modulus, namel
 \captionsetup{width=\textwidth,font={sf,scriptsize},labelfont=bf}
 
 
-The overall shear modulus for the whole crystal structure is calculated in the same manner with no restrictions on the atomic positions, all the atoms are allowed to relax fully. Since this relaxed shear is equivalent to a uniform applied stress an analogy is possible with the assumptions made to calculate the transverse stiffness of long fibre composite materials, the so called slab model \cite{Hull1996ch4}. The slab model is illustrated in \autoref{fig:slab_model}. The results of the local calculations can be compared with the overall case using the equation:
+The overall shear modulus for the whole crystal structure is calculated in the same manner with no restrictions on the atomic positions, all the atoms are allowed to relax fully. Since this relaxed shear is equivalent to a uniform applied stress, an analogy is possible with with calculation of the transverse stiffness of long fibre composite materials, the so called slab model \cite{Hull1996ch4}. The slab model is illustrated in \autoref{fig:slab_model}. The results of the local calculations can be compared with the overall case using the equation:
 \begin{equation}
 G_{\text{slab}} = \left[ \frac{f_{M\text{--}X}}{G_{M\text{--}X}} + \frac{f_{M\text{--}A}}{G_{M\text{--}A}} \right]^{-1} \label{eqn:slab_model}
 \end{equation}
@@ -163,10 +158,10 @@ f_{\text{M--X}} &=
 
 \section{Results and Discussion}
 
-The moduli of the separate layers are presented in \autoref{fig:Gma_variation} and summarised in \autoref{tab:MAX_DFT_elastic_results}. The M--X layer is stiffer than the M--A layer for all the MAX phases studied here, as expected from the nature of the bonding in the MAX phases as discussed in \autoref{sec:layered_crystals}. There is an overall increase in the stiffness of the M--X layer and an overall decrease in the stiffness of the M--A layer as the electronegativity difference between these layers increases, although the data is scattered around that correlation, presumably as more complex chemical factors operate in addition to electronegativity differences.
+The moduli of the separate layers are presented in \autoref{fig:Gma_variation} and summarised in \autoref{tab:MAX_DFT_elastic_results}. The M--X layer is stiffer than the M--A layer for all the MAX phases studied here, as expected from the nature of the bonding in the MAX phases as discussed in \autoref{sec:layered_crystals}. There is an overall increase in the stiffness of the M--X layer and an overall decrease in the stiffness of the M--A layer as the electronegativity difference between these layers increases, although the data are scattered around that correlation, presumably as more complex chemical factors operate in addition to electronegativity differences.
 
 
-The trend is clearer when the ratio of the moduli is considered, as shown in \autoref{fig:ratio_of_Gma_to_Gmx}. The ratio $G_{\text{M--A}}/G_{\text{M--X}}$ varies with the electronegativity difference between the layers, so even where other chemical effects cause the overall bonding to be stronger the \emph{relative} moduli of the two layers are altered by electrons being drawn from the M--A layer into the M--X layer to varying extents. In the case of A atoms like indium or gallium electrons are easily lost from the M--A layer to the M--X layer, reducing the ratio, while in the case of sulphur occupying the A site there is almost no electronegativity difference between the layers and the ratio is higher.
+The trend is clearer when the ratio of the moduli is considered, as shown in \autoref{fig:ratio_of_Gma_to_Gmx}. The ratio $G_{\text{M--A}}/G_{\text{M--X}}$ varies with the electronegativity difference between the layers, so even where other chemical effects cause the overall bonding to be stronger, the \emph{relative} moduli of the two layers are altered by electrons being drawn from the M--A layer into the M--X layer to varying extents. In the case of A atoms like indium or gallium electrons are easily lost from the M--A layer to the M--X layer, reducing the ratio, while in the case of sulphur occupying the A site there is almost no electronegativity difference between the layers and the ratio is higher.
 
 
 \begin{figure}
@@ -246,7 +241,7 @@ This change is reflected in the bond lengths in the M--A layers, the bonds getti
 
 
 
-The overall shear modulus was calculated in the same manner and also shows some variation with the electronegativity difference. The overall modulus is calculated by imposing an overall strain the unit cell and allowing the atomic positions to relax, hence this is termed the relaxed modulus, $G_{\text{rel}}$. There is an overall decrease in the shear modulus of the MAX phases as the electronegativity difference across the structure increases, the contribution of the weakening M--A bond lowering the overall shear modulus more than the strengthening of the M--X bonding raises it.
+The overall shear modulus was calculated in the same manner and also shows some variation with the electronegativity difference. The overall modulus is calculated by imposing an overall strain on the unit cell and allowing the atomic positions to relax, hence this is termed the relaxed modulus, $G_{\text{rel}}$. There is an overall decrease in the shear modulus of the MAX phases as the electronegativity difference across the structure increases, the contribution of the weakening M--A bond lowering the overall shear modulus more than the strengthening of the M--X bonding raises it.
 
 
 The slab model was used to compare the local moduli, $G_{\text{M--A}}$ and $G_{\text{M--X}}$,  with the overall modulus, $G_{\text{rel}}$, using \autoref{eqn:slab_model}. The results are plotted in \autoref{fig:Gslab_vs_Grel}. The correlation is very good, showing that the local properties are in agreement with the macroscopic properties.

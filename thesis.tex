@@ -104,9 +104,19 @@ December 2017 \\}
 
 
 \pagenumbering{arabic}
+
 \doublespacing
 \setcounter{page}{1}
 \cleardoublepage
+
+\fancyfoot[RO]{                           
+\setlength\unitlength{1cm}                
+  \begin{picture}(0,0)                    
+    \put(0.3,-1.5){                        %
+      \fbImageF{flipbook/disloc}{png}{width=2.5cm} 
+     }
+ \end{picture}
+}
 %The background literature review on plastic deformation
 \include{plastic_deformation/plastic_deformation}
 \cleardoublepage
@@ -133,7 +143,7 @@ December 2017 \\}
 \cleardoublepage
 
 \singlespacing
-\footnotesize
+\renewcommand*{\bibfont}{\footnotesize}
 \printbibliography[heading=bibintoc]
 \normalsize
 
