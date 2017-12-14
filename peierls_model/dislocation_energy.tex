@@ -8,11 +8,11 @@ Another would be to use empirical potentials similar to those used in molecular 
 
 The first approach builds on the original approach of \citet{Peierls1940} and \citet{Nabarro1947} and explains how the dislocation is stable due to a balancing of two forces. There is a force that attempts to spread the dislocation out into a planar defect, which arises due to the elastic stored energy in the bonds either side of the slip plane. The elastic energy would be zero in the case of a planar defect, i.e.\ an infinitely wide dislocation. Another force tends to decrease the dislocation width, arising from the misfit or misalignment across the slip plane. The misalignment energy would be a maximum for the planar defect where the entire slip plane is misaligned and would decrease monotonically as the width decreases.
 
-Using an elastic model to find the energy has a number of advantages. A two dimensional model is sufficient since if the  condition of plane strain can be applied. If elastic theory can be applied at the scale of the unit cell then displacements need only be considered between unit cells rather than within them, which simplifies the model considerably.
+Using an elastic model to find the energy has a number of advantages. A two dimensional model is sufficient since the condition of plane strain can be applied. If elastic theory can be applied at the scale of the unit cell then displacements need only be considered between unit cells rather than within them, which simplifies the model considerably.
 
 \subsection{Strain energy}
 
-The elastic energy can be easily calculated for a small volume if the strain and the elastic tensor is known. A good discussion of tensors and elasticity is given by \citet{kelly_knowles2012chapter5_tensors,kelly_knowles2012chapter6_stress_strain} and a discussion of elasticity in the context of dislocation theory is given by \citet{hirth_lothe1982elasticity}. The salient results are drawn together here.
+The elastic energy can be easily calculated for a small volume if the strain and the elastic tensor is known. A good discussion of tensors and elasticity is given by Kelly and Knowles \cite{kelly_knowles2012chapter5_tensors,kelly_knowles2012chapter6_stress_strain} and a discussion of elasticity in the context of dislocation theory is given by \citet{hirth_lothe1982elasticity}. The salient results are drawn together here.
 
 Hooke's Law can be written as a tensor relationship using the Einstein summation convention:
 \begin{equation}
@@ -60,10 +60,10 @@ Assuming a primitive orthogonal lattice, estimating the components of strain is 
 
 For this simple case two bonds are identified for each atom, one to the nearest neighbour in the $x$~direction and one to the nearest neighbour in the $y$~direction as shown in \autoref{fig:bonds}. The simplest estimate of the stress components is
 \begin{alignat}{2}\label{eqn:estimate_strains}
-\left. \frac{\partial u_x}{\partial x}\right|_i &= \frac{\mathbf{p}_i \cdot \mathbf{\hat{i}}}{b} &\qquad\qquad
-\left. \frac{\partial u_x}{\partial y}\right|_i &= \frac{\mathbf{q}_i \cdot \mathbf{\hat{i}}}{d} \nonumber\\
-\left. \frac{\partial u_y}{\partial y}\right|_i &= \frac{\mathbf{q}_i \cdot \mathbf{\hat{j}}}{d} &
-\left. \frac{\partial u_y}{\partial x}\right|_i &= \frac{\mathbf{p}_i \cdot \mathbf{\hat{j}}}{b}
+\left. \frac{\partial u}{\partial x}\right|_i &= \frac{\mathbf{p}_i \cdot \mathbf{\hat{i}}}{b} &\qquad\qquad
+\left. \frac{\partial u}{\partial y}\right|_i &= \frac{\mathbf{q}_i \cdot \mathbf{\hat{i}}}{d} \nonumber\\
+\left. \frac{\partial u}{\partial y}\right|_i &= \frac{\mathbf{q}_i \cdot \mathbf{\hat{j}}}{d} &
+\left. \frac{\partial u}{\partial x}\right|_i &= \frac{\mathbf{p}_i \cdot \mathbf{\hat{j}}}{b}
 \end{alignat}
 
 
@@ -95,7 +95,7 @@ and the strain tensor can be calculated for each atom/unit cell, and hence the s
 \subsection{Misalignment energy}
 
 
-At the slip plane the method above will break down. For an atom immediately below the slip plane the identification of the nearest neighbour above the slip plane can be ambiguous, or can leave some atoms multiply bonded and others unbonded, the nearest neighbour will also change as the dislocation moves. \autoref{fig:slip_plane} shows an possible configuration around a dislocation core that would result in this kind of problem. Considering the atom $m$, it can be seen that it is further from both atom $i$ and atom $j$ than their other neighbours, $l$ and $n$, and so atom $m$ would be unbonded in a simple nearest neighbour model. The atom $n$ might be bonded twice in such a model.
+At the slip plane the method above will break down. For an atom immediately below the slip plane the identification of the nearest neighbour above the slip plane can be ambiguous, or can leave some atoms multiply bonded and others unbonded. The nearest neighbour will also change as the dislocation moves. \autoref{fig:slip_plane} shows an possible configuration around a dislocation core that would result in this kind of problem. Considering the atom $m$, it can be seen that it is further from both atom $i$ and atom $j$ than their other neighbours, $l$ and $n$, and so atom $m$ would be unbonded in a simple nearest neighbour model. The atom $n$ might be bonded twice in such a model.
 
 A less arbitrary method is to use the initial positions and assume that the $i$th atom can be bonded to two atoms in the layer above the slip plane. Since initially the horizontal spacing between atoms is $b$ for all atoms the two atoms must be within an interval $x_i^0 - b < x \leq x_i^0 + b$, bonds can be identified as shown in \autoref{fig:slip_plane_initial_positions}. The energy of the two bonds is averaged to avoid a double counting error.
 
@@ -121,13 +121,13 @@ U_i^\text{mis} = \frac{Gb^2}{4\pi^2} \left[\frac{d}{b}\right] \left[ 1 - \cos \l
 \end{equation}
 which in terms of single crystal elastic constants takes $G=C_{66}$ (in Voigt notation see \cite{kelly_knowles2012chapter6_stress_strain}). The $66$ term is used if the elastic tensor is in the frame of reference of  the slip system, with the $1$ axis parallel to the slip direction, the $2$ axis parallel to the slip plane normal and the $3$ axis parallel to the line vector. $C_{66}$ is thus always the relevant stiffness constant regardless of the material symmetry.
 
-A more complete method for the calculation of the energy is to use the generalised stacking fault energy. Density functional theory can be used to calculate the energy of a stacking fault at an arbitrary misalignment. This is calculated by applying a displacement to two half crystals in a DFT simulation with periodic boundary conditions which introduces two opposing planar faults. The displacement is applied along the Burgers vector and the atoms are allowed to relax perpendicular to that displacement. Although the displacement field does not include any lateral motion (i.e. parallel to the dislocation line), allowing the DFT simulation of the stacking faults to relax laterally means that the energetic implications of lateral motion are included in the misalignment potential, although with an implicit assumption that the strains along the line vector do not extend beyond the slip plane. 
+A more complete method for the calculation of the energy makes use of the generalised stacking fault energy. Density functional theory can be used to calculate the energy of a stacking fault at an arbitrary misalignment. This is calculated by applying a displacement to two half crystals in a DFT simulation with periodic boundary conditions which introduces two opposing planar faults. The displacement is applied along the Burgers vector and the atoms are allowed to relax perpendicular to that displacement. Although the displacement field does not include any lateral motion (i.e. parallel to the dislocation line), allowing the DFT simulation of the stacking faults to relax laterally means that the energetic implications of lateral motion are included in the misalignment potential, although with an implicit assumption that the strains along the line vector do not extend beyond the slip plane. 
 
 The energy changes with respect to a perfect crystal were considered and fitted with a simple empirical function:
 \begin{equation}
 \gamma(\phi) = \sum^{M}_{m=1} C_m \left[ 1 - \cos \left( \frac{2m\pi \phi}{b} \right) \right]
 \end{equation}
-where $\phi$ is the misalignment in the same units as the Burgers vector $b$, $m$ is an integer from \num{1} to $M$ and $C_m$ are coefficients fitted by a least-squares method to the energies calculated by DFT for different values of $\phi$. This is in units of \si{\joule\per\square\meter}, so a factor of $b$ must be applied to convert to a line energy in \si{\joule\per\meter}.
+where $\phi$ is the misalignment in the same units as the Burgers vector $b$, $m$ is an integer from \num{1} to $M$, and $C_m$ are coefficients fitted by a least-squares method. This is in units of \si{\joule\per\square\meter}, so a factor of $b$ must be applied to convert to a line energy in \si{\joule\per\meter}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5555%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -194,7 +194,7 @@ The parameters used for the Lennard-Jones potential are shown in \autoref{tab:LJ
 \sigma_{ij} &= \frac{\sigma_i + \sigma_j}{2}
 \end{align}
 
-A simple implementation without modification for computational ease, such as cut off distances, is given in \cite{code} and an example input file is given for LAMMPS in section~\ref{sec:lammps_input}. LAMMPS  input files are described in the LAMMPS documentation \cite{LAMMPS_web}.
+A simple implementation without modification for computational ease, such as cut off distances, is given in \cite{code} and an example input file is given for LAMMPS in \autoref{sec:lammps_input}. LAMMPS  input files are described in the LAMMPS documentation \cite{LAMMPS_web}.
 
 \subsection{Optimisation of the dislocation structure}
 \label{sec:optimisers}

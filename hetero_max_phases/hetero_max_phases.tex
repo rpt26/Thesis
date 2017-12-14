@@ -14,7 +14,6 @@ The bonding is associated with many of the properties of the MAX phases, for exa
 
 \section{Chemical heterogeneity}
 
-Measuring single crystal elastic constants for the MAX phases is extremely difficult due to the difficulty of growing single crystals and experimentally determining the stiffness of sub-unit cell regions of the crystal presents an even greater challenge. Instead density functional theory can be employed. DFT has been widely used to calculate single crystal elastic constants of a large variety of materials and is considered reliable and reproducible \cite{Lejaeghere2016}. 
 
 
 
@@ -24,9 +23,9 @@ If the MAX phases are elastically heterogeneous, there is the question of what m
 \end{equation}
 since the M atoms contribute to both regions. 
 
-There are a variety of measures of electronegativity, but perhaps the most fundamental and transferable is the Mulliken scale \cite{Mulliken1934}, which takes the electronegativity of a species to be the average of the ionization energy, the energy change upon removing an electron, and the electron affinity, the energy change upon adding an electron. This scale is more fundamental than others because it is calculated from the fundamental properties of atoms, as opposed to more ``relative'' scales that are calculated from enthalpies of formation and covalent radii and so on \cite{huheey1983ch3_electronegativity}.
+There are a variety of measures of electronegativity, but perhaps the most fundamental and transferable is the Mulliken scale \cite{Mulliken1934}, which takes the electronegativity of a species to be the average of the ionisation energy, the energy change upon removing an electron, and the electron affinity, the energy change upon adding an electron. This scale is more fundamental than others because it is calculated from the fundamental properties of atoms, as opposed to more ``relative'' scales that are calculated from enthalpies of formation and covalent radii and so on \cite{huheey1983ch3_electronegativity}.
 
-Since the elements that take the X site, carbon and nitrogen, are generally more electronegative than those that take the A site, elements like aluminium and silicon, it is expected that electron transfer into the M--X region from the M--A \cite{Sun2011}. Such a transfer would be expected to increase the strength of the bonding in the M--X layer and reduce it in the M--A, with a corresponding change in the moduli of the two regions.
+Since the elements that take the X site, carbon and nitrogen, are generally more electronegative than those that take the A site, elements like aluminium and silicon, it is expected that electron transfer will be into the M--X region from the M--A \cite{Sun2011}. Such a transfer would be expected to increase the strength of the bonding in the M--X layer and reduce it in the M--A, with a corresponding change in the moduli of the two regions.
 
 
 \section{Density functional theory calculations}
@@ -39,9 +38,9 @@ Measuring single crystal elastic constants for the MAX phases is challenging due
 %%% Better check I've referenced this correctly and that I understand it enough
 The density functional theory calculations were performed with the SIESTA package \cite{soler2002}, a pseudopotential-based LCAO package using semicore pseudopotentials with partial core corrections in the Perdew-Burke-Ernzhof (PBE) formulation generated and tested by the ATOM implementation \cite{soler2002} of the Troullier-Martins procedure \cite{Troullier1991,Troullier1991a} as described in the software documentation \cite{ATOM_manual}. A double-$\zeta$ polarised basis set including the semicore states was used, the cutoff radii of which were optimised with a variational simplex method.
 
-The starting point for the calculations presented here were a series of optimised unit cells for a range of MAX phases produced by a procedure developed by Philip Howie. A optimisation approach to generating suitable pseudopotentials was taken using ATOM \cite{ATOM_manual}; pseudopotentials with a range of cut off radii were tested against all-electron calculations of the atomic ground state and a number of excited states and the cut off radius is improved until the best (i.e. closest to all-electron) pseudopotential is identified. 
+The starting point for the calculations presented here was a series of optimised unit cells for a range of MAX phases produced by a procedure developed by Philip Howie. A optimisation approach to generating suitable pseudopotentials was taken using ATOM \cite{ATOM_manual}; pseudopotentials with a range of cut-off radii were tested against all-electron calculations of the atomic ground state and a number of excited states and the cut-off radius is improved until the best (i.e. closest to all-electron) pseudopotential is identified. 
 
-Initially some simulation parameters have to be optimised: the k-grid size and the mesh cut off. Suitable values are chosen to provide sufficient accuracy and ensure the energy converges \cite{SIESTA_manual}.
+Initially some simulation parameters have to be optimised: the k-grid size and the mesh cut-off. Suitable values are chosen to provide sufficient accuracy and ensure the energy converges \cite{SIESTA_manual}.
 
 Once pseudopotentials and the simulation parameters have been generated the lattice parameters are optimised. The literature values are used as the starting point but the calculated equilibrium lattice parameter is typically \SIrange{1}{2}{\percent} bigger that the experimental value when using the generalised gradient approximation \cite{Staroverov2004,Wu2006,Staroverov2008erratum}. Initially the lattice parameter ratio, $c/a$, is kept fixed and the lattice parameter $a$ is varied to reduce the hydrostatic pressure to zero.
 
@@ -97,7 +96,7 @@ Phase &       $a$ &     $a_{\text{lit}}$ &     $c/a$ & $c/a_{\text{lit}}$ &     
  \ce{Ti4SiC3}\rule[-1ex]{0pt}{0pt} &  3.0878 &  3.0500 &  7.3627 &  7.3614 &  0.0535 &  0.0532 &  0.1120 &  0.1118 &  0.1603 &  0.1599 &  0.6604 &  0.0901 &  2.0230 \\
 \hline
 \end{tabular}
-\caption{The unit cell parameters as modelled by density functional theory and some literature values for comparison.\label{tab:MAX_DFT_unit_cell_results}}
+\caption{The unit cell parameters as modelled by density functional theory and some values from the literature for comparison.\label{tab:MAX_DFT_unit_cell_results}}
 \end{sidewaystable}
 
 \section{Calculating the local stiffness}
@@ -135,7 +134,7 @@ where $\gamma$ is the applied strain and $G_i$ is the local shear modulus, namel
 \captionsetup{width=\textwidth,font={sf,scriptsize},labelfont=bf}
 
 
-The overall shear modulus for the whole crystal structure is calculated in the same manner with no restrictions on the atomic positions, all the atoms are allowed to relax fully. Since this relaxed shear is equivalent to a uniform applied stress, an analogy is possible with with calculation of the transverse stiffness of long fibre composite materials, the so called slab model \cite{Hull1996ch4}. The slab model is illustrated in \autoref{fig:slab_model}. The results of the local calculations can be compared with the overall case using the equation:
+The overall shear modulus for the whole crystal structure is calculated in the same manner with no restrictions on the atomic positions: all the atoms are allowed to relax fully. Since this relaxed shear is equivalent to a uniform applied stress, an analogy is possible with calculation of the transverse stiffness of long fibre composite materials, the so called slab model \cite{Hull1996ch4}. The slab model is illustrated in \autoref{fig:slab_model}. The results of the local calculations can be compared with the overall case using the equation:
 \begin{equation}
 G_{\text{slab}} = \left[ \frac{f_{M\text{--}X}}{G_{M\text{--}X}} + \frac{f_{M\text{--}A}}{G_{M\text{--}A}} \right]^{-1} \label{eqn:slab_model}
 \end{equation}
@@ -161,7 +160,7 @@ f_{\text{M--X}} &=
 The moduli of the separate layers are presented in \autoref{fig:Gma_variation} and summarised in \autoref{tab:MAX_DFT_elastic_results}. The M--X layer is stiffer than the M--A layer for all the MAX phases studied here, as expected from the nature of the bonding in the MAX phases as discussed in \autoref{sec:layered_crystals}. There is an overall increase in the stiffness of the M--X layer and an overall decrease in the stiffness of the M--A layer as the electronegativity difference between these layers increases, although the data are scattered around that correlation, presumably as more complex chemical factors operate in addition to electronegativity differences.
 
 
-The trend is clearer when the ratio of the moduli is considered, as shown in \autoref{fig:ratio_of_Gma_to_Gmx}. The ratio $G_{\text{M--A}}/G_{\text{M--X}}$ varies with the electronegativity difference between the layers, so even where other chemical effects cause the overall bonding to be stronger, the \emph{relative} moduli of the two layers are altered by electrons being drawn from the M--A layer into the M--X layer to varying extents. In the case of A atoms like indium or gallium electrons are easily lost from the M--A layer to the M--X layer, reducing the ratio, while in the case of sulphur occupying the A site there is almost no electronegativity difference between the layers and the ratio is higher.
+The trend is clearer when the ratio of the moduli is considered, as shown in \autoref{fig:ratio_of_Gma_to_Gmx}. The ratio $G_{\text{M--A}}/G_{\text{M--X}}$ varies with the electronegativity difference between the layers, so even where other chemical effects cause the overall bonding to be stronger, the \emph{relative} moduli of the two layers are altered by electrons being drawn from the M--A layer into the M--X layer to varying extents. In the case of A atoms like indium or gallium, electrons are easily lost from the M--A layer to the M--X layer, reducing the ratio, while in the case of sulphur occupying the A site there is almost no electronegativity difference between the layers and the ratio is higher.
 
 
 \begin{figure}
@@ -253,7 +252,7 @@ The slab model was used to compare the local moduli, $G_{\text{M--A}}$ and $G_{\
 
 The MAX phases have been modelled with density functional theory calculations. The unit cells were optimised and found to be in good agreement with the literature. These unit cells formed the basis of further investigation.
 
-The shear modulus of the M--A and M--X regions of the structure were investigated as well as that of the entire MAX phase structure. The shear modulus was calculated by examining the energy changes for a range of applied shear strains up to \SI{2}{\percent} and fitting to Hooke's law.
+The shear modulus of the M--A and M--X regions of the structure were investigated, as was that of the entire MAX phase structure. The shear modulus was calculated by examining the energy changes for a range of applied shear strains up to \SI{2}{\percent} and fitting to Hooke's law.
 
 The shear moduli of both the M--A layer and the M--X layer varied with the electronegativity difference between them, as the difference increased (M--X becoming more electronegative) the M--A layer became more compliant and the M--X layer became stiffer. In particular the ratio of these moduli was well correlated with the electronegativity difference between the M--X and M--A layers.
 
